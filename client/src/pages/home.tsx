@@ -26,10 +26,10 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useInView, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
 import Autoplay from "embla-carousel-autoplay";
 
-// Assets
-import heroImage from "@assets/generated_images/branded_delivery_rider_on_motorcycle_at_night_in_dubai.png";
-import fleetImage from "@assets/generated_images/fleet_of_branded_delivery_vans_parked_professionally.png";
-import riderPortrait from "@assets/generated_images/smiling_professional_delivery_person_portrait.png";
+// Assets - UrbanFleet Branded Images
+import heroImage from "@assets/generated_images/urbanfleet_branded_rider_on_motorcycle_at_night.png";
+import fleetImage from "@assets/generated_images/urbanfleet_branded_delivery_van_fleet.png";
+import riderPortrait from "@assets/generated_images/urbanfleet_uniformed_delivery_person_portrait.png";
 import techBg from "@assets/generated_images/abstract_tech_network_background_in_orange_and_navy.png";
 
 // Magnetic Button Component
