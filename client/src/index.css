@@ -39,6 +39,19 @@
 
   --font-sans: 'Inter', sans-serif;
   --font-heading: 'Outfit', sans-serif;
+
+  --animate-marquee: marquee 25s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 25s linear infinite;
+  
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - 2rem)); }
+  }
+  
+  @keyframes marquee-reverse {
+    from { transform: translateX(calc(-100% - 2rem)); }
+    to { transform: translateX(0); }
+  }
 }
 
 /* LIGHT MODE */
