@@ -26,7 +26,13 @@ import {
   BadgeCheck,
   FileCheck,
   Handshake,
-  UserPlus
+  UserPlus,
+  Scale,
+  Car,
+  GraduationCap,
+  Heart,
+  TrendingUp,
+  Award
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useInView, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
@@ -37,6 +43,8 @@ import heroImage from "@assets/generated_images/urbanfleet_branded_rider_on_moto
 import fleetImage from "@assets/generated_images/urbanfleet_branded_delivery_van_fleet.png";
 import riderPortrait from "@assets/generated_images/urbanfleet_uniformed_delivery_person_portrait.png";
 import techBg from "@assets/generated_images/abstract_tech_network_background_in_orange_and_navy.png";
+import carImage from "@assets/generated_images/urbanfleet_branded_delivery_car.png";
+import truckImage from "@assets/generated_images/urbanfleet_branded_delivery_truck.png";
 
 // Magnetic Button Component
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -204,12 +212,12 @@ function HorizontalGallery() {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
 
   const items = [
-    { title: "Licensed Riders", icon: ShieldCheck, stat: "100%" },
+    { title: "Trained Riders", icon: GraduationCap, stat: "100%" },
+    { title: "Fully Insured", icon: ShieldCheck, stat: "Covered" },
+    { title: "Licensed Drivers", icon: BadgeCheck, stat: "Verified" },
     { title: "Visa Sponsorship", icon: FileCheck, stat: "Available" },
     { title: "UAE Coverage", icon: Globe, stat: "7 Emirates" },
     { title: "Support", icon: Headphones, stat: "24/7" },
-    { title: "Active Fleet", icon: Users, stat: "1500+" },
-    { title: "Partner Companies", icon: Building2, stat: "200+" },
   ];
 
   return (
@@ -247,7 +255,7 @@ export default function Home() {
 
   const autoplayPlugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
 
-  const navItems = ["Home", "Services", "For Riders", "Fleet", "Contact"];
+  const navItems = ["Home", "Services", "Compliance", "Fleet", "Contact"];
 
   return (
     <div className="min-h-screen bg-secondary font-sans selection:bg-primary selection:text-white overflow-x-hidden">
@@ -398,8 +406,8 @@ export default function Home() {
               transition={{ delay: 0.8 }}
               className="text-xl md:text-2xl text-gray-300 mb-6 max-w-3xl mx-auto"
             >
-              We supply professional delivery riders workforce to businesses across the UAE. 
-              Partner with us as a contractor or join our team as a rider.
+              Professional, trained, licensed, and insured delivery riders workforce for UAE businesses. 
+              Scalable fleet solutions with motorcycles, cars, vans, and trucks.
             </motion.p>
             
             <motion.p 
@@ -489,8 +497,8 @@ export default function Home() {
                 icon: Building2,
                 title: "For Businesses",
                 subtitle: "Workforce Solutions",
-                description: "Need delivery riders for your business? We supply professional, trained riders to handle your delivery operations. Scalable workforce that grows with your needs.",
-                features: ["Licensed & verified riders", "Flexible workforce scaling", "Dedicated account manager", "Real-time tracking"],
+                description: "Need delivery riders for your business? We supply professional, fully trained, insured, and licensed riders. Scale your workforce up or down based on your business demands.",
+                features: ["Trained & verified riders", "Scalable workforce", "Fully insured operations", "Real-time tracking"],
                 gradient: "from-blue-500 to-cyan-400",
                 cta: "Partner With Us"
               },
@@ -498,7 +506,7 @@ export default function Home() {
                 icon: Truck,
                 title: "For Contractors",
                 subtitle: "Vehicle Partnerships",
-                description: "Own vehicles? Partner with UrbanFleet and put your fleet to work. We connect contractors with businesses needing delivery services across the UAE.",
+                description: "Own motorcycles, cars, vans, or trucks? Partner with UrbanFleet and put your fleet to work. We connect contractors with businesses needing delivery services.",
                 features: ["Monetize your vehicles", "Flexible schedules", "Steady income stream", "Business support"],
                 gradient: "from-primary to-orange-400",
                 cta: "Become a Contractor"
@@ -507,8 +515,8 @@ export default function Home() {
                 icon: Bike,
                 title: "For Riders",
                 subtitle: "Career Opportunities",
-                description: "Join UrbanFleet as a delivery rider. We offer competitive pay, visa sponsorship for eligible candidates, and a clear path for career growth.",
-                features: ["Visa sponsorship available", "Competitive salary", "Training provided", "Growth opportunities"],
+                description: "Join UrbanFleet as a delivery rider. We offer competitive pay, visa sponsorship for eligible candidates, comprehensive training, and career growth opportunities.",
+                features: ["Visa sponsorship available", "Competitive salary", "Full training provided", "Health insurance"],
                 gradient: "from-green-500 to-emerald-400",
                 cta: "Apply Now"
               }
@@ -549,10 +557,114 @@ export default function Home() {
         </div>
       </section>
 
-      {/* For Riders - Visa Sponsorship Highlight */}
-      <section id="for-riders" className="py-32 relative overflow-hidden">
+      {/* UAE Compliance Section */}
+      <section id="compliance" className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
         
+        <div className="container mx-auto px-4">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="inline-block text-primary font-bold tracking-widest uppercase text-sm mb-4"
+            >
+              UAE Regulations
+            </motion.span>
+            <h2 className="text-5xl md:text-6xl font-heading font-black text-white mb-6">
+              Fully Compliant{" "}
+              <span className="text-primary">Workforce</span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              All UrbanFleet riders operate under UAE Federal Decree-Law No. 33 of 2021, ensuring complete legal compliance and protection.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { 
+                icon: GraduationCap, 
+                title: "Fully Trained", 
+                desc: "Comprehensive training on delivery protocols, customer service, and UAE traffic regulations",
+                color: "from-blue-500 to-cyan-400"
+              },
+              { 
+                icon: ShieldCheck, 
+                title: "Fully Insured", 
+                desc: "Mandatory health insurance coverage and operational liability protection per MOHRE requirements",
+                color: "from-green-500 to-emerald-400"
+              },
+              { 
+                icon: BadgeCheck, 
+                title: "Licensed Drivers", 
+                desc: "Valid UAE driving licenses with verified backgrounds and regular compliance checks",
+                color: "from-primary to-orange-400"
+              },
+              { 
+                icon: Scale, 
+                title: "Labor Law Compliant", 
+                desc: "Operating hours, overtime, and leave policies aligned with UAE Labour Law 2024",
+                color: "from-purple-500 to-pink-400"
+              },
+            ].map((item, i) => (
+              <FloatingCard key={i} delay={i * 0.1}>
+                <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-primary/30 transition-all h-full group">
+                  <div className={`w-14 h-14 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center mb-6 shadow-xl group-hover:scale-110 transition-transform`}>
+                    <item.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-3">{item.title}</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </FloatingCard>
+            ))}
+          </div>
+
+          {/* Additional Compliance Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-16 bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/10"
+          >
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-3xl font-bold text-white mb-6">Scalable Workforce Solutions</h3>
+                <p className="text-gray-400 mb-6 leading-relaxed">
+                  UrbanFleet provides businesses with the flexibility to scale their delivery workforce as needed. Whether you need 10 riders or 1,000, we can deploy trained, insured, and licensed professionals within days.
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    "MOHRE registered workforce",
+                    "Wage Protection System (WPS) compliant",
+                    "Summer midday break compliance (June-September)",
+                    "8-hour workday with proper overtime compensation"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-gray-300">
+                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="relative">
+                <img 
+                  src={riderPortrait} 
+                  alt="UrbanFleet Professional Rider" 
+                  className="rounded-2xl w-full aspect-square object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent rounded-2xl" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* For Riders - Visa Sponsorship */}
+      <section className="py-32 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -567,15 +679,15 @@ export default function Home() {
                 Team
               </h2>
               <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-                Looking for a rewarding career in delivery? UrbanFleet offers more than just a job. We provide visa sponsorship for eligible riders, competitive salaries, and real opportunities for growth.
+                Looking for a rewarding career in delivery? UrbanFleet offers visa sponsorship for eligible riders, competitive salaries, mandatory health insurance, and opportunities for growth.
               </p>
               
               <div className="grid grid-cols-2 gap-6 mb-10">
                 {[
-                  { icon: FileCheck, title: "Visa Sponsorship", desc: "We sponsor employment visas" },
-                  { icon: BadgeCheck, title: "Full Training", desc: "Comprehensive onboarding" },
-                  { icon: Headphones, title: "24/7 Support", desc: "Always here to help" },
-                  { icon: Globe, title: "UAE Coverage", desc: "Work across 7 emirates" },
+                  { icon: FileCheck, title: "Visa Sponsorship", desc: "Employment visa provided" },
+                  { icon: GraduationCap, title: "Full Training", desc: "Comprehensive onboarding" },
+                  { icon: Heart, title: "Health Insurance", desc: "Mandatory UAE coverage" },
+                  { icon: TrendingUp, title: "Career Growth", desc: "Advancement opportunities" },
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -639,7 +751,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fleet Carousel */}
+      {/* Fleet Carousel - All Vehicle Types */}
       <section id="fleet" className="py-32 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div 
@@ -648,14 +760,53 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="inline-block text-primary font-bold tracking-widest uppercase text-sm mb-4"
+            >
+              Our Fleet
+            </motion.span>
             <h2 className="text-5xl md:text-7xl font-heading font-black text-white mb-6">
-              Our Professional{" "}
-              <span className="text-primary">Fleet</span>
+              Complete{" "}
+              <span className="text-primary">Fleet</span>{" "}
+              Solutions
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              UrbanFleet branded vehicles and uniformed riders delivering excellence.
+              Motorcycles, cars, vans, and trucks - our branded fleet scales to meet any business requirement.
             </p>
           </motion.div>
+
+          {/* Fleet Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { icon: Bike, title: "Motorcycles", desc: "Fast urban deliveries", stat: "500+ Bikes", img: heroImage },
+              { icon: Car, title: "Cars", desc: "Premium deliveries", stat: "150+ Cars", img: carImage },
+              { icon: Truck, title: "Vans", desc: "Medium cargo transport", stat: "100+ Vans", img: fleetImage },
+              { icon: Truck, title: "Trucks", desc: "Large cargo logistics", stat: "50+ Trucks", img: truckImage },
+            ].map((vehicle, i) => (
+              <FloatingCard key={i} delay={i * 0.1}>
+                <div className="group relative bg-white/5 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img 
+                      src={vehicle.img} 
+                      alt={vehicle.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/50 to-transparent" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <vehicle.icon className="w-5 h-5 text-primary" />
+                      <span className="text-primary font-bold text-sm">{vehicle.stat}</span>
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-1">{vehicle.title}</h4>
+                    <p className="text-gray-400 text-sm">{vehicle.desc}</p>
+                  </div>
+                </div>
+              </FloatingCard>
+            ))}
+          </div>
 
           {/* Carousel */}
           <Carousel
@@ -665,10 +816,11 @@ export default function Home() {
           >
             <CarouselContent className="-ml-8">
               {[
-                { title: "UrbanFleet Motorcycles", desc: "Fast urban deliveries with branded bikes.", img: heroImage, stat: "500+ Bikes" },
-                { title: "UrbanFleet Vans", desc: "Professional branded van fleet for larger cargo.", img: fleetImage, stat: "100+ Vans" },
+                { title: "Motorcycle Fleet", desc: "UrbanFleet branded bikes for fast urban deliveries.", img: heroImage, stat: "500+ Bikes" },
+                { title: "Car Fleet", desc: "Professional delivery cars for premium services.", img: carImage, stat: "150+ Cars" },
+                { title: "Van Fleet", desc: "Branded vans for medium-sized cargo transport.", img: fleetImage, stat: "100+ Vans" },
+                { title: "Truck Fleet", desc: "Heavy-duty trucks for large logistics operations.", img: truckImage, stat: "50+ Trucks" },
                 { title: "Uniformed Riders", desc: "Professional riders representing your brand.", img: riderPortrait, stat: "1500+ Riders" },
-                { title: "Smart Technology", desc: "AI-powered fleet management.", img: techBg, stat: "Real-time" },
               ].map((item, index) => (
                 <CarouselItem key={index} className="pl-8 md:basis-1/2 lg:basis-2/5">
                   <motion.div 
@@ -777,7 +929,7 @@ export default function Home() {
             <div className="md:col-span-2">
               <Logo />
               <p className="text-gray-400 mt-6 max-w-md leading-relaxed">
-                UrbanFleet supplies professional delivery riders workforce to businesses across the UAE. We work with contractors and sponsor visas for our riders.
+                UrbanFleet supplies professional, trained, insured, and licensed delivery riders workforce to businesses across the UAE. We work with contractors and sponsor visas for our riders.
               </p>
               <p className="text-2xl text-primary font-semibold mt-4 italic">
                 "Delivery you can trust."
@@ -817,8 +969,16 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
-            © {new Date().getFullYear()} UrbanFleet Delivery Services. All rights reserved.
+          <div className="border-t border-white/10 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="text-gray-500 text-sm">
+                © {new Date().getFullYear()} UrbanFleet Delivery Services. All rights reserved.
+              </div>
+              <div className="flex items-center gap-2 text-gray-500 text-sm">
+                <Award className="w-4 h-4 text-primary" />
+                <span>Compliant with UAE Federal Decree-Law No. 33 of 2021</span>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
