@@ -8,11 +8,13 @@ import Home from "@/pages/home";
 import RiderApplication from "@/pages/rider-application";
 import ContractorApplication from "@/pages/contractor-application";
 import BusinessInquiry from "@/pages/business-inquiry";
+import Team from "@/pages/team";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/team" component={Team} />
       <Route path="/apply/rider" component={RiderApplication} />
       <Route path="/apply/contractor" component={ContractorApplication} />
       <Route path="/contact/business" component={BusinessInquiry} />

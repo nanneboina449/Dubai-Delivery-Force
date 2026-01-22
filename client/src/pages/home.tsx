@@ -443,7 +443,7 @@ export default function Home() {
 
   const autoplayPlugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
 
-  const navItems = ["Home", "Services", "Compliance", "Fleet", "Contact"];
+  const navItems = ["Home", "Services", "Compliance", "Fleet", "Our Team", "Contact"];
 
   return (
     <div className="min-h-screen bg-secondary font-sans selection:bg-primary selection:text-white overflow-x-hidden">
@@ -476,15 +476,27 @@ export default function Home() {
           <nav className="hidden lg:flex items-center">
             <div className="flex items-center gap-1 p-1.5 bg-white/5 rounded-full border border-white/10 backdrop-blur-xl">
               {navItems.map((item) => (
-                <motion.a 
-                  key={item}
-                  href={`#${item.toLowerCase().replace(' ', '-')}`}
-                  className="px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-all"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item}
-                </motion.a>
+                item === "Our Team" ? (
+                  <Link key={item} href="/team">
+                    <motion.span 
+                      className="px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer inline-block"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {item}
+                    </motion.span>
+                  </Link>
+                ) : (
+                  <motion.a 
+                    key={item}
+                    href={`#${item.toLowerCase().replace(' ', '-')}`}
+                    className="px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-all"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item}
+                  </motion.a>
+                )
               ))}
             </div>
           </nav>
@@ -514,15 +526,27 @@ export default function Home() {
             >
               <nav className="container mx-auto px-4 py-6 flex flex-col gap-2">
                 {navItems.map((item) => (
-                  <a 
-                    key={item}
-                    href={`#${item.toLowerCase().replace(' ', '-')}`}
-                    className="text-white py-4 text-lg border-b border-white/10 flex items-center justify-between"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item}
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                  </a>
+                  item === "Our Team" ? (
+                    <Link 
+                      key={item}
+                      href="/team"
+                      className="text-white py-4 text-lg border-b border-white/10 flex items-center justify-between"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item}
+                      <ArrowRight className="w-4 h-4 text-primary" />
+                    </Link>
+                  ) : (
+                    <a 
+                      key={item}
+                      href={`#${item.toLowerCase().replace(' ', '-')}`}
+                      className="text-white py-4 text-lg border-b border-white/10 flex items-center justify-between"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item}
+                      <ArrowRight className="w-4 h-4 text-primary" />
+                    </a>
+                  )
                 ))}
               </nav>
             </motion.div>
