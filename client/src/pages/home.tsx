@@ -46,7 +46,7 @@ import riderPortrait from "@assets/generated_images/urbanfleet_branded_rider_por
 import techBg from "@assets/generated_images/abstract_tech_network_background_in_orange_and_navy.png";
 import carImage from "@assets/generated_images/urbanfleet_branded_car.png";
 import truckImage from "@assets/generated_images/urbanfleet_branded_truck.png";
-import logoImage from "@assets/ChatGPT_Image_Jan_22,_2026,_09_34_49_AM_1769074506159.png";
+import logoImage from "@assets/WhatsApp_Image_2026-01-22_at_09.40.01_1769074882220.jpeg";
 
 // Magnetic Button Component
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -369,7 +369,7 @@ const Logo = ({ dark = false }: { dark?: boolean }) => (
     <img 
       src={logoImage} 
       alt="UrbanFleet Delivery Service" 
-      className="h-16 md:h-20 w-auto object-contain drop-shadow-lg"
+      className="h-20 md:h-24 w-auto object-contain"
     />
   </motion.div>
 );

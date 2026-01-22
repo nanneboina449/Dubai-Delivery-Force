@@ -49,14 +49,14 @@ const businessFormSchema = z.object({
 
 type BusinessFormData = z.infer<typeof businessFormSchema>;
 
-import logoImage from "@assets/ChatGPT_Image_Jan_22,_2026,_09_34_49_AM_1769074506159.png";
+import logoImage from "@assets/WhatsApp_Image_2026-01-22_at_09.40.01_1769074882220.jpeg";
 
 const Logo = () => (
   <a href="/" className="flex items-center">
     <img 
       src={logoImage} 
       alt="UrbanFleet Delivery Service" 
-      className="h-12 w-auto object-contain"
+      className="h-16 md:h-20 w-auto object-contain"
     />
   </a>
 );
