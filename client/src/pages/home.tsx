@@ -19,8 +19,14 @@ import {
   Mail,
   MapPin,
   Headphones,
-  Play,
-  Sparkles
+  Sparkles,
+  Building2,
+  Bike,
+  Truck,
+  BadgeCheck,
+  FileCheck,
+  Handshake,
+  UserPlus
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useInView, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
@@ -135,8 +141,8 @@ function FloatingCard({ children, className, delay = 0 }: { children: React.Reac
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [10, -10]);
-  const rotateY = useTransform(x, [-100, 100], [-10, 10]);
+  const rotateX = useTransform(y, [-100, 100], [5, -5]);
+  const rotateY = useTransform(x, [-100, 100], [-5, 5]);
 
   const handleMouse = (e: React.MouseEvent) => {
     const rect = ref.current?.getBoundingClientRect();
@@ -156,7 +162,7 @@ function FloatingCard({ children, className, delay = 0 }: { children: React.Reac
       onMouseMove={handleMouse}
       onMouseLeave={() => { x.set(0); y.set(0); }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className={`${className} perspective-1000`}
+      className={`${className}`}
     >
       {children}
     </motion.div>
@@ -199,11 +205,11 @@ function HorizontalGallery() {
 
   const items = [
     { title: "Licensed Riders", icon: ShieldCheck, stat: "100%" },
-    { title: "Success Rate", icon: CheckCircle2, stat: "99.8%" },
+    { title: "Visa Sponsorship", icon: FileCheck, stat: "Available" },
     { title: "UAE Coverage", icon: Globe, stat: "7 Emirates" },
     { title: "Support", icon: Headphones, stat: "24/7" },
     { title: "Active Fleet", icon: Users, stat: "1500+" },
-    { title: "Fast Delivery", icon: Clock, stat: "30 min" },
+    { title: "Partner Companies", icon: Building2, stat: "200+" },
   ];
 
   return (
@@ -224,7 +230,6 @@ function HorizontalGallery() {
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState(0);
   
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
@@ -242,7 +247,7 @@ export default function Home() {
 
   const autoplayPlugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
 
-  const navItems = ["Home", "Why Us", "Fleet", "Stats", "Contact"];
+  const navItems = ["Home", "Services", "For Riders", "Fleet", "Contact"];
 
   return (
     <div className="min-h-screen bg-secondary font-sans selection:bg-primary selection:text-white overflow-x-hidden">
@@ -274,15 +279,11 @@ export default function Home() {
           
           <nav className="hidden lg:flex items-center">
             <div className="flex items-center gap-1 p-1.5 bg-white/5 rounded-full border border-white/10 backdrop-blur-xl">
-              {navItems.map((item, i) => (
+              {navItems.map((item) => (
                 <motion.a 
                   key={item}
                   href={`#${item.toLowerCase().replace(' ', '-')}`}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                    activeSection === i 
-                      ? 'bg-primary text-white shadow-lg shadow-primary/30' 
-                      : 'text-gray-300 hover:text-white hover:bg-white/5'
-                  }`}
+                  className="px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-all"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -331,7 +332,7 @@ export default function Home() {
         </AnimatePresence>
       </motion.header>
 
-      {/* Hero Section - Innovative Design */}
+      {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Parallax Background */}
         <motion.div 
@@ -370,11 +371,11 @@ export default function Home() {
               className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 mb-10"
             >
               <Sparkles className="w-5 h-5 text-primary animate-pulse" />
-              <span className="text-white font-medium">UAE's Premier Delivery Workforce</span>
+              <span className="text-white font-medium">UAE's Premier Delivery Workforce Provider</span>
             </motion.div>
 
-            {/* Main Headline with Text Reveal */}
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-black text-white leading-[0.9] mb-8">
+            {/* Main Headline */}
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-[0.95] mb-8">
               <div className="overflow-hidden">
                 <TextReveal delay={0.2}>Smart, Reliable</TextReveal>
               </div>
@@ -395,9 +396,19 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="text-2xl md:text-3xl text-gray-300 mb-12 font-light"
+              className="text-xl md:text-2xl text-gray-300 mb-6 max-w-3xl mx-auto"
             >
-              <span className="text-primary font-semibold italic">"Delivery you can trust."</span>
+              We supply professional delivery riders workforce to businesses across the UAE. 
+              Partner with us as a contractor or join our team as a rider.
+            </motion.p>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              className="text-2xl md:text-3xl text-primary font-semibold italic mb-12"
+            >
+              "Delivery you can trust."
             </motion.p>
 
             {/* CTA Buttons */}
@@ -405,21 +416,21 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <MagneticButton className="group flex items-center justify-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-10 py-5 text-lg font-bold shadow-2xl shadow-primary/40 transition-all">
-                Get Started
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                >
-                  <ArrowRight className="w-5 h-5" />
-                </motion.span>
+              <MagneticButton className="group flex items-center justify-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-8 py-4 text-lg font-bold shadow-2xl shadow-primary/40 transition-all">
+                <Building2 className="w-5 h-5" />
+                For Businesses
               </MagneticButton>
               
-              <MagneticButton className="group flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-10 py-5 text-lg font-medium border border-white/20 transition-all">
-                <Play className="w-5 h-5 fill-current" />
-                Watch Video
+              <MagneticButton className="group flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-8 py-4 text-lg font-medium border border-white/20 transition-all">
+                <Handshake className="w-5 h-5" />
+                For Contractors
+              </MagneticButton>
+              
+              <MagneticButton className="group flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-8 py-4 text-lg font-medium border border-white/20 transition-all">
+                <UserPlus className="w-5 h-5" />
+                Join as Rider
               </MagneticButton>
             </motion.div>
           </div>
@@ -444,8 +455,8 @@ export default function Home() {
       {/* Horizontal Scrolling Stats */}
       <HorizontalGallery />
 
-      {/* Why Choose UrbanFleet - 3D Cards */}
-      <section id="why-us" className="py-32 relative">
+      {/* Who We Serve Section */}
+      <section id="services" className="py-32 relative">
         <div className="container mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -458,54 +469,79 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               className="inline-block text-primary font-bold tracking-widest uppercase text-sm mb-4"
             >
-              Why Choose Us
+              Our Services
             </motion.span>
             <h2 className="text-5xl md:text-7xl font-heading font-black text-white mb-6">
-              Why Choose{" "}
+              Who We{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
-                UrbanFleet
+                Serve
               </span>
-              ?
             </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Whether you're a business needing riders, a contractor with vehicles, or looking to start your delivery career - UrbanFleet has you covered.
+            </p>
           </motion.div>
 
-          {/* 3D Feature Cards */}
+          {/* Service Cards */}
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: ShieldCheck,
-                title: "Licensed Riders",
-                description: "All delivery professionals hold valid UAE licenses with comprehensive background verification. Fully insured for complete peace of mind.",
-                gradient: "from-blue-500 to-cyan-400"
+                icon: Building2,
+                title: "For Businesses",
+                subtitle: "Workforce Solutions",
+                description: "Need delivery riders for your business? We supply professional, trained riders to handle your delivery operations. Scalable workforce that grows with your needs.",
+                features: ["Licensed & verified riders", "Flexible workforce scaling", "Dedicated account manager", "Real-time tracking"],
+                gradient: "from-blue-500 to-cyan-400",
+                cta: "Partner With Us"
               },
               {
-                icon: Users,
-                title: "Trusted Platform",
-                description: "Technology-driven platform with real-time tracking, seamless communication, and complete operational transparency.",
-                gradient: "from-primary to-orange-400"
+                icon: Truck,
+                title: "For Contractors",
+                subtitle: "Vehicle Partnerships",
+                description: "Own vehicles? Partner with UrbanFleet and put your fleet to work. We connect contractors with businesses needing delivery services across the UAE.",
+                features: ["Monetize your vehicles", "Flexible schedules", "Steady income stream", "Business support"],
+                gradient: "from-primary to-orange-400",
+                cta: "Become a Contractor"
               },
               {
-                icon: Clock,
-                title: "Reliable Service",
-                description: "99.8% delivery success rate with round-the-clock support. Consistent, dependable service every single time.",
-                gradient: "from-purple-500 to-pink-400"
+                icon: Bike,
+                title: "For Riders",
+                subtitle: "Career Opportunities",
+                description: "Join UrbanFleet as a delivery rider. We offer competitive pay, visa sponsorship for eligible candidates, and a clear path for career growth.",
+                features: ["Visa sponsorship available", "Competitive salary", "Training provided", "Growth opportunities"],
+                gradient: "from-green-500 to-emerald-400",
+                cta: "Apply Now"
               }
-            ].map((feature, i) => (
-              <FloatingCard key={i} delay={i * 0.2} className="group">
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-10 border border-white/10 hover:border-primary/50 transition-all duration-500 h-full overflow-hidden">
+            ].map((service, i) => (
+              <FloatingCard key={i} delay={i * 0.2} className="group h-full">
+                <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-primary/50 transition-all duration-500 h-full flex flex-col overflow-hidden">
                   {/* Glow Effect */}
-                  <div className={`absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br ${feature.gradient} rounded-full opacity-0 group-hover:opacity-30 blur-3xl transition-opacity duration-500`} />
+                  <div className={`absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br ${service.gradient} rounded-full opacity-0 group-hover:opacity-30 blur-3xl transition-opacity duration-500`} />
                   
                   <motion.div 
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
-                    className={`relative w-20 h-20 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mb-8 shadow-2xl`}
+                    className={`relative w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 shadow-2xl`}
                   >
-                    <feature.icon className="w-10 h-10 text-white" />
+                    <service.icon className="w-8 h-8 text-white" />
                   </motion.div>
                   
-                  <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
-                  <p className="text-gray-400 leading-relaxed text-lg">{feature.description}</p>
+                  <div className="text-primary text-sm font-bold uppercase tracking-wider mb-2">{service.subtitle}</div>
+                  <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
+                  <p className="text-gray-400 leading-relaxed mb-6">{service.description}</p>
+                  
+                  <ul className="space-y-3 mb-8 flex-grow">
+                    {service.features.map((feature, j) => (
+                      <li key={j} className="flex items-center gap-3 text-gray-300">
+                        <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <Button className={`w-full bg-gradient-to-r ${service.gradient} text-white font-bold py-6 rounded-xl hover:opacity-90 transition-opacity`}>
+                    {service.cta} <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
                 </div>
               </FloatingCard>
             ))}
@@ -513,10 +549,98 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fleet Carousel - Immersive */}
-      <section id="fleet" className="py-32 relative overflow-hidden">
+      {/* For Riders - Visa Sponsorship Highlight */}
+      <section id="for-riders" className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
         
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Career Opportunities</span>
+              <h2 className="text-5xl md:text-6xl font-heading font-black text-white mb-6">
+                Join the{" "}
+                <span className="text-primary">UrbanFleet</span>{" "}
+                Team
+              </h2>
+              <p className="text-xl text-gray-400 mb-8 leading-relaxed">
+                Looking for a rewarding career in delivery? UrbanFleet offers more than just a job. We provide visa sponsorship for eligible riders, competitive salaries, and real opportunities for growth.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-6 mb-10">
+                {[
+                  { icon: FileCheck, title: "Visa Sponsorship", desc: "We sponsor employment visas" },
+                  { icon: BadgeCheck, title: "Full Training", desc: "Comprehensive onboarding" },
+                  { icon: Headphones, title: "24/7 Support", desc: "Always here to help" },
+                  { icon: Globe, title: "UAE Coverage", desc: "Work across 7 emirates" },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <item.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold">{item.title}</h4>
+                      <p className="text-gray-500 text-sm">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              
+              <MagneticButton className="flex items-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-8 py-4 text-lg font-bold shadow-2xl shadow-primary/40 transition-all">
+                Apply to Join <ArrowRight className="w-5 h-5" />
+              </MagneticButton>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="relative rounded-3xl overflow-hidden">
+                <img 
+                  src={riderPortrait} 
+                  alt="UrbanFleet Rider" 
+                  className="w-full aspect-square object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent" />
+              </div>
+              
+              {/* Floating Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-2xl"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-green-500 rounded-xl flex items-center justify-center">
+                    <FileCheck className="w-7 h-7 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-secondary font-bold text-lg">Visa Sponsorship</div>
+                    <div className="text-gray-500">Available for riders</div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Fleet Carousel */}
+      <section id="fleet" className="py-32 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -529,11 +653,11 @@ export default function Home() {
               <span className="text-primary">Fleet</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Modern vehicles and trained professionals ready to deliver excellence.
+              UrbanFleet branded vehicles and uniformed riders delivering excellence.
             </p>
           </motion.div>
 
-          {/* Immersive Carousel */}
+          {/* Carousel */}
           <Carousel
             opts={{ align: "center", loop: true }}
             plugins={[autoplayPlugin.current]}
@@ -541,10 +665,10 @@ export default function Home() {
           >
             <CarouselContent className="-ml-8">
               {[
-                { title: "Motorcycle Fleet", desc: "Fast urban deliveries across busy city streets.", img: heroImage, stat: "500+ Bikes" },
-                { title: "Branded Vans", desc: "Professional fleet for larger cargo deliveries.", img: fleetImage, stat: "100+ Vans" },
-                { title: "Expert Riders", desc: "Trained professionals representing your brand.", img: riderPortrait, stat: "1500+ Riders" },
-                { title: "Smart Tech", desc: "AI-powered route optimization.", img: techBg, stat: "Real-time" },
+                { title: "UrbanFleet Motorcycles", desc: "Fast urban deliveries with branded bikes.", img: heroImage, stat: "500+ Bikes" },
+                { title: "UrbanFleet Vans", desc: "Professional branded van fleet for larger cargo.", img: fleetImage, stat: "100+ Vans" },
+                { title: "Uniformed Riders", desc: "Professional riders representing your brand.", img: riderPortrait, stat: "1500+ Riders" },
+                { title: "Smart Technology", desc: "AI-powered fleet management.", img: techBg, stat: "Real-time" },
               ].map((item, index) => (
                 <CarouselItem key={index} className="pl-8 md:basis-1/2 lg:basis-2/5">
                   <motion.div 
@@ -559,7 +683,6 @@ export default function Home() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/50 to-transparent" />
                     
-                    {/* Content */}
                     <div className="absolute bottom-0 left-0 right-0 p-8">
                       <span className="inline-block px-4 py-2 bg-primary text-white text-sm font-bold rounded-full mb-4">
                         {item.stat}
@@ -582,15 +705,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats with Animated Counters */}
-      <section id="stats" className="py-32 relative">
+      {/* Stats */}
+      <section className="py-32 relative">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-6">
             {[
               { number: 1500, suffix: "+", label: "Active Riders", icon: Users, color: "from-primary to-orange-400" },
-              { number: 99, suffix: ".8%", label: "Success Rate", icon: CheckCircle2, color: "from-green-500 to-emerald-400" },
-              { number: 7, suffix: "", label: "Emirates", icon: Globe, color: "from-blue-500 to-cyan-400" },
-              { number: 24, suffix: "/7", label: "Support", icon: Headphones, color: "from-purple-500 to-pink-400" },
+              { number: 200, suffix: "+", label: "Partner Companies", icon: Building2, color: "from-blue-500 to-cyan-400" },
+              { number: 7, suffix: "", label: "Emirates Covered", icon: Globe, color: "from-green-500 to-emerald-400" },
+              { number: 24, suffix: "/7", label: "Support Available", icon: Headphones, color: "from-purple-500 to-pink-400" },
             ].map((stat, i) => (
               <FloatingCard key={i} delay={i * 0.1}>
                 <div className="relative text-center p-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-primary/30 transition-all overflow-hidden group">
@@ -632,14 +755,14 @@ export default function Home() {
               ?
             </h2>
             <p className="text-xl text-gray-400 mb-12">
-              Partner with UrbanFleet. Experience delivery you can trust.
+              Whether you need riders, want to partner, or looking to join - contact us today.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <MagneticButton className="flex items-center justify-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-12 py-5 text-lg font-bold shadow-2xl shadow-primary/30 transition-all">
-                <Mail className="w-5 h-5" /> Get a Quote
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <MagneticButton className="flex items-center justify-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-10 py-5 text-lg font-bold shadow-2xl shadow-primary/30 transition-all">
+                <Mail className="w-5 h-5" /> Contact Us
               </MagneticButton>
-              <MagneticButton className="flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-12 py-5 text-lg font-medium border border-white/20 transition-all">
+              <MagneticButton className="flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-10 py-5 text-lg font-medium border border-white/20 transition-all">
                 <Phone className="w-5 h-5" /> +971 50 123 4567
               </MagneticButton>
             </div>
@@ -654,7 +777,7 @@ export default function Home() {
             <div className="md:col-span-2">
               <Logo />
               <p className="text-gray-400 mt-6 max-w-md leading-relaxed">
-                Premium delivery workforce solutions across the UAE. Committed to reliability, safety, and excellence.
+                UrbanFleet supplies professional delivery riders workforce to businesses across the UAE. We work with contractors and sponsor visas for our riders.
               </p>
               <p className="text-2xl text-primary font-semibold mt-4 italic">
                 "Delivery you can trust."
@@ -662,9 +785,9 @@ export default function Home() {
             </div>
             
             <div>
-              <h4 className="font-bold mb-6 text-primary text-lg">Quick Links</h4>
+              <h4 className="font-bold mb-6 text-primary text-lg">Work With Us</h4>
               <ul className="space-y-3 text-gray-400">
-                {["Home", "About", "Services", "Fleet", "Careers", "Contact"].map(link => (
+                {["For Businesses", "For Contractors", "Join as Rider", "Visa Sponsorship", "Careers"].map(link => (
                   <li key={link}>
                     <a href="#" className="hover:text-white transition-colors flex items-center gap-2 group">
                       <ArrowRight className="w-3 h-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
