@@ -710,7 +710,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Additional Compliance Info */}
+          {/* Additional Compliance Info - Image on LEFT */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -718,7 +718,15 @@ export default function Home() {
             className="mt-16 bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/10"
           >
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
+              <div className="relative order-2 md:order-1">
+                <img 
+                  src={fleetImage} 
+                  alt="UrbanFleet Delivery Fleet" 
+                  className="rounded-2xl w-full aspect-square object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent rounded-2xl" />
+              </div>
+              <div className="order-1 md:order-2">
                 <h3 className="text-3xl font-bold text-white mb-6">Scalable Workforce Solutions</h3>
                 <p className="text-gray-400 mb-6 leading-relaxed">
                   UrbanFleet provides businesses with the flexibility to scale their delivery workforce as needed. Whether you need 10 riders or 1,000, we can deploy trained, insured, and licensed professionals within days.
@@ -736,14 +744,6 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-              </div>
-              <div className="relative">
-                <img 
-                  src={riderPortrait} 
-                  alt="UrbanFleet Professional Rider" 
-                  className="rounded-2xl w-full aspect-square object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent rounded-2xl" />
               </div>
             </div>
           </motion.div>
@@ -800,6 +800,7 @@ export default function Home() {
               </MagneticButton>
             </motion.div>
             
+            {/* Image on RIGHT */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -808,8 +809,8 @@ export default function Home() {
             >
               <div className="relative rounded-3xl overflow-hidden">
                 <img 
-                  src={riderPortrait} 
-                  alt="UrbanFleet Rider" 
+                  src={fleetImage} 
+                  alt="UrbanFleet Delivery Fleet" 
                   className="w-full aspect-square object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent" />
