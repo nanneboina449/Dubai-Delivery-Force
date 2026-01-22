@@ -39,13 +39,13 @@ import { motion, useScroll, useTransform, useInView, useSpring, useMotionValue, 
 import Autoplay from "embla-carousel-autoplay";
 import { Link } from "wouter";
 
-// Assets - UrbanFleet Branded Images
-import heroImage from "@assets/generated_images/urbanfleet_branded_rider_on_motorcycle_at_night.png";
-import fleetImage from "@assets/generated_images/urbanfleet_branded_delivery_van_fleet.png";
-import riderPortrait from "@assets/generated_images/urbanfleet_uniformed_delivery_person_portrait.png";
+// Assets - UrbanFleet Branded Images (Navy & Orange)
+import heroImage from "@assets/generated_images/urbanfleet_navy_orange_motorcycle_rider.png";
+import fleetImage from "@assets/generated_images/urbanfleet_navy_orange_van_fleet.png";
+import riderPortrait from "@assets/generated_images/urbanfleet_uniformed_rider_navy_orange.png";
 import techBg from "@assets/generated_images/abstract_tech_network_background_in_orange_and_navy.png";
-import carImage from "@assets/generated_images/urbanfleet_branded_delivery_car.png";
-import truckImage from "@assets/generated_images/urbanfleet_branded_delivery_truck.png";
+import carImage from "@assets/generated_images/urbanfleet_navy_orange_car.png";
+import truckImage from "@assets/generated_images/urbanfleet_navy_orange_truck.png";
 
 // Magnetic Button Component
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -359,25 +359,31 @@ function HeroCarousel() {
   );
 }
 
-// Logo with Glow Effect
+// Logo - Navy & Orange UF Design
 const Logo = ({ dark = false }: { dark?: boolean }) => (
   <motion.div 
-    className="flex items-center gap-3 font-heading font-bold text-2xl tracking-tight z-50"
+    className="flex items-center gap-2 font-heading font-bold text-2xl tracking-tight z-50"
     whileHover={{ scale: 1.02 }}
   >
-    <motion.div 
-      className="relative flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary via-orange-500 to-yellow-500 rounded-xl text-white shadow-2xl"
-      whileHover={{ rotate: 180 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="absolute inset-0 rounded-xl bg-primary/50 blur-xl animate-pulse" />
-      <span className="relative text-xl font-black italic">UF</span>
-    </motion.div>
+    {/* UF Icon with Orange Swoosh */}
+    <div className="relative flex items-center justify-center w-10 h-10">
+      <svg viewBox="0 0 48 48" className="w-full h-full">
+        {/* Navy Background */}
+        <rect x="2" y="8" width="28" height="32" rx="4" fill="#1a2744" />
+        {/* U Letter */}
+        <path d="M10 16 L10 28 Q10 34 16 34 L20 34 Q24 34 24 28 L24 16" 
+              stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" />
+        {/* Orange Swoosh */}
+        <path d="M18 20 Q32 18 42 28 Q44 30 42 32 Q38 28 28 26 Q22 25 18 26 Z" 
+              fill="#F56A07" />
+      </svg>
+    </div>
     <div className="flex flex-col leading-none">
-      <span className={`font-bold ${dark ? 'text-secondary' : 'text-white'}`}>
-        Urban<span className="text-primary">Fleet</span>
-      </span>
-      <span className={`text-[9px] tracking-[0.25em] uppercase ${dark ? 'text-gray-400' : 'text-gray-400'}`}>
+      <div className="flex items-baseline">
+        <span className={`font-bold text-xl ${dark ? 'text-[#1a2744]' : 'text-white'}`}>Urban</span>
+        <span className="font-bold text-xl text-primary">Fleet</span>
+      </div>
+      <span className="text-[8px] tracking-[0.2em] uppercase text-primary font-semibold">
         Delivery Services
       </span>
     </div>

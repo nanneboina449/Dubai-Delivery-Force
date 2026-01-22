@@ -52,15 +52,22 @@ const riderFormSchema = z.object({
 type RiderFormData = z.infer<typeof riderFormSchema>;
 
 const Logo = () => (
-  <a href="/" className="flex items-center gap-3 font-heading font-bold text-2xl tracking-tight">
-    <div className="relative flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary via-orange-500 to-yellow-500 rounded-xl text-white shadow-2xl">
-      <span className="text-xl font-black italic">UF</span>
+  <a href="/" className="flex items-center gap-2 font-heading font-bold text-2xl tracking-tight">
+    <div className="relative flex items-center justify-center w-10 h-10">
+      <svg viewBox="0 0 48 48" className="w-full h-full">
+        <rect x="2" y="8" width="28" height="32" rx="4" fill="#1a2744" />
+        <path d="M10 16 L10 28 Q10 34 16 34 L20 34 Q24 34 24 28 L24 16" 
+              stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" />
+        <path d="M18 20 Q32 18 42 28 Q44 30 42 32 Q38 28 28 26 Q22 25 18 26 Z" 
+              fill="#F56A07" />
+      </svg>
     </div>
     <div className="flex flex-col leading-none">
-      <span className="font-bold text-white">
-        Urban<span className="text-primary">Fleet</span>
-      </span>
-      <span className="text-[9px] tracking-[0.25em] uppercase text-gray-400">
+      <div className="flex items-baseline">
+        <span className="font-bold text-xl text-white">Urban</span>
+        <span className="font-bold text-xl text-primary">Fleet</span>
+      </div>
+      <span className="text-[8px] tracking-[0.2em] uppercase text-primary font-semibold">
         Delivery Services
       </span>
     </div>
