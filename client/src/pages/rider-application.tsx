@@ -51,7 +51,7 @@ const riderFormSchema = z.object({
 
 type RiderFormData = z.infer<typeof riderFormSchema>;
 
-import logoImage from "@assets/urbanfleet-logo-cropped_1769075449106.png";
+import logoImage from "@assets/urbanfleet_logo_generated_hd.png";
 
 const Logo = () => (
   <a href="/" className="flex items-center">

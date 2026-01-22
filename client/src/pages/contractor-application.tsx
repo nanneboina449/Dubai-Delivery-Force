@@ -52,7 +52,7 @@ const contractorFormSchema = z.object({
 
 type ContractorFormData = z.infer<typeof contractorFormSchema>;
 
-import logoImage from "@assets/urbanfleet-logo-cropped_1769075449106.png";
+import logoImage from "@assets/urbanfleet_logo_generated_hd.png";
 
 const Logo = () => (
   <a href="/" className="flex items-center">
