@@ -46,7 +46,7 @@ import riderPortrait from "@assets/generated_images/urbanfleet_branded_rider_por
 import techBg from "@assets/generated_images/abstract_tech_network_background_in_orange_and_navy.png";
 import carImage from "@assets/generated_images/urbanfleet_branded_car.png";
 import truckImage from "@assets/generated_images/urbanfleet_branded_truck.png";
-import logoImage from "@assets/WhatsApp_Image_2026-01-22_at_09.40.01_1769074882220.jpeg";
+import logoImage from "@assets/urbanfleet_logo_hd.png";
 
 // Magnetic Button Component
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {

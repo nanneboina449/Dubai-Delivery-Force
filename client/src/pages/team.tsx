@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Linkedin, Mail, Phone, Menu, X } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
-import logoImage from "@assets/WhatsApp_Image_2026-01-22_at_09.40.01_1769074882220.jpeg";
+import logoImage from "@assets/urbanfleet_logo_hd.png";
 
 const Logo = () => (
   <a href="/" className="flex items-center">
