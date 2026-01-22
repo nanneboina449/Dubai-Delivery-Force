@@ -369,7 +369,7 @@ const Logo = ({ dark = false }: { dark?: boolean }) => (
     <img 
       src={logoImage} 
       alt="UrbanFleet Delivery Service" 
-      className="h-12 w-auto object-contain"
+      className="h-16 md:h-20 w-auto object-contain drop-shadow-lg"
     />
   </motion.div>
 );
