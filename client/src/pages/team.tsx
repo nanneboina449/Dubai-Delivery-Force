@@ -28,16 +28,16 @@ const Logo = () => (
 
 const teamMembers = [
   {
-    name: "Mr. Bhagdeep Singh Gill",
+    name: "Mr. Gill",
     role: "Co-founder & CEO",
-    bio: "With over 15 years of experience in logistics and workforce management across the UAE, Bhagdeep leads UrbanFleet's strategic vision and growth initiatives. His expertise in building scalable delivery operations has been instrumental in establishing UrbanFleet as a trusted partner for businesses across the region.",
-    initials: "BG",
+    bio: "With over 15 years of experience in logistics and workforce management across the UAE, Mr. Gill leads UrbanFleet's strategic vision and growth initiatives. His expertise in building scalable delivery operations has been instrumental in establishing UrbanFleet as a trusted partner for businesses across the region.",
+    initials: "MG",
     color: "from-[#1a2744] to-[#2d3f5f]"
   },
   {
     name: "Mr. Dharam Singh",
     role: "Co-founder & Managing Director",
-    bio: "Dharam brings extensive experience in operations management and business development. As Managing Director, he oversees day-to-day operations and ensures UrbanFleet maintains the highest standards of service delivery. His leadership has been key to building strong partnerships with major enterprises in the UAE.",
+    bio: "Dharam brings 10 years of experience in operations management and business development. As Managing Director, he oversees day-to-day operations and ensures UrbanFleet maintains the highest standards of service delivery. His leadership has been key to building strong partnerships with major enterprises in the UAE.",
     initials: "DS",
     color: "from-[#F56A07] to-[#ff8533]"
   },
