@@ -243,39 +243,74 @@ function HeroCarousel() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Speed Lines Effect */}
+      {/* Animated Vehicle Effect */}
       <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"
-            style={{
-              top: `${15 + i * 10}%`,
-              left: '-100%',
-              width: '200%',
-            }}
-            animate={{
-              x: ['0%', '50%'],
-            }}
-            transition={{
-              duration: 2 + i * 0.3,
-              repeat: Infinity,
-              ease: "linear",
-              delay: i * 0.2,
-            }}
-          />
-        ))}
+        <AnimatePresence mode="wait">
+          {currentSlide === 0 && (
+            <motion.div
+              key="bike-animation"
+              className="absolute bottom-[20%] flex items-center"
+              initial={{ x: '-100%' }}
+              animate={{ x: '120%' }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 8, ease: "easeInOut", repeat: Infinity }}
+            >
+              <Bike className="w-20 h-20 text-primary drop-shadow-[0_0_20px_rgba(245,106,7,0.8)]" />
+              <motion.div 
+                className="ml-4 flex items-center gap-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <div className="h-1 w-32 bg-gradient-to-r from-primary to-transparent rounded-full" />
+                <span className="text-primary font-bold text-lg whitespace-nowrap">Fast Delivery</span>
+              </motion.div>
+            </motion.div>
+          )}
+          {currentSlide === 1 && (
+            <motion.div
+              key="car-animation"
+              className="absolute bottom-[20%] flex items-center"
+              initial={{ x: '-100%' }}
+              animate={{ x: '120%' }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 10, ease: "easeInOut", repeat: Infinity }}
+            >
+              <Car className="w-24 h-24 text-primary drop-shadow-[0_0_20px_rgba(245,106,7,0.8)]" />
+              <motion.div 
+                className="ml-4 flex items-center gap-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <div className="h-1 w-40 bg-gradient-to-r from-primary to-transparent rounded-full" />
+                <span className="text-primary font-bold text-lg whitespace-nowrap">Premium Fleet</span>
+              </motion.div>
+            </motion.div>
+          )}
+          {currentSlide === 2 && (
+            <motion.div
+              key="truck-animation"
+              className="absolute bottom-[20%] flex items-center"
+              initial={{ x: '-100%' }}
+              animate={{ x: '120%' }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 12, ease: "easeInOut", repeat: Infinity }}
+            >
+              <Truck className="w-28 h-28 text-primary drop-shadow-[0_0_20px_rgba(245,106,7,0.8)]" />
+              <motion.div 
+                className="ml-4 flex items-center gap-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <div className="h-1 w-48 bg-gradient-to-r from-primary to-transparent rounded-full" />
+                <span className="text-primary font-bold text-lg whitespace-nowrap">Heavy Cargo</span>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-
-      {/* Animated Grid */}
-      <div className="absolute inset-0 z-10 pointer-events-none" style={{
-        backgroundImage: `
-          linear-gradient(rgba(245, 106, 7, 0.1) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(245, 106, 7, 0.1) 1px, transparent 1px)
-        `,
-        backgroundSize: '80px 80px',
-        maskImage: 'radial-gradient(ellipse at center, black 0%, transparent 70%)'
-      }} />
 
       {/* Hero Content */}
       <motion.div 
