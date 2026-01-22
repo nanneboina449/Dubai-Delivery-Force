@@ -720,8 +720,8 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="relative order-2 md:order-1">
                 <img 
-                  src={fleetImage} 
-                  alt="UrbanFleet Delivery Fleet" 
+                  src={heroImage} 
+                  alt="UrbanFleet Delivery Rider" 
                   className="rounded-2xl w-full aspect-square object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent rounded-2xl" />
