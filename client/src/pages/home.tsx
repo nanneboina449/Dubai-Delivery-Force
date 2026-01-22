@@ -39,13 +39,13 @@ import { motion, useScroll, useTransform, useInView, useSpring, useMotionValue, 
 import Autoplay from "embla-carousel-autoplay";
 import { Link } from "wouter";
 
-// Assets - UrbanFleet Branded Images (Navy & Orange)
-import heroImage from "@assets/generated_images/urbanfleet_navy_orange_motorcycle_rider.png";
-import fleetImage from "@assets/generated_images/urbanfleet_navy_orange_van_fleet.png";
-import riderPortrait from "@assets/generated_images/urbanfleet_uniformed_rider_navy_orange.png";
+// Assets - UrbanFleet Branded Images with UF Logo
+import heroImage from "@assets/generated_images/urbanfleet_branded_motorcycle_rider.png";
+import fleetImage from "@assets/generated_images/urbanfleet_branded_van_fleet.png";
+import riderPortrait from "@assets/generated_images/urbanfleet_branded_rider_portrait.png";
 import techBg from "@assets/generated_images/abstract_tech_network_background_in_orange_and_navy.png";
-import carImage from "@assets/generated_images/urbanfleet_navy_orange_car.png";
-import truckImage from "@assets/generated_images/urbanfleet_navy_orange_truck.png";
+import carImage from "@assets/generated_images/urbanfleet_branded_car.png";
+import truckImage from "@assets/generated_images/urbanfleet_branded_truck.png";
 import logoImage from "@assets/ChatGPT_Image_Jan_22,_2026,_09_34_49_AM_1769074506159.png";
 
 // Magnetic Button Component
