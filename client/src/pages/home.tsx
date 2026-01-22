@@ -243,37 +243,20 @@ function HeroCarousel() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Animated Vehicle - Moves first, then text appears */}
-      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`vehicle-${currentSlide}`}
-            className="absolute top-1/2 -translate-y-1/2 flex items-center"
-            initial={{ x: '-20%', opacity: 0 }}
-            animate={{ x: '120vw', opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 2.5, ease: "easeOut" }}
-          >
-            {currentSlide === 0 && <Bike className="w-16 h-16 md:w-24 md:h-24 text-primary drop-shadow-[0_0_30px_rgba(245,106,7,0.9)]" />}
-            {currentSlide === 1 && <Car className="w-20 h-20 md:w-28 md:h-28 text-primary drop-shadow-[0_0_30px_rgba(245,106,7,0.9)]" />}
-            {currentSlide === 2 && <Truck className="w-24 h-24 md:w-32 md:h-32 text-primary drop-shadow-[0_0_30px_rgba(245,106,7,0.9)]" />}
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      {/* Hero Content - Fades in after vehicle */}
+      {/* Hero Content - Clean fade transitions */}
       <motion.div 
         style={{ opacity: heroOpacity }}
         className="relative z-20 container mx-auto px-4 pt-32"
       >
         <div className="max-w-5xl mx-auto text-center">
-          {/* Animated Badge */}
+          {/* Badge */}
           <AnimatePresence mode="wait">
             <motion.div 
               key={`badge-${currentSlide}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 mb-10"
             >
               <Sparkles className="w-5 h-5 text-primary animate-pulse" />
@@ -281,29 +264,20 @@ function HeroCarousel() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Main Headline - Clean fade in */}
+          {/* Main Headline */}
           <AnimatePresence mode="wait">
             <motion.h1 
               key={`headline-${currentSlide}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               className="text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-[0.95] mb-8"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6, delay: 1 }}
-              >
-                {slides[currentSlide].headline}
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6, delay: 1.2 }}
-                className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-400 to-yellow-400"
-              >
+              <div>{slides[currentSlide].headline}</div>
+              <div className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-400 to-yellow-400">
                 {slides[currentSlide].subheadline}
-              </motion.div>
+              </div>
             </motion.h1>
           </AnimatePresence>
 
@@ -314,7 +288,7 @@ function HeroCarousel() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, delay: 1.4 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl md:text-2xl text-gray-300 mb-6 max-w-3xl mx-auto"
             >
               {slides[currentSlide].description}
@@ -328,7 +302,7 @@ function HeroCarousel() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, delay: 1.6 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               className="text-2xl md:text-3xl text-primary font-semibold italic mb-12"
             >
               "{slides[currentSlide].tagline}"
