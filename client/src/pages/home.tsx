@@ -809,8 +809,8 @@ export default function Home() {
             >
               <div className="relative rounded-3xl overflow-hidden">
                 <img 
-                  src={fleetImage} 
-                  alt="UrbanFleet Delivery Fleet" 
+                  src={riderPortrait} 
+                  alt="UrbanFleet Professional Rider" 
                   className="w-full aspect-square object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent" />
