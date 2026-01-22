@@ -37,6 +37,7 @@ import {
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useInView, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
 import Autoplay from "embla-carousel-autoplay";
+import { Link } from "wouter";
 
 // Assets - UrbanFleet Branded Images
 import heroImage from "@assets/generated_images/urbanfleet_branded_rider_on_motorcycle_at_night.png";
@@ -45,7 +46,6 @@ import riderPortrait from "@assets/generated_images/urbanfleet_uniformed_deliver
 import techBg from "@assets/generated_images/abstract_tech_network_background_in_orange_and_navy.png";
 import carImage from "@assets/generated_images/urbanfleet_branded_delivery_car.png";
 import truckImage from "@assets/generated_images/urbanfleet_branded_delivery_truck.png";
-import heroVideo from "@assets/videos/urbanfleet_rider_motion.mp4";
 
 // Magnetic Button Component
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -341,56 +341,20 @@ export default function Home() {
         </AnimatePresence>
       </motion.header>
 
-      {/* Hero Section with Carousel */}
+      {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Hero Carousel Background */}
-        <Carousel
-          opts={{ align: "start", loop: true }}
-          plugins={[Autoplay({ delay: 6000, stopOnInteraction: false })]}
-          className="absolute inset-0 w-full h-full"
+        {/* Parallax Background */}
+        <motion.div 
+          style={{ y: heroY, scale: heroScale }}
+          className="absolute inset-0"
         >
-          <CarouselContent className="h-full -ml-0">
-            {/* Slide 1 - Video */}
-            <CarouselItem className="h-full pl-0">
-              <div className="relative w-full h-screen">
-                <video 
-                  autoPlay 
-                  muted 
-                  loop 
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src={heroVideo} type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 bg-gradient-to-b from-secondary/60 via-secondary/80 to-secondary" />
-              </div>
-            </CarouselItem>
-            
-            {/* Slide 2 - Fleet Image */}
-            <CarouselItem className="h-full pl-0">
-              <div className="relative w-full h-screen">
-                <img 
-                  src={fleetImage} 
-                  alt="UrbanFleet Van Fleet" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-secondary/60 via-secondary/80 to-secondary" />
-              </div>
-            </CarouselItem>
-            
-            {/* Slide 3 - Rider Portrait */}
-            <CarouselItem className="h-full pl-0">
-              <div className="relative w-full h-screen">
-                <img 
-                  src={riderPortrait} 
-                  alt="UrbanFleet Professional Rider" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-secondary/60 via-secondary/80 to-secondary" />
-              </div>
-            </CarouselItem>
-          </CarouselContent>
-        </Carousel>
+          <img 
+            src={heroImage} 
+            alt="UrbanFleet" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-secondary/60 via-secondary/80 to-secondary" />
+        </motion.div>
 
         {/* Animated Grid */}
         <div className="absolute inset-0 z-10 pointer-events-none" style={{
@@ -463,20 +427,26 @@ export default function Home() {
               transition={{ delay: 1 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <MagneticButton className="group flex items-center justify-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-8 py-4 text-lg font-bold shadow-2xl shadow-primary/40 transition-all">
-                <Building2 className="w-5 h-5" />
-                For Businesses
-              </MagneticButton>
+              <Link href="/contact/business">
+                <MagneticButton className="group flex items-center justify-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-8 py-4 text-lg font-bold shadow-2xl shadow-primary/40 transition-all" data-testid="button-for-businesses">
+                  <Building2 className="w-5 h-5" />
+                  For Businesses
+                </MagneticButton>
+              </Link>
               
-              <MagneticButton className="group flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-8 py-4 text-lg font-medium border border-white/20 transition-all">
-                <Handshake className="w-5 h-5" />
-                For Contractors
-              </MagneticButton>
+              <Link href="/apply/contractor">
+                <MagneticButton className="group flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-8 py-4 text-lg font-medium border border-white/20 transition-all" data-testid="button-for-contractors">
+                  <Handshake className="w-5 h-5" />
+                  For Contractors
+                </MagneticButton>
+              </Link>
               
-              <MagneticButton className="group flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-8 py-4 text-lg font-medium border border-white/20 transition-all">
-                <UserPlus className="w-5 h-5" />
-                Join as Rider
-              </MagneticButton>
+              <Link href="/apply/rider">
+                <MagneticButton className="group flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-8 py-4 text-lg font-medium border border-white/20 transition-all" data-testid="button-join-as-rider">
+                  <UserPlus className="w-5 h-5" />
+                  Join as Rider
+                </MagneticButton>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
@@ -537,7 +507,8 @@ export default function Home() {
                 description: "Need delivery riders for your business? We supply professional, fully trained, insured, and licensed riders. Scale your workforce up or down based on your business demands.",
                 features: ["Trained & verified riders", "Scalable workforce", "Fully insured operations", "Real-time tracking"],
                 gradient: "from-blue-500 to-cyan-400",
-                cta: "Partner With Us"
+                cta: "Partner With Us",
+                link: "/contact/business"
               },
               {
                 icon: Truck,
@@ -546,7 +517,8 @@ export default function Home() {
                 description: "Own motorcycles, cars, vans, or trucks? Partner with UrbanFleet and put your fleet to work. We connect contractors with businesses needing delivery services.",
                 features: ["Monetize your vehicles", "Flexible schedules", "Steady income stream", "Business support"],
                 gradient: "from-primary to-orange-400",
-                cta: "Become a Contractor"
+                cta: "Become a Contractor",
+                link: "/apply/contractor"
               },
               {
                 icon: Bike,
@@ -555,7 +527,8 @@ export default function Home() {
                 description: "Join UrbanFleet as a delivery rider. We offer competitive pay, visa sponsorship for eligible candidates, comprehensive training, and career growth opportunities.",
                 features: ["Visa sponsorship available", "Competitive salary", "Full training provided", "Health insurance"],
                 gradient: "from-green-500 to-emerald-400",
-                cta: "Apply Now"
+                cta: "Apply Now",
+                link: "/apply/rider"
               }
             ].map((service, i) => (
               <FloatingCard key={i} delay={i * 0.2} className="group h-full">
@@ -584,9 +557,11 @@ export default function Home() {
                     ))}
                   </ul>
                   
-                  <Button className={`w-full bg-gradient-to-r ${service.gradient} text-white font-bold py-6 rounded-xl hover:opacity-90 transition-opacity`}>
-                    {service.cta} <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
+                  <Link href={service.link}>
+                    <Button className={`w-full bg-gradient-to-r ${service.gradient} text-white font-bold py-6 rounded-xl hover:opacity-90 transition-opacity`} data-testid={`button-service-${i}`}>
+                      {service.cta} <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
                 </div>
               </FloatingCard>
             ))}
