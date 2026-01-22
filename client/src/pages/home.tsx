@@ -45,6 +45,7 @@ import riderPortrait from "@assets/generated_images/urbanfleet_uniformed_deliver
 import techBg from "@assets/generated_images/abstract_tech_network_background_in_orange_and_navy.png";
 import carImage from "@assets/generated_images/urbanfleet_branded_delivery_car.png";
 import truckImage from "@assets/generated_images/urbanfleet_branded_delivery_truck.png";
+import heroVideo from "@assets/videos/urbanfleet_rider_motion.mp4";
 
 // Magnetic Button Component
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -340,23 +341,59 @@ export default function Home() {
         </AnimatePresence>
       </motion.header>
 
-      {/* Hero Section */}
+      {/* Hero Section with Carousel */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Parallax Background */}
-        <motion.div 
-          style={{ y: heroY, scale: heroScale }}
-          className="absolute inset-0"
+        {/* Hero Carousel Background */}
+        <Carousel
+          opts={{ align: "start", loop: true }}
+          plugins={[Autoplay({ delay: 6000, stopOnInteraction: false })]}
+          className="absolute inset-0 w-full h-full"
         >
-          <img 
-            src={heroImage} 
-            alt="UrbanFleet" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-secondary/60 via-secondary/80 to-secondary" />
-        </motion.div>
+          <CarouselContent className="h-full -ml-0">
+            {/* Slide 1 - Video */}
+            <CarouselItem className="h-full pl-0">
+              <div className="relative w-full h-screen">
+                <video 
+                  autoPlay 
+                  muted 
+                  loop 
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src={heroVideo} type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-b from-secondary/60 via-secondary/80 to-secondary" />
+              </div>
+            </CarouselItem>
+            
+            {/* Slide 2 - Fleet Image */}
+            <CarouselItem className="h-full pl-0">
+              <div className="relative w-full h-screen">
+                <img 
+                  src={fleetImage} 
+                  alt="UrbanFleet Van Fleet" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-secondary/60 via-secondary/80 to-secondary" />
+              </div>
+            </CarouselItem>
+            
+            {/* Slide 3 - Rider Portrait */}
+            <CarouselItem className="h-full pl-0">
+              <div className="relative w-full h-screen">
+                <img 
+                  src={riderPortrait} 
+                  alt="UrbanFleet Professional Rider" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-secondary/60 via-secondary/80 to-secondary" />
+              </div>
+            </CarouselItem>
+          </CarouselContent>
+        </Carousel>
 
         {/* Animated Grid */}
-        <div className="absolute inset-0 z-10" style={{
+        <div className="absolute inset-0 z-10 pointer-events-none" style={{
           backgroundImage: `
             linear-gradient(rgba(245, 106, 7, 0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(245, 106, 7, 0.1) 1px, transparent 1px)
