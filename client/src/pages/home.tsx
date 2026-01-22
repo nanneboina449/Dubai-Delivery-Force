@@ -243,76 +243,24 @@ function HeroCarousel() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Animated Vehicle Effect */}
+      {/* Animated Vehicle - Moves first, then text appears */}
       <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
         <AnimatePresence mode="wait">
-          {currentSlide === 0 && (
-            <motion.div
-              key="bike-animation"
-              className="absolute bottom-[20%] flex items-center"
-              initial={{ x: '-100%' }}
-              animate={{ x: '120%' }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 8, ease: "easeInOut", repeat: Infinity }}
-            >
-              <Bike className="w-20 h-20 text-primary drop-shadow-[0_0_20px_rgba(245,106,7,0.8)]" />
-              <motion.div 
-                className="ml-4 flex items-center gap-2"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <div className="h-1 w-32 bg-gradient-to-r from-primary to-transparent rounded-full" />
-                <span className="text-primary font-bold text-lg whitespace-nowrap">Fast Delivery</span>
-              </motion.div>
-            </motion.div>
-          )}
-          {currentSlide === 1 && (
-            <motion.div
-              key="car-animation"
-              className="absolute bottom-[20%] flex items-center"
-              initial={{ x: '-100%' }}
-              animate={{ x: '120%' }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 10, ease: "easeInOut", repeat: Infinity }}
-            >
-              <Car className="w-24 h-24 text-primary drop-shadow-[0_0_20px_rgba(245,106,7,0.8)]" />
-              <motion.div 
-                className="ml-4 flex items-center gap-2"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <div className="h-1 w-40 bg-gradient-to-r from-primary to-transparent rounded-full" />
-                <span className="text-primary font-bold text-lg whitespace-nowrap">Premium Fleet</span>
-              </motion.div>
-            </motion.div>
-          )}
-          {currentSlide === 2 && (
-            <motion.div
-              key="truck-animation"
-              className="absolute bottom-[20%] flex items-center"
-              initial={{ x: '-100%' }}
-              animate={{ x: '120%' }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 12, ease: "easeInOut", repeat: Infinity }}
-            >
-              <Truck className="w-28 h-28 text-primary drop-shadow-[0_0_20px_rgba(245,106,7,0.8)]" />
-              <motion.div 
-                className="ml-4 flex items-center gap-2"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <div className="h-1 w-48 bg-gradient-to-r from-primary to-transparent rounded-full" />
-                <span className="text-primary font-bold text-lg whitespace-nowrap">Heavy Cargo</span>
-              </motion.div>
-            </motion.div>
-          )}
+          <motion.div
+            key={`vehicle-${currentSlide}`}
+            className="absolute top-1/2 -translate-y-1/2 flex items-center"
+            initial={{ x: '-20%', opacity: 0 }}
+            animate={{ x: '120vw', opacity: [0, 1, 1, 0] }}
+            transition={{ duration: 2.5, ease: "easeOut" }}
+          >
+            {currentSlide === 0 && <Bike className="w-16 h-16 md:w-24 md:h-24 text-primary drop-shadow-[0_0_30px_rgba(245,106,7,0.9)]" />}
+            {currentSlide === 1 && <Car className="w-20 h-20 md:w-28 md:h-28 text-primary drop-shadow-[0_0_30px_rgba(245,106,7,0.9)]" />}
+            {currentSlide === 2 && <Truck className="w-24 h-24 md:w-32 md:h-32 text-primary drop-shadow-[0_0_30px_rgba(245,106,7,0.9)]" />}
+          </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Hero Content */}
+      {/* Hero Content - Fades in after vehicle */}
       <motion.div 
         style={{ opacity: heroOpacity }}
         className="relative z-20 container mx-auto px-4 pt-32"
@@ -322,10 +270,10 @@ function HeroCarousel() {
           <AnimatePresence mode="wait">
             <motion.div 
               key={`badge-${currentSlide}`}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
               className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 mb-10"
             >
               <Sparkles className="w-5 h-5 text-primary animate-pulse" />
@@ -333,38 +281,28 @@ function HeroCarousel() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Main Headline with Delivery Effect */}
+          {/* Main Headline - Clean fade in */}
           <AnimatePresence mode="wait">
             <motion.h1 
               key={`headline-${currentSlide}`}
               className="text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-[0.95] mb-8"
             >
-              <motion.div 
-                className="overflow-hidden"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
+                transition={{ duration: 0.6, delay: 1 }}
               >
-                <motion.span
-                  initial={{ x: -100, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: 100, opacity: 0 }}
-                  transition={{ duration: 0.6, type: "spring" }}
-                  className="inline-block"
-                >
-                  {slides[currentSlide].headline}
-                </motion.span>
+                {slides[currentSlide].headline}
               </motion.div>
-              <motion.div className="overflow-hidden">
-                <motion.span
-                  initial={{ x: 100, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -100, opacity: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1, type: "spring" }}
-                  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-400 to-yellow-400"
-                >
-                  {slides[currentSlide].subheadline}
-                </motion.span>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+                className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-400 to-yellow-400"
+              >
+                {slides[currentSlide].subheadline}
               </motion.div>
             </motion.h1>
           </AnimatePresence>
@@ -373,34 +311,27 @@ function HeroCarousel() {
           <AnimatePresence mode="wait">
             <motion.p 
               key={`desc-${currentSlide}`}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
               className="text-xl md:text-2xl text-gray-300 mb-6 max-w-3xl mx-auto"
             >
               {slides[currentSlide].description}
             </motion.p>
           </AnimatePresence>
           
-          {/* Tagline with Typing Effect */}
+          {/* Tagline */}
           <AnimatePresence mode="wait">
             <motion.p 
               key={`tagline-${currentSlide}`}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-2xl md:text-3xl text-primary font-semibold italic mb-12 relative"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, delay: 1.6 }}
+              className="text-2xl md:text-3xl text-primary font-semibold italic mb-12"
             >
-              <span className="relative">
-                "{slides[currentSlide].tagline}"
-                <motion.span
-                  className="absolute -right-4 top-0 w-1 h-full bg-primary"
-                  animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.5, repeat: Infinity }}
-                />
-              </span>
+              "{slides[currentSlide].tagline}"
             </motion.p>
           </AnimatePresence>
 
