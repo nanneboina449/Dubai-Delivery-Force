@@ -40,7 +40,7 @@ const riderFormSchema = z.object({
   visaStatus: z.string().min(1, "Visa status is required"),
   hasUaeDrivingLicense: z.string().min(1, "Please select an option"),
   licenseType: z.string().optional(),
-  yearsOfExperience: z.number().min(0, "Years of experience is required"),
+  yearsOfExperience: z.coerce.number().min(0, "Years of experience is required"),
   vehicleType: z.string().min(1, "Vehicle type preference is required"),
   ownsVehicle: z.string().min(1, "Please select an option"),
   availableToStart: z.string().min(1, "Availability is required"),

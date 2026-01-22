@@ -40,7 +40,7 @@ const businessFormSchema = z.object({
   emirate: z.string().min(1, "Emirate is required"),
   deliveryVolume: z.string().min(1, "Delivery volume is required"),
   vehicleTypesNeeded: z.string().min(1, "Vehicle types needed is required"),
-  ridersNeeded: z.number().min(1, "Number of riders needed is required"),
+  ridersNeeded: z.coerce.number().min(1, "Number of riders needed is required"),
   startDate: z.string().min(1, "Expected start date is required"),
   contractDuration: z.string().min(1, "Contract duration is required"),
   specialRequirements: z.string().optional(),
