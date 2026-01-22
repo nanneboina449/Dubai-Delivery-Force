@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanFleet Deployment Guide</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      line-height: 1.6; 
+      color: #333; 
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 { 
+      color: #1a2744; 
+      font-size: 28px; 
+      margin-bottom: 10px;
+      border-bottom: 3px solid #F56A07;
+      padding-bottom: 10px;
+    }
+    h2 { 
+      color: #1a2744; 
+      font-size: 20px; 
+      margin-top: 30px; 
+      margin-bottom: 15px;
+      background: #f5f5f5;
+      padding: 10px 15px;
+      border-left: 4px solid #F56A07;
+    }
+    h3 { 
+      color: #F56A07; 
+      font-size: 16px; 
+      margin-top: 20px; 
+      margin-bottom: 10px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { margin-left: 25px; margin-bottom: 15px; }
+    li { margin-bottom: 8px; }
+    code { 
+      background: #f0f0f0; 
+      padding: 2px 8px; 
+      border-radius: 4px; 
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+    }
+    pre { 
+      background: #1a2744; 
+      color: #fff; 
+      padding: 15px; 
+      border-radius: 8px; 
+      margin: 15px 0;
+      overflow-x: auto;
+      font-size: 13px;
+    }
+    .header { 
+      text-align: center; 
+      margin-bottom: 40px;
+      padding: 20px;
+      background: linear-gradient(135deg, #1a2744 0%, #2d3f5f 100%);
+      color: white;
+      border-radius: 10px;
+    }
+    .header h1 { color: white; border-bottom: none; }
+    .header p { color: #F56A07; font-size: 14px; }
+    .section { 
+      margin-bottom: 30px; 
+      page-break-inside: avoid;
+    }
+    .warning { 
+      background: #fff3cd; 
+      border: 1px solid #ffc107; 
+      padding: 15px; 
+      border-radius: 8px; 
+      margin: 15px 0;
+    }
+    .info { 
+      background: #e7f3ff; 
+      border: 1px solid #0066cc; 
+      padding: 15px; 
+      border-radius: 8px; 
+      margin: 15px 0;
+    }
+    .step { 
+      background: #f9f9f9; 
+      padding: 15px; 
+      border-radius: 8px; 
+      margin: 10px 0;
+      border-left: 3px solid #1a2744;
+    }
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      margin: 15px 0;
+    }
+    th, td { 
+      border: 1px solid #ddd; 
+      padding: 10px; 
+      text-align: left;
+    }
+    th { background: #1a2744; color: white; }
+    .page-break { page-break-before: always; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>UrbanFleet Deployment Guide</h1>
+  <p>Complete Guide to Deploy Your Website</p>
+</div>
+
+<div class="section">
+  <h2>1. Prerequisites</h2>
+  
+  <h3>Software Requirements</h3>
+  <table>
+    <tr><th>Software</th><th>Version</th><th>Purpose</th></tr>
+    <tr><td>Node.js</td><td>18.x or higher</td><td>JavaScript runtime</td></tr>
+    <tr><td>npm</td><td>9.x or higher</td><td>Package manager</td></tr>
+    <tr><td>PostgreSQL</td><td>14.x or higher</td><td>Database</td></tr>
+    <tr><td>Git</td><td>Latest</td><td>Version control</td></tr>
+  </table>
+
+  <h3>Server Requirements</h3>
+  <ul>
+    <li>Minimum 1GB RAM</li>
+    <li>10GB storage space</li>
+    <li>Linux-based OS (Ubuntu 20.04+ recommended)</li>
+    <li>SSL certificate for HTTPS</li>
+  </ul>
+
+  <h3>Required Environment Variables</h3>
+  <table>
+    <tr><th>Variable</th><th>Description</th><th>Example</th></tr>
+    <tr><td>DATABASE_URL</td><td>PostgreSQL connection string</td><td>postgresql://user:pass@host:5432/dbname</td></tr>
+    <tr><td>NODE_ENV</td><td>Environment mode</td><td>production</td></tr>
+    <tr><td>PORT</td><td>Server port (optional)</td><td>5000</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>2. Project Structure</h2>
+  <pre>
+urbanfleet/
+├── client/           # Frontend React application
+│   ├── src/
+│   │   ├── pages/    # Page components
+│   │   └── components/
+│   └── index.html
+├── server/           # Backend Express server
+│   ├── index.ts
+│   ├── routes.ts
+│   └── storage.ts
+├── shared/           # Shared code (schema)
+│   └── schema.ts
+├── dist/             # Production build (after build)
+│   ├── public/       # Frontend static files
+│   └── index.cjs     # Server bundle
+└── package.json
+  </pre>
+</div>
+
+<div class="section page-break">
+  <h2>3. Option A: Deploy on Replit (Easiest)</h2>
+  
+  <div class="step">
+    <strong>Step 1:</strong> Click the "Publish" button in Replit (top right corner)
+  </div>
+  
+  <div class="step">
+    <strong>Step 2:</strong> Configure your deployment settings
+  </div>
+  
+  <div class="step">
+    <strong>Step 3:</strong> Your site will be live at a .replit.app domain
+  </div>
+  
+  <div class="step">
+    <strong>Step 4:</strong> (Optional) Add a custom domain in deployment settings
+  </div>
+
+  <div class="info">
+    <strong>Benefits:</strong> Automatic SSL, built-in database, zero configuration, automatic updates
+  </div>
+</div>
+
+<div class="section">
+  <h2>4. Option B: Deploy to VPS (DigitalOcean, AWS, etc.)</h2>
+  
+  <h3>Step 1: Prepare Your Server</h3>
+  <pre>
+# Update system
+sudo apt update && sudo apt upgrade -y
+
+# Install Node.js 20
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# Install PostgreSQL
+sudo apt install -y postgresql postgresql-contrib
+
+# Verify installations
+node --version
+npm --version
+psql --version
+  </pre>
+
+  <h3>Step 2: Setup PostgreSQL Database</h3>
+  <pre>
+# Access PostgreSQL
+sudo -u postgres psql
+
+# Create database and user
+CREATE DATABASE urbanfleet;
+CREATE USER urbanfleet_user WITH ENCRYPTED PASSWORD 'your_password';
+GRANT ALL PRIVILEGES ON DATABASE urbanfleet TO urbanfleet_user;
+\q
+  </pre>
+
+  <h3>Step 3: Clone and Setup Project</h3>
+  <pre>
+# Clone from GitHub
+git clone https://github.com/YOUR_USERNAME/urbanfleet.git
+cd urbanfleet
+
+# Install dependencies
+npm install
+
+# Create environment file
+nano .env
+  </pre>
+
+  <h3>Step 4: Configure Environment Variables</h3>
+  <pre>
+# Add to .env file:
+DATABASE_URL=postgresql://urbanfleet_user:your_password@localhost:5432/urbanfleet
+NODE_ENV=production
+PORT=5000
+  </pre>
+
+  <h3>Step 5: Build and Deploy</h3>
+  <pre>
+# Build the application
+npm run build
+
+# Push database schema
+npm run db:push
+
+# Start the server
+node dist/index.cjs
+  </pre>
+</div>
+
+<div class="section page-break">
+  <h2>5. Option C: Deploy with PM2 (Production)</h2>
+  
+  <h3>Step 1: Install PM2</h3>
+  <pre>
+sudo npm install -g pm2
+  </pre>
+
+  <h3>Step 2: Start Application with PM2</h3>
+  <pre>
+# Start the application
+pm2 start dist/index.cjs --name "urbanfleet"
+
+# Save PM2 configuration
+pm2 save
+
+# Setup PM2 to start on boot
+pm2 startup
+  </pre>
+
+  <h3>Step 3: Useful PM2 Commands</h3>
+  <pre>
+pm2 status          # Check status
+pm2 logs urbanfleet # View logs
+pm2 restart urbanfleet # Restart app
+pm2 stop urbanfleet    # Stop app
+  </pre>
+</div>
+
+<div class="section">
+  <h2>6. Setup Nginx Reverse Proxy</h2>
+  
+  <h3>Step 1: Install Nginx</h3>
+  <pre>
+sudo apt install -y nginx
+  </pre>
+
+  <h3>Step 2: Configure Nginx</h3>
+  <pre>
+sudo nano /etc/nginx/sites-available/urbanfleet
+  </pre>
+
+  <h3>Add Configuration:</h3>
+  <pre>
+server {
+    listen 80;
+    server_name yourdomain.com www.yourdomain.com;
+
+    location / {
+        proxy_pass http://localhost:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+  </pre>
+
+  <h3>Step 3: Enable Site</h3>
+  <pre>
+sudo ln -s /etc/nginx/sites-available/urbanfleet /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+  </pre>
+</div>
+
+<div class="section">
+  <h2>7. Setup SSL Certificate (HTTPS)</h2>
+  <pre>
+# Install Certbot
+sudo apt install -y certbot python3-certbot-nginx
+
+# Get SSL certificate
+sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+
+# Auto-renewal (already configured)
+sudo certbot renew --dry-run
+  </pre>
+</div>
+
+<div class="section page-break">
+  <h2>8. Deployment Checklist</h2>
+  
+  <table>
+    <tr><th>Task</th><th>Status</th></tr>
+    <tr><td>Server provisioned with required specs</td><td>[ ]</td></tr>
+    <tr><td>Node.js 18+ installed</td><td>[ ]</td></tr>
+    <tr><td>PostgreSQL installed and configured</td><td>[ ]</td></tr>
+    <tr><td>Database created and user configured</td><td>[ ]</td></tr>
+    <tr><td>Project cloned from repository</td><td>[ ]</td></tr>
+    <tr><td>Dependencies installed (npm install)</td><td>[ ]</td></tr>
+    <tr><td>Environment variables configured</td><td>[ ]</td></tr>
+    <tr><td>Application built (npm run build)</td><td>[ ]</td></tr>
+    <tr><td>Database schema pushed (npm run db:push)</td><td>[ ]</td></tr>
+    <tr><td>Application started with PM2</td><td>[ ]</td></tr>
+    <tr><td>Nginx configured as reverse proxy</td><td>[ ]</td></tr>
+    <tr><td>SSL certificate installed</td><td>[ ]</td></tr>
+    <tr><td>Domain DNS configured</td><td>[ ]</td></tr>
+    <tr><td>Application tested and verified</td><td>[ ]</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>9. Troubleshooting</h2>
+  
+  <h3>Common Issues</h3>
+  
+  <div class="warning">
+    <strong>Database Connection Error:</strong><br>
+    Verify DATABASE_URL is correct and PostgreSQL is running:<br>
+    <code>sudo systemctl status postgresql</code>
+  </div>
+  
+  <div class="warning">
+    <strong>Port Already in Use:</strong><br>
+    Check what's using port 5000:<br>
+    <code>sudo lsof -i :5000</code>
+  </div>
+  
+  <div class="warning">
+    <strong>Permission Denied:</strong><br>
+    Ensure proper file permissions:<br>
+    <code>sudo chown -R $USER:$USER /path/to/urbanfleet</code>
+  </div>
+</div>
+
+<div class="section">
+  <h2>10. Support & Contact</h2>
+  <p>For technical support or questions about deployment:</p>
+  <ul>
+    <li>Email: support@urbanfleet.ae</li>
+    <li>Website: www.urbanfleet.ae</li>
+  </ul>
+  
+  <div class="info">
+    <strong>Document Version:</strong> 1.0<br>
+    <strong>Last Updated:</strong> January 2026
+  </div>
+</div>
+
+</body>
+</html>
