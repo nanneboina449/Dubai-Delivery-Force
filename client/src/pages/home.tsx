@@ -178,6 +178,247 @@ function FloatingCard({ children, className, delay = 0 }: { children: React.Reac
   );
 }
 
+// Hero Carousel with Rotating Slides
+function HeroCarousel() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
+  const heroScale = useTransform(scrollY, [0, 500], [1, 1.1]);
+  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
+
+  const slides = [
+    {
+      image: heroImage,
+      badge: "UAE's Premier Delivery Workforce Provider",
+      headline: "Lightning Fast",
+      subheadline: "Delivery Network",
+      description: "Professional riders delivering across the UAE with speed and precision. Your packages arrive on time, every time.",
+      tagline: "Speed you can count on."
+    },
+    {
+      image: fleetImage,
+      badge: "Scalable Fleet Solutions",
+      headline: "Your Fleet",
+      subheadline: "Our Expertise",
+      description: "From motorcycles to trucks, we provide the right vehicles for every delivery need. Scale up or down as your business grows.",
+      tagline: "Flexibility that drives success."
+    },
+    {
+      image: riderPortrait,
+      badge: "Trained & Certified Riders",
+      headline: "Trusted Riders",
+      subheadline: "Reliable Service",
+      description: "Every rider is trained, licensed, insured, and background-checked. Complete peace of mind for your business.",
+      tagline: "Delivery you can trust."
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  return (
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Parallax Background with Slide Transition */}
+      <AnimatePresence mode="wait">
+        <motion.div 
+          key={currentSlide}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          style={{ y: heroY, scale: heroScale }}
+          className="absolute inset-0"
+        >
+          <img 
+            src={slides[currentSlide].image} 
+            alt="UrbanFleet" 
+            className="w-full h-full object-cover"
+          />
+          {/* Reduced overlay for better bike visibility */}
+          <div className="absolute inset-0 bg-gradient-to-b from-secondary/40 via-secondary/60 to-secondary/95" />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Speed Lines Effect */}
+      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+            style={{
+              top: `${15 + i * 10}%`,
+              left: '-100%',
+              width: '200%',
+            }}
+            animate={{
+              x: ['0%', '50%'],
+            }}
+            transition={{
+              duration: 2 + i * 0.3,
+              repeat: Infinity,
+              ease: "linear",
+              delay: i * 0.2,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Animated Grid */}
+      <div className="absolute inset-0 z-10 pointer-events-none" style={{
+        backgroundImage: `
+          linear-gradient(rgba(245, 106, 7, 0.1) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(245, 106, 7, 0.1) 1px, transparent 1px)
+        `,
+        backgroundSize: '80px 80px',
+        maskImage: 'radial-gradient(ellipse at center, black 0%, transparent 70%)'
+      }} />
+
+      {/* Hero Content */}
+      <motion.div 
+        style={{ opacity: heroOpacity }}
+        className="relative z-20 container mx-auto px-4 pt-32"
+      >
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Animated Badge */}
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={`badge-${currentSlide}`}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 mb-10"
+            >
+              <Sparkles className="w-5 h-5 text-primary animate-pulse" />
+              <span className="text-white font-medium">{slides[currentSlide].badge}</span>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Main Headline with Delivery Effect */}
+          <AnimatePresence mode="wait">
+            <motion.h1 
+              key={`headline-${currentSlide}`}
+              className="text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-[0.95] mb-8"
+            >
+              <motion.div 
+                className="overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <motion.span
+                  initial={{ x: -100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: 100, opacity: 0 }}
+                  transition={{ duration: 0.6, type: "spring" }}
+                  className="inline-block"
+                >
+                  {slides[currentSlide].headline}
+                </motion.span>
+              </motion.div>
+              <motion.div className="overflow-hidden">
+                <motion.span
+                  initial={{ x: 100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: -100, opacity: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1, type: "spring" }}
+                  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-400 to-yellow-400"
+                >
+                  {slides[currentSlide].subheadline}
+                </motion.span>
+              </motion.div>
+            </motion.h1>
+          </AnimatePresence>
+
+          {/* Description */}
+          <AnimatePresence mode="wait">
+            <motion.p 
+              key={`desc-${currentSlide}`}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-xl md:text-2xl text-gray-300 mb-6 max-w-3xl mx-auto"
+            >
+              {slides[currentSlide].description}
+            </motion.p>
+          </AnimatePresence>
+          
+          {/* Tagline with Typing Effect */}
+          <AnimatePresence mode="wait">
+            <motion.p 
+              key={`tagline-${currentSlide}`}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-2xl md:text-3xl text-primary font-semibold italic mb-12 relative"
+            >
+              <span className="relative">
+                "{slides[currentSlide].tagline}"
+                <motion.span
+                  className="absolute -right-4 top-0 w-1 h-full bg-primary"
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.5, repeat: Infinity }}
+                />
+              </span>
+            </motion.p>
+          </AnimatePresence>
+
+          {/* CTA Buttons */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Link href="/contact/business">
+              <MagneticButton className="group flex items-center justify-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-8 py-4 text-lg font-bold shadow-2xl shadow-primary/40 transition-all" data-testid="button-for-businesses">
+                <Building2 className="w-5 h-5" />
+                For Businesses
+              </MagneticButton>
+            </Link>
+            
+            <Link href="/apply/contractor">
+              <MagneticButton className="group flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-8 py-4 text-lg font-medium border border-white/20 transition-all" data-testid="button-for-contractors">
+                <Handshake className="w-5 h-5" />
+                For Contractors
+              </MagneticButton>
+            </Link>
+            
+            <Link href="/apply/rider">
+              <MagneticButton className="group flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-8 py-4 text-lg font-medium border border-white/20 transition-all" data-testid="button-join-as-rider">
+                <UserPlus className="w-5 h-5" />
+                Join as Rider
+              </MagneticButton>
+            </Link>
+          </motion.div>
+
+          {/* Slide Indicators */}
+          <div className="flex justify-center gap-3 mt-12">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  i === currentSlide 
+                    ? 'bg-primary w-8' 
+                    : 'bg-white/30 hover:bg-white/50'
+                }`}
+                data-testid={`slide-indicator-${i}`}
+              />
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
 // Logo with Glow Effect
 const Logo = ({ dark = false }: { dark?: boolean }) => (
   <motion.div 
@@ -302,9 +543,11 @@ export default function Home() {
             </div>
           </nav>
 
-          <MagneticButton className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary to-orange-600 text-white font-bold rounded-full px-6 py-3 shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all">
-            Get Started <ArrowRight className="w-4 h-4" />
-          </MagneticButton>
+          <a href="#services">
+            <MagneticButton className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary to-orange-600 text-white font-bold rounded-full px-6 py-3 shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all">
+              Get Started <ArrowRight className="w-4 h-4" />
+            </MagneticButton>
+          </a>
 
           <button 
             className="lg:hidden text-white p-3 rounded-xl bg-white/10 backdrop-blur-xl"
@@ -341,131 +584,23 @@ export default function Home() {
         </AnimatePresence>
       </motion.header>
 
-      {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Parallax Background */}
-        <motion.div 
-          style={{ y: heroY, scale: heroScale }}
-          className="absolute inset-0"
-        >
-          <img 
-            src={heroImage} 
-            alt="UrbanFleet" 
-            className="w-full h-full object-cover"
+      {/* Hero Section with Rotating Slides */}
+      <HeroCarousel />
+
+      {/* Scroll Indicator */}
+      <motion.div 
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
+        animate={{ y: [0, 15, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <div className="w-8 h-14 rounded-full border-2 border-white/30 flex justify-center pt-3">
+          <motion.div 
+            className="w-2 h-2 bg-primary rounded-full"
+            animate={{ y: [0, 20, 0], opacity: [1, 0, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-secondary/60 via-secondary/80 to-secondary" />
-        </motion.div>
-
-        {/* Animated Grid */}
-        <div className="absolute inset-0 z-10 pointer-events-none" style={{
-          backgroundImage: `
-            linear-gradient(rgba(245, 106, 7, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(245, 106, 7, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px',
-          maskImage: 'radial-gradient(ellipse at center, black 0%, transparent 70%)'
-        }} />
-
-        {/* Hero Content */}
-        <motion.div 
-          style={{ opacity: heroOpacity }}
-          className="relative z-20 container mx-auto px-4 pt-32"
-        >
-          <div className="max-w-5xl mx-auto text-center">
-            {/* Animated Badge */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 mb-10"
-            >
-              <Sparkles className="w-5 h-5 text-primary animate-pulse" />
-              <span className="text-white font-medium">UAE's Premier Delivery Workforce Provider</span>
-            </motion.div>
-
-            {/* Main Headline */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-[0.95] mb-8">
-              <div className="overflow-hidden">
-                <TextReveal delay={0.2}>Smart, Reliable</TextReveal>
-              </div>
-              <div className="overflow-hidden">
-                <motion.span
-                  initial={{ opacity: 0, y: 100 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-400 to-yellow-400"
-                >
-                  Delivery Solutions
-                </motion.span>
-              </div>
-            </h1>
-
-            {/* Tagline */}
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="text-xl md:text-2xl text-gray-300 mb-6 max-w-3xl mx-auto"
-            >
-              Professional, trained, licensed, and insured delivery riders workforce for UAE businesses. 
-              Scalable fleet solutions with motorcycles, cars, vans, and trucks.
-            </motion.p>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9 }}
-              className="text-2xl md:text-3xl text-primary font-semibold italic mb-12"
-            >
-              "Delivery you can trust."
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <Link href="/contact/business">
-                <MagneticButton className="group flex items-center justify-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-8 py-4 text-lg font-bold shadow-2xl shadow-primary/40 transition-all" data-testid="button-for-businesses">
-                  <Building2 className="w-5 h-5" />
-                  For Businesses
-                </MagneticButton>
-              </Link>
-              
-              <Link href="/apply/contractor">
-                <MagneticButton className="group flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-8 py-4 text-lg font-medium border border-white/20 transition-all" data-testid="button-for-contractors">
-                  <Handshake className="w-5 h-5" />
-                  For Contractors
-                </MagneticButton>
-              </Link>
-              
-              <Link href="/apply/rider">
-                <MagneticButton className="group flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white rounded-full px-8 py-4 text-lg font-medium border border-white/20 transition-all" data-testid="button-join-as-rider">
-                  <UserPlus className="w-5 h-5" />
-                  Join as Rider
-                </MagneticButton>
-              </Link>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div 
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
-          animate={{ y: [0, 15, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-8 h-14 rounded-full border-2 border-white/30 flex justify-center pt-3">
-            <motion.div 
-              className="w-2 h-2 bg-primary rounded-full"
-              animate={{ y: [0, 20, 0], opacity: [1, 0, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </div>
-        </motion.div>
-      </section>
+        </div>
+      </motion.div>
 
       {/* Horizontal Scrolling Stats */}
       <HorizontalGallery />
