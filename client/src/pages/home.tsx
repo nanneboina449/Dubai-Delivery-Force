@@ -47,6 +47,7 @@ import techBg from "@assets/generated_images/abstract_tech_network_background_in
 import carImage from "@assets/generated_images/urbanfleet_car_van_fleet.png";
 import truckImage from "@assets/generated_images/urbanfleet_fleet_collage.png";
 import bicycleImage from "@assets/generated_images/urbanfleet_bicycle_with_logo.png";
+import teamImage from "@assets/generated_images/urbanfleet_fleet_collage.png";
 import logoImage from "@assets/logo.png";
 
 // Magnetic Button Component
@@ -370,7 +371,7 @@ const Logo = ({ dark = false }: { dark?: boolean }) => (
     <img 
       src={logoImage} 
       alt="UrbanFleet Delivery Service" 
-      className="h-20 md:h-24 w-auto object-contain"
+      className="h-32 md:h-40 w-auto object-contain"
     />
   </motion.div>
 );
@@ -824,8 +825,8 @@ export default function Home() {
             >
               <div className="relative rounded-3xl overflow-hidden">
                 <img 
-                  src={riderPortrait} 
-                  alt="UrbanFleet Professional Rider" 
+                  src={teamImage} 
+                  alt="UrbanFleet Team Members" 
                   className="w-full aspect-square object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent" />
