@@ -41,11 +41,11 @@ import { Link } from "wouter";
 
 // Assets - UrbanFleet Branded Images with UF Logo
 import heroImage from "@assets/generated_images/urbanfleet_motorcycle_with_logo.png";
-import fleetImage from "@assets/generated_images/urbanfleet_van_with_logo.png";
-import riderPortrait from "@assets/generated_images/urbanfleet_rider_with_logo.png";
+import fleetImage from "@assets/generated_images/urbanfleet_car_van_fleet.png";
+import riderPortrait from "@assets/generated_images/urbanfleet_full_fleet.png";
 import techBg from "@assets/generated_images/abstract_tech_network_background_in_orange_and_navy.png";
-import carImage from "@assets/generated_images/urbanfleet_car_with_logo.png";
-import truckImage from "@assets/generated_images/urbanfleet_truck_with_logo.png";
+import carImage from "@assets/generated_images/urbanfleet_car_van_fleet.png";
+import truckImage from "@assets/generated_images/urbanfleet_fleet_collage.png";
 import bicycleImage from "@assets/generated_images/urbanfleet_bicycle_with_logo.png";
 import logoImage from "@assets/logo.png";
 
