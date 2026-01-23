@@ -50,7 +50,7 @@ const businessFormSchema = z.object({
 
 type BusinessFormData = z.infer<typeof businessFormSchema>;
 
-import logoImage from "@assets/urbanfleet-logo-cropped_1769075449106.png";
+import logoImage from "@assets/urbanfleet-logo-new.png";
 
 const Logo = () => (
   <a href="/" className="flex items-center">
