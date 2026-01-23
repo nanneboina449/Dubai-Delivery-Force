@@ -29,6 +29,7 @@ import {
   Package
 } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
+import { sendFormEmail, formatBusinessInquiry } from "@/lib/emailService";
 
 const businessFormSchema = z.object({
   companyName: z.string().min(2, "Company name is required"),
@@ -88,8 +89,22 @@ export default function BusinessInquiry() {
 
   const mutation = useMutation({
     mutationFn: async (data: BusinessFormData) => {
-      const response = await apiRequest("POST", "/api/business-inquiries", data);
-      return response.json();
+      // Send email notification
+      await sendFormEmail({
+        form_type: 'Business Inquiry',
+        form_data: formatBusinessInquiry(data),
+        from_name: data.contactPerson,
+        from_email: data.email,
+        phone: data.phone,
+      });
+      // Also save to database if backend is available
+      try {
+        const response = await apiRequest("POST", "/api/business-inquiries", data);
+        return response.json();
+      } catch {
+        // If backend is not available (static hosting), just return success
+        return { success: true };
+      }
     },
     onSuccess: () => {
       setSubmitted(true);

@@ -30,6 +30,7 @@ import {
   Shield
 } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
+import { sendFormEmail, formatContractorApplication } from "@/lib/emailService";
 
 const contractorFormSchema = z.object({
   companyName: z.string().min(2, "Company name is required"),
@@ -93,8 +94,22 @@ export default function ContractorApplication() {
 
   const mutation = useMutation({
     mutationFn: async (data: ContractorFormData) => {
-      const response = await apiRequest("POST", "/api/contractor-applications", data);
-      return response.json();
+      // Send email notification
+      await sendFormEmail({
+        form_type: 'Contractor Partnership Application',
+        form_data: formatContractorApplication(data),
+        from_name: data.contactPerson,
+        from_email: data.email,
+        phone: data.phone,
+      });
+      // Also save to database if backend is available
+      try {
+        const response = await apiRequest("POST", "/api/contractor-applications", data);
+        return response.json();
+      } catch {
+        // If backend is not available (static hosting), just return success
+        return { success: true };
+      }
     },
     onSuccess: () => {
       setSubmitted(true);

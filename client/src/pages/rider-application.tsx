@@ -30,6 +30,7 @@ import {
   Globe
 } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
+import { sendFormEmail, formatRiderApplication } from "@/lib/emailService";
 
 const riderFormSchema = z.object({
   fullName: z.string().min(2, "Full name is required"),
@@ -91,8 +92,22 @@ export default function RiderApplication() {
 
   const mutation = useMutation({
     mutationFn: async (data: RiderFormData) => {
-      const response = await apiRequest("POST", "/api/rider-applications", data);
-      return response.json();
+      // Send email notification
+      await sendFormEmail({
+        form_type: 'Rider Application',
+        form_data: formatRiderApplication(data),
+        from_name: data.fullName,
+        from_email: data.email,
+        phone: data.phone,
+      });
+      // Also save to database if backend is available
+      try {
+        const response = await apiRequest("POST", "/api/rider-applications", data);
+        return response.json();
+      } catch {
+        // If backend is not available (static hosting), just return success
+        return { success: true };
+      }
     },
     onSuccess: () => {
       setSubmitted(true);
