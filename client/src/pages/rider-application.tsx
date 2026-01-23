@@ -52,7 +52,7 @@ const riderFormSchema = z.object({
 
 type RiderFormData = z.infer<typeof riderFormSchema>;
 
-import logoImage from "@assets/urbanfleet-logo-new.png";
+import logoImage from "@assets/logo.png";
 
 const Logo = () => (
   <a href="/" className="flex items-center">
@@ -347,6 +347,7 @@ export default function RiderApplication() {
                       <SelectValue placeholder="Select vehicle type" />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="Bicycle">Bicycle (Cyclist)</SelectItem>
                       <SelectItem value="Motorcycle">Motorcycle</SelectItem>
                       <SelectItem value="Car">Car</SelectItem>
                       <SelectItem value="Van">Van</SelectItem>

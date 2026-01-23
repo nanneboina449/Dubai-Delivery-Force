@@ -50,7 +50,7 @@ const businessFormSchema = z.object({
 
 type BusinessFormData = z.infer<typeof businessFormSchema>;
 
-import logoImage from "@assets/urbanfleet-logo-new.png";
+import logoImage from "@assets/logo.png";
 
 const Logo = () => (
   <a href="/" className="flex items-center">
@@ -338,6 +338,7 @@ export default function BusinessInquiry() {
                       <SelectValue placeholder="Select vehicle types" />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="Cyclists">Cyclists (Bicycles)</SelectItem>
                       <SelectItem value="Motorcycles">Motorcycles Only</SelectItem>
                       <SelectItem value="Cars">Cars Only</SelectItem>
                       <SelectItem value="Vans">Vans Only</SelectItem>

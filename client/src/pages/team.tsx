@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Linkedin, Mail, Phone, Menu, X } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
-import logoImage from "@assets/urbanfleet-logo-new.png";
+import logoImage from "@assets/logo.png";
 
 const Logo = () => (
   <a href="/" className="flex items-center">

@@ -46,7 +46,8 @@ import riderPortrait from "@assets/generated_images/urbanfleet_rider_with_logo.p
 import techBg from "@assets/generated_images/abstract_tech_network_background_in_orange_and_navy.png";
 import carImage from "@assets/generated_images/urbanfleet_car_with_logo.png";
 import truckImage from "@assets/generated_images/urbanfleet_truck_with_logo.png";
-import logoImage from "@assets/urbanfleet-logo-new.png";
+import bicycleImage from "@assets/generated_images/urbanfleet_bicycle_with_logo.png";
+import logoImage from "@assets/logo.png";
 
 // Magnetic Button Component
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -875,13 +876,14 @@ export default function Home() {
               Solutions
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Motorcycles, cars, vans, and trucks - our branded fleet scales to meet any business requirement.
+              Cyclists, motorcycles, cars, vans, and trucks - our branded fleet scales to meet any business requirement.
             </p>
           </motion.div>
 
           {/* Fleet Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
             {[
+              { icon: Bike, title: "Cyclists", desc: "Eco-friendly deliveries", stat: "200+ Cyclists", img: bicycleImage },
               { icon: Bike, title: "Motorcycles", desc: "Fast urban deliveries", stat: "500+ Bikes", img: heroImage },
               { icon: Car, title: "Cars", desc: "Premium deliveries", stat: "150+ Cars", img: carImage },
               { icon: Truck, title: "Vans", desc: "Medium cargo transport", stat: "100+ Vans", img: fleetImage },
@@ -918,6 +920,7 @@ export default function Home() {
           >
             <CarouselContent className="-ml-8">
               {[
+                { title: "Cyclist Fleet", desc: "Eco-friendly bicycle deliveries for urban areas.", img: bicycleImage, stat: "200+ Cyclists" },
                 { title: "Motorcycle Fleet", desc: "UrbanFleet branded bikes for fast urban deliveries.", img: heroImage, stat: "500+ Bikes" },
                 { title: "Car Fleet", desc: "Professional delivery cars for premium services.", img: carImage, stat: "150+ Cars" },
                 { title: "Van Fleet", desc: "Branded vans for medium-sized cargo transport.", img: fleetImage, stat: "100+ Vans" },

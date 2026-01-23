@@ -79,6 +79,7 @@ Total Drivers: ${data.totalDrivers}
 
 FLEET DETAILS
 -------------
+Bicycles: ${data.fleetBicycles}
 Motorcycles: ${data.fleetMotorcycles}
 Cars: ${data.fleetCars}
 Vans: ${data.fleetVans}

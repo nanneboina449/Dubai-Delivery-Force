@@ -39,6 +39,7 @@ const contractorFormSchema = z.object({
   phone: z.string().min(9, "Valid phone number is required"),
   tradeLicense: z.string().min(2, "Trade license number is required"),
   emirate: z.string().min(1, "Emirate is required"),
+  fleetBicycles: z.coerce.number().min(0).default(0),
   fleetMotorcycles: z.coerce.number().min(0).default(0),
   fleetCars: z.coerce.number().min(0).default(0),
   fleetVans: z.coerce.number().min(0).default(0),
@@ -53,7 +54,7 @@ const contractorFormSchema = z.object({
 
 type ContractorFormData = z.infer<typeof contractorFormSchema>;
 
-import logoImage from "@assets/urbanfleet-logo-new.png";
+import logoImage from "@assets/logo.png";
 
 const Logo = () => (
   <a href="/" className="flex items-center">
@@ -79,6 +80,7 @@ export default function ContractorApplication() {
       phone: "",
       tradeLicense: "",
       emirate: "",
+      fleetBicycles: 0,
       fleetMotorcycles: 0,
       fleetCars: 0,
       fleetVans: 0,
@@ -319,7 +321,21 @@ export default function ContractorApplication() {
               </h3>
               <p className="text-gray-400 mb-6">Tell us about the vehicles you own:</p>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div className="space-y-2">
+                  <Label className="text-gray-300 flex items-center gap-2">
+                    <Bike className="w-4 h-4" /> Bicycles
+                  </Label>
+                  <Input
+                    {...form.register("fleetBicycles", { valueAsNumber: true })}
+                    type="number"
+                    min="0"
+                    placeholder="0"
+                    className="bg-white/5 border-white/20 text-white placeholder:text-gray-500"
+                    data-testid="input-fleetBicycles"
+                  />
+                </div>
+
                 <div className="space-y-2">
                   <Label className="text-gray-300 flex items-center gap-2">
                     <Bike className="w-4 h-4" /> Motorcycles
