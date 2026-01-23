@@ -47,7 +47,7 @@ import techBg from "@assets/generated_images/abstract_tech_network_background_in
 import carImage from "@assets/generated_images/urbanfleet_car_van_fleet.png";
 import truckImage from "@assets/generated_images/urbanfleet_fleet_collage.png";
 import bicycleImage from "@assets/generated_images/urbanfleet_bicycle_with_logo.png";
-import teamImage from "@assets/generated_images/urbanfleet_fleet_collage.png";
+import teamImage from "@assets/generated_images/urbanfleet_team_members.png";
 import logoImage from "@assets/logo.png";
 
 // Magnetic Button Component
@@ -811,9 +811,11 @@ export default function Home() {
                 ))}
               </div>
               
-              <MagneticButton className="flex items-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-8 py-4 text-lg font-bold shadow-2xl shadow-primary/40 transition-all">
-                Apply to Join <ArrowRight className="w-5 h-5" />
-              </MagneticButton>
+              <Link href="/rider-application">
+                <MagneticButton className="flex items-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-8 py-4 text-lg font-bold shadow-2xl shadow-primary/40 transition-all">
+                  Apply to Join <ArrowRight className="w-5 h-5" />
+                </MagneticButton>
+              </Link>
             </motion.div>
             
             {/* Image on RIGHT */}
