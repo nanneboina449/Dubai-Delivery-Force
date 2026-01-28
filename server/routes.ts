@@ -305,15 +305,20 @@ export async function registerRoutes(
   // Update business inquiry
   app.patch("/api/admin/business-inquiries/:id", async (req, res) => {
     try {
-      const validatedData = updateBusinessInquirySchema.parse(req.body);
+      // Normalize status to lowercase if provided
+      const normalizedBody = {
+        ...req.body,
+        status: req.body.status?.toLowerCase()
+      };
+      const validatedData = updateBusinessInquirySchema.parse(normalizedBody);
       const inquiry = await storage.updateBusinessInquiry(req.params.id, validatedData);
       if (!inquiry) {
         return res.status(404).json({ error: "Inquiry not found" });
       }
       res.json(inquiry);
-    } catch (error) {
-      console.error("Update inquiry error:", error);
-      res.status(400).json({ error: "Failed to update inquiry" });
+    } catch (error: any) {
+      console.error("Update inquiry error:", error?.message || error);
+      res.status(400).json({ error: error?.message || "Failed to update inquiry" });
     }
   });
 
