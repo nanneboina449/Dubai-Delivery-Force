@@ -1,4 +1,4 @@
-import { Link, useLocation } from "wouter";
+import { Link, useLocation, Redirect } from "wouter";
 import { 
   LayoutDashboard, 
   Users, 
@@ -9,6 +9,7 @@ import {
   X
 } from "lucide-react";
 import { useState } from "react";
+import { useAdminAuth } from "./login";
 
 const navItems = [
   { path: "/admin", label: "Dashboard", icon: LayoutDashboard },
@@ -22,8 +23,18 @@ interface AdminLayoutProps {
 }
 
 export default function AdminLayout({ children }: AdminLayoutProps) {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { isAuthenticated, logout } = useAdminAuth();
+
+  if (!isAuthenticated) {
+    return <Redirect to="/admin/login" />;
+  }
+
+  const handleLogout = () => {
+    logout();
+    setLocation("/admin/login");
+  };
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -71,13 +82,20 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           })}
         </nav>
 
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10 space-y-2">
           <Link href="/" data-testid="link-back-to-site">
             <div className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-white/10 transition-colors cursor-pointer">
-              <LogOut size={20} />
               <span>Back to Site</span>
             </div>
           </Link>
+          <button 
+            onClick={handleLogout}
+            className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-white/10 transition-colors cursor-pointer w-full"
+            data-testid="button-admin-logout"
+          >
+            <LogOut size={20} />
+            <span>Logout</span>
+          </button>
         </div>
       </aside>
 

@@ -13,6 +13,7 @@ import AdminDashboard from "@/pages/admin/dashboard";
 import RidersAdmin from "@/pages/admin/riders";
 import ContractorsAdmin from "@/pages/admin/contractors";
 import InquiriesAdmin from "@/pages/admin/inquiries";
+import AdminLogin from "@/pages/admin/login";
 
 function Router() {
   return (
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/apply/rider" component={RiderApplication} />
       <Route path="/apply/contractor" component={ContractorApplication} />
       <Route path="/contact/business" component={BusinessInquiry} />
+      <Route path="/admin/login" component={AdminLogin} />
       <Route path="/admin" component={AdminDashboard} />
       <Route path="/admin/riders" component={RidersAdmin} />
       <Route path="/admin/contractors" component={ContractorsAdmin} />
