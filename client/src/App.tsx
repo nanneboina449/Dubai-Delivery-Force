@@ -14,6 +14,11 @@ import RidersAdmin from "@/pages/admin/riders";
 import ContractorsAdmin from "@/pages/admin/contractors";
 import InquiriesAdmin from "@/pages/admin/inquiries";
 import AdminLogin from "@/pages/admin/login";
+import DriversAdmin from "@/pages/admin/drivers";
+import ActiveContractorsAdmin from "@/pages/admin/active-contractors";
+import FleetVehiclesAdmin from "@/pages/admin/fleet-vehicles";
+import BusinessClientsAdmin from "@/pages/admin/business-clients";
+import AssignmentsAdmin from "@/pages/admin/assignments";
 
 function Router() {
   return (
@@ -28,6 +33,11 @@ function Router() {
       <Route path="/admin/riders" component={RidersAdmin} />
       <Route path="/admin/contractors" component={ContractorsAdmin} />
       <Route path="/admin/inquiries" component={InquiriesAdmin} />
+      <Route path="/admin/drivers" component={DriversAdmin} />
+      <Route path="/admin/active-contractors" component={ActiveContractorsAdmin} />
+      <Route path="/admin/fleet-vehicles" component={FleetVehiclesAdmin} />
+      <Route path="/admin/business-clients" component={BusinessClientsAdmin} />
+      <Route path="/admin/assignments" component={AssignmentsAdmin} />
       <Route component={NotFound} />
     </Switch>
   );
