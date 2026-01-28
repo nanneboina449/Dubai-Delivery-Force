@@ -155,3 +155,155 @@ export const insertAdminUserSchema = createInsertSchema(adminUsers).omit({
 
 export type InsertAdminUser = z.infer<typeof insertAdminUserSchema>;
 export type AdminUser = typeof adminUsers.$inferSelect;
+
+// ============ FLEET MANAGEMENT ENTITIES ============
+
+// Active Drivers (onboarded riders)
+export const driverStatuses = ["active", "inactive", "suspended", "terminated"] as const;
+export type DriverStatus = typeof driverStatuses[number];
+
+export const drivers = pgTable("drivers", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  applicationId: varchar("application_id"),
+  fullName: text("full_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  nationality: text("nationality").notNull(),
+  emirate: text("emirate").notNull(),
+  visaStatus: text("visa_status").notNull(),
+  licenseNumber: text("license_number"),
+  licenseType: text("license_type"),
+  licenseExpiry: text("license_expiry"),
+  vehicleType: text("vehicle_type").notNull(),
+  employeeId: text("employee_id"),
+  joiningDate: text("joining_date"),
+  contractorId: varchar("contractor_id"),
+  status: text("status").default("active").notNull(),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const insertDriverSchema = createInsertSchema(drivers).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export type InsertDriver = z.infer<typeof insertDriverSchema>;
+export type Driver = typeof drivers.$inferSelect;
+
+// Active Contractors
+export const activeContractors = pgTable("active_contractors", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  applicationId: varchar("application_id"),
+  companyName: text("company_name").notNull(),
+  contactPerson: text("contact_person").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  tradeLicense: text("trade_license").notNull(),
+  emirate: text("emirate").notNull(),
+  contractStartDate: text("contract_start_date"),
+  contractEndDate: text("contract_end_date"),
+  insuranceCoverage: text("insurance_coverage"),
+  insuranceExpiry: text("insurance_expiry"),
+  status: text("status").default("active").notNull(),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const insertActiveContractorSchema = createInsertSchema(activeContractors).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export type InsertActiveContractor = z.infer<typeof insertActiveContractorSchema>;
+export type ActiveContractor = typeof activeContractors.$inferSelect;
+
+// Fleet Vehicles
+export const vehicleTypes = ["motorcycle", "car", "van", "truck", "bicycle"] as const;
+export const vehicleOwnership = ["company", "contractor", "driver"] as const;
+export const vehicleStatuses = ["available", "assigned", "maintenance", "retired"] as const;
+
+export const fleetVehicles = pgTable("fleet_vehicles", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  vehicleType: text("vehicle_type").notNull(),
+  make: text("make"),
+  model: text("model"),
+  year: integer("year"),
+  plateNumber: text("plate_number").notNull(),
+  registrationExpiry: text("registration_expiry"),
+  insuranceExpiry: text("insurance_expiry"),
+  ownership: text("ownership").default("company").notNull(),
+  contractorId: varchar("contractor_id"),
+  driverId: varchar("driver_id"),
+  assignedDriverId: varchar("assigned_driver_id"),
+  status: text("status").default("available").notNull(),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const insertFleetVehicleSchema = createInsertSchema(fleetVehicles).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export type InsertFleetVehicle = z.infer<typeof insertFleetVehicleSchema>;
+export type FleetVehicle = typeof fleetVehicles.$inferSelect;
+
+// Business Clients (approved businesses)
+export const businessClients = pgTable("business_clients", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  inquiryId: varchar("inquiry_id"),
+  companyName: text("company_name").notNull(),
+  contactPerson: text("contact_person").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  industry: text("industry").notNull(),
+  emirate: text("emirate").notNull(),
+  address: text("address"),
+  contractStartDate: text("contract_start_date"),
+  contractEndDate: text("contract_end_date"),
+  deliveryVolume: text("delivery_volume"),
+  status: text("status").default("active").notNull(),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const insertBusinessClientSchema = createInsertSchema(businessClients).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export type InsertBusinessClient = z.infer<typeof insertBusinessClientSchema>;
+export type BusinessClient = typeof businessClients.$inferSelect;
+
+// Driver-Business Assignments
+export const driverAssignments = pgTable("driver_assignments", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  driverId: varchar("driver_id").notNull(),
+  businessClientId: varchar("business_client_id").notNull(),
+  vehicleId: varchar("vehicle_id"),
+  startDate: text("start_date").notNull(),
+  endDate: text("end_date"),
+  shiftType: text("shift_type"),
+  status: text("status").default("active").notNull(),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const insertDriverAssignmentSchema = createInsertSchema(driverAssignments).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export type InsertDriverAssignment = z.infer<typeof insertDriverAssignmentSchema>;
+export type DriverAssignment = typeof driverAssignments.$inferSelect;
