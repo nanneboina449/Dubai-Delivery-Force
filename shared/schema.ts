@@ -180,6 +180,35 @@ export const drivers = pgTable("drivers", {
   contractorId: varchar("contractor_id"),
   status: text("status").default("active").notNull(),
   notes: text("notes"),
+  // Salary & Compensation
+  basicSalary: integer("basic_salary"),
+  housingAllowance: integer("housing_allowance"),
+  transportAllowance: integer("transport_allowance"),
+  otherAllowance: integer("other_allowance"),
+  paymentMethod: text("payment_method"), // bank_transfer, cash, wps
+  // Visa & Immigration Details
+  visaNumber: text("visa_number"),
+  visaExpiry: text("visa_expiry"),
+  visaFileNumber: text("visa_file_number"),
+  laborCardNumber: text("labor_card_number"),
+  laborCardExpiry: text("labor_card_expiry"),
+  // Identity Documents
+  passportNumber: text("passport_number"),
+  passportExpiry: text("passport_expiry"),
+  emiratesId: text("emirates_id"),
+  emiratesIdExpiry: text("emirates_id_expiry"),
+  // Address
+  fullAddress: text("full_address"),
+  city: text("city"),
+  postalCode: text("postal_code"),
+  // Emergency Contact
+  emergencyContactName: text("emergency_contact_name"),
+  emergencyContactPhone: text("emergency_contact_phone"),
+  emergencyContactRelation: text("emergency_contact_relation"),
+  // Bank Details
+  bankName: text("bank_name"),
+  bankAccountNumber: text("bank_account_number"),
+  bankIban: text("bank_iban"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
@@ -202,6 +231,7 @@ export const activeContractors = pgTable("active_contractors", {
   email: text("email").notNull(),
   phone: text("phone").notNull(),
   tradeLicense: text("trade_license").notNull(),
+  tradeLicenseExpiry: text("trade_license_expiry"),
   emirate: text("emirate").notNull(),
   contractStartDate: text("contract_start_date"),
   contractEndDate: text("contract_end_date"),
@@ -209,6 +239,24 @@ export const activeContractors = pgTable("active_contractors", {
   insuranceExpiry: text("insurance_expiry"),
   status: text("status").default("active").notNull(),
   notes: text("notes"),
+  // Office Address
+  officeAddress: text("office_address"),
+  officeCity: text("office_city"),
+  officePostalCode: text("office_postal_code"),
+  // Additional Contact
+  secondaryContactName: text("secondary_contact_name"),
+  secondaryContactPhone: text("secondary_contact_phone"),
+  secondaryContactEmail: text("secondary_contact_email"),
+  // Bank Details for Payments
+  bankName: text("bank_name"),
+  bankAccountNumber: text("bank_account_number"),
+  bankIban: text("bank_iban"),
+  bankSwiftCode: text("bank_swift_code"),
+  // Contract Terms
+  commissionRate: integer("commission_rate"), // percentage
+  paymentTerms: text("payment_terms"), // net_30, net_15, weekly
+  fleetSize: integer("fleet_size"),
+  driverCount: integer("driver_count"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
@@ -271,6 +319,26 @@ export const businessClients = pgTable("business_clients", {
   deliveryVolume: text("delivery_volume"),
   status: text("status").default("active").notNull(),
   notes: text("notes"),
+  // Company Details
+  tradeLicense: text("trade_license"),
+  tradeLicenseExpiry: text("trade_license_expiry"),
+  vatNumber: text("vat_number"),
+  // Billing Details
+  billingContactName: text("billing_contact_name"),
+  billingContactEmail: text("billing_contact_email"),
+  billingContactPhone: text("billing_contact_phone"),
+  billingAddress: text("billing_address"),
+  // Payment Terms
+  paymentTerms: text("payment_terms"), // net_30, net_15, prepaid
+  creditLimit: integer("credit_limit"),
+  // Operations Contact
+  operationsContactName: text("operations_contact_name"),
+  operationsContactEmail: text("operations_contact_email"),
+  operationsContactPhone: text("operations_contact_phone"),
+  // Service Terms
+  serviceType: text("service_type"), // dedicated, on_demand, hybrid
+  driversRequired: integer("drivers_required"),
+  operatingHours: text("operating_hours"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
