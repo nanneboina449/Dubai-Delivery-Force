@@ -9,6 +9,10 @@ import RiderApplication from "@/pages/rider-application";
 import ContractorApplication from "@/pages/contractor-application";
 import BusinessInquiry from "@/pages/business-inquiry";
 import Team from "@/pages/team";
+import AdminDashboard from "@/pages/admin/dashboard";
+import RidersAdmin from "@/pages/admin/riders";
+import ContractorsAdmin from "@/pages/admin/contractors";
+import InquiriesAdmin from "@/pages/admin/inquiries";
 
 function Router() {
   return (
@@ -18,6 +22,10 @@ function Router() {
       <Route path="/apply/rider" component={RiderApplication} />
       <Route path="/apply/contractor" component={ContractorApplication} />
       <Route path="/contact/business" component={BusinessInquiry} />
+      <Route path="/admin" component={AdminDashboard} />
+      <Route path="/admin/riders" component={RidersAdmin} />
+      <Route path="/admin/contractors" component={ContractorsAdmin} />
+      <Route path="/admin/inquiries" component={InquiriesAdmin} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -164,12 +164,49 @@ TRUNCATE business_inquiries;
 
 ---
 
+---
+
+## 5. Admin Backend Schema Updates (Jan 28, 2026)
+
+Add status and admin notes fields to all application tables:
+
+```sql
+-- Add status and admin fields to rider_applications
+ALTER TABLE rider_applications 
+ADD COLUMN IF NOT EXISTS status TEXT DEFAULT 'pending' NOT NULL,
+ADD COLUMN IF NOT EXISTS admin_notes TEXT,
+ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT NOW() NOT NULL;
+
+-- Add status and admin fields to contractor_applications
+ALTER TABLE contractor_applications 
+ADD COLUMN IF NOT EXISTS status TEXT DEFAULT 'pending' NOT NULL,
+ADD COLUMN IF NOT EXISTS admin_notes TEXT,
+ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT NOW() NOT NULL;
+
+-- Add status and admin fields to business_inquiries
+ALTER TABLE business_inquiries 
+ADD COLUMN IF NOT EXISTS status TEXT DEFAULT 'pending' NOT NULL,
+ADD COLUMN IF NOT EXISTS admin_notes TEXT,
+ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT NOW() NOT NULL;
+
+-- Create admin_users table
+CREATE TABLE IF NOT EXISTS admin_users (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    username TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW() NOT NULL
+);
+```
+
+---
+
 ## Script History
 
 | Date | Script | Purpose |
 |------|--------|---------|
 | Jan 28, 2026 | Table Creation | Initial database setup |
 | Jan 28, 2026 | Disable RLS | Fix form submission errors |
+| Jan 28, 2026 | Admin Schema | Add status, admin_notes, updated_at fields |
 
 ---
 
