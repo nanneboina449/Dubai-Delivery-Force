@@ -34,7 +34,7 @@ export default function ContractorsAdmin() {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, status, adminNotes }: { id: string; status?: string; adminNotes?: string }) => {
-      return apiRequest("PATCH", `/api/admin/contractor-applications/${id}`, { status, adminNotes });
+      return apiRequest("PATCH", `/api/admin/contractor-applications?id=${id}`, { status, adminNotes });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/contractor-applications"] });

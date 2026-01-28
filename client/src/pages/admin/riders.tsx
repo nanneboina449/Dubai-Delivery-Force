@@ -34,7 +34,7 @@ export default function RidersAdmin() {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, status, adminNotes }: { id: string; status?: string; adminNotes?: string }) => {
-      return apiRequest("PATCH", `/api/admin/rider-applications/${id}`, { status, adminNotes });
+      return apiRequest("PATCH", `/api/admin/rider-applications?id=${id}`, { status, adminNotes });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/rider-applications"] });

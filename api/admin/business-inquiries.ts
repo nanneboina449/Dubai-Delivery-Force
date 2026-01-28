@@ -11,40 +11,40 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (req.method === 'GET') {
     try {
-      const { data, error } = await supabase
-        .from('business_inquiries')
-        .select('*')
-        .eq('id', id)
-        .single();
-
-      if (error) throw error;
-      if (!data) return res.status(404).json({ error: 'Inquiry not found' });
-
-      return res.status(200).json(data);
+      if (id) {
+        const { data, error } = await supabase
+          .from('business_inquiries')
+          .select('*')
+          .eq('id', id)
+          .single();
+        if (error) throw error;
+        if (!data) return res.status(404).json({ error: 'Inquiry not found' });
+        return res.status(200).json(data);
+      } else {
+        const { data, error } = await supabase
+          .from('business_inquiries')
+          .select('*')
+          .order('created_at', { ascending: false });
+        if (error) throw error;
+        return res.status(200).json(data);
+      }
     } catch (error) {
-      console.error('Get inquiry error:', error);
-      return res.status(500).json({ error: 'Failed to get inquiry' });
+      console.error('Get inquiries error:', error);
+      return res.status(500).json({ error: 'Failed to get inquiries' });
     }
   }
 
-  if (req.method === 'PATCH') {
+  if (req.method === 'PATCH' && id) {
     try {
       const { status, adminNotes } = req.body;
-      
       const { data, error } = await supabase
         .from('business_inquiries')
-        .update({
-          status,
-          admin_notes: adminNotes,
-          updated_at: new Date().toISOString()
-        })
+        .update({ status, admin_notes: adminNotes, updated_at: new Date().toISOString() })
         .eq('id', id)
         .select()
         .single();
-
       if (error) throw error;
       if (!data) return res.status(404).json({ error: 'Inquiry not found' });
-
       return res.status(200).json(data);
     } catch (error) {
       console.error('Update inquiry error:', error);

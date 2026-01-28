@@ -1,0 +1,62 @@
+14:41:32.000 Running build in Washington, D.C., USA (East) – iad1
+14:41:32.001 Build machine configuration: 2 cores, 8 GB
+14:41:32.190 Cloning github.com/nanneboina449/Dubai-Delivery-Force (Branch: main, Commit: 4a1e6ea)
+14:41:36.920 Cloning completed: 4.730s
+14:41:37.017 Restored build cache from previous deployment (2ZBMEkRrpsqGRfQASv8yffxDgACK)
+14:41:37.295 Running "vercel build"
+14:41:38.296 Vercel CLI 50.5.2
+14:41:39.007 Installing dependencies...
+14:41:41.235 
+14:41:41.236 added 2 packages in 2s
+14:41:41.237 
+14:41:41.237 77 packages are looking for funding
+14:41:41.238   run `npm fund` for details
+14:41:41.369 
+14:41:41.370 > rest-express@1.0.0 build
+14:41:41.370 > tsx script/build.ts
+14:41:41.371 
+14:41:42.456 building client...
+14:41:42.740 [36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+14:41:42.999 transforming...
+14:41:47.662 [32m✓[39m 2274 modules transformed.
+14:41:48.213 rendering chunks...
+14:41:48.222 [meta-images] no Replit deployment domain found, skipping meta tag updates
+14:41:48.241 computing gzip size...
+14:41:48.267 [2m../dist/public/[22m[32mindex.html                                                               [39m[1m[2m    1.62 kB[22m[1m[22m[2m │ gzip:   0.65 kB[22m
+14:41:48.268 [2m../dist/public/[22m[2massets/[22m[32mabstract_tech_network_background_in_orange_and_navy-BTDgzKEK.png  [39m[1m[2m1,356.21 kB[22m[1m[22m
+14:41:48.268 [2m../dist/public/[22m[2massets/[22m[32mlogo-C8eeqz4p.png                                                 [39m[1m[2m1,433.53 kB[22m[1m[22m
+14:41:48.269 [2m../dist/public/[22m[2massets/[22m[32murbanfleet_full_fleet-D4W0-R59.png                                [39m[1m[2m1,665.67 kB[22m[1m[22m
+14:41:48.269 [2m../dist/public/[22m[2massets/[22m[32murbanfleet_fleet_collage-DK2JvoI6.png                             [39m[1m[2m1,812.62 kB[22m[1m[22m
+14:41:48.269 [2m../dist/public/[22m[2massets/[22m[32murbanfleet_car_van_fleet-M7w2ODpp.png                             [39m[1m[2m1,936.81 kB[22m[1m[22m
+14:41:48.269 [2m../dist/public/[22m[2massets/[22m[32murbanfleet_motorcycle_with_logo-C3qGXl3c.png                      [39m[1m[2m2,007.71 kB[22m[1m[22m
+14:41:48.269 [2m../dist/public/[22m[2massets/[22m[32murbanfleet_team_members-B0kZIdrW.png                              [39m[1m[2m2,008.71 kB[22m[1m[22m
+14:41:48.270 [2m../dist/public/[22m[2massets/[22m[32murbanfleet_bicycle_with_logo-IKEYPpsE.png                         [39m[1m[2m2,029.47 kB[22m[1m[22m
+14:41:48.270 [2m../dist/public/[22m[2massets/[22m[35mindex-CvQ5yAaN.css                                                [39m[1m[2m  120.85 kB[22m[1m[22m[2m │ gzip:  18.54 kB[22m
+14:41:48.270 [2m../dist/public/[22m[2massets/[22m[36mindex-o0GUPkEs.js                                                 [39m[1m[33m  737.99 kB[39m[22m[2m │ gzip: 220.22 kB[22m
+14:41:48.270 [32m✓ built in 5.31s[39m
+14:41:48.270 building server...
+14:41:48.271 [33m
+14:41:48.271 (!) Some chunks are larger than 500 kB after minification. Consider:
+14:41:48.271 - Using dynamic import() to code-split the application
+14:41:48.271 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+14:41:48.272 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+14:41:48.521 
+14:41:48.529   dist/index.cjs  1018.6kb
+14:41:48.529 
+14:41:48.530 ⚡ Done in 215ms
+14:41:49.021 Using TypeScript 5.6.3 (local user-provided)
+14:41:54.048 Using TypeScript 5.6.3 (local user-provided)
+14:41:54.706 Using TypeScript 5.6.3 (local user-provided)
+14:41:55.261 Using TypeScript 5.6.3 (local user-provided)
+14:41:55.811 Using TypeScript 5.6.3 (local user-provided)
+14:41:56.354 Using TypeScript 5.6.3 (local user-provided)
+14:41:56.872 Using TypeScript 5.6.3 (local user-provided)
+14:41:57.464 Using TypeScript 5.6.3 (local user-provided)
+14:41:58.233 Using TypeScript 5.6.3 (local user-provided)
+14:41:58.739 Using TypeScript 5.6.3 (local user-provided)
+14:41:59.258 Using TypeScript 5.6.3 (local user-provided)
+14:41:59.740 Using TypeScript 5.6.3 (local user-provided)
+14:42:00.207 Using TypeScript 5.6.3 (local user-provided)
+14:42:00.685 Build Completed in /vercel/output [22s]
+14:42:00.876 Deploying outputs...
+14:42:02.276 Error: No more than 12 Serverless Functions can be added to a Deployment on the Hobby plan. Create a team (Pro plan) to deploy more. Learn More: https://vercel.link/function-count-limit
