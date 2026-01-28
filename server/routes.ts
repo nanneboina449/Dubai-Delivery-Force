@@ -8,7 +8,12 @@ import {
   insertBusinessInquirySchema,
   updateRiderApplicationSchema,
   updateContractorApplicationSchema,
-  updateBusinessInquirySchema
+  updateBusinessInquirySchema,
+  insertDriverSchema,
+  insertActiveContractorSchema,
+  insertFleetVehicleSchema,
+  insertBusinessClientSchema,
+  insertDriverAssignmentSchema
 } from "@shared/schema";
 
 export async function registerRoutes(
@@ -249,6 +254,278 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Update inquiry error:", error);
       res.status(400).json({ error: "Failed to update inquiry" });
+    }
+  });
+
+  // ============ FLEET MANAGEMENT ROUTES ============
+
+  // Drivers CRUD
+  app.get("/api/admin/drivers", async (req, res) => {
+    try {
+      const drivers = await storage.getDrivers();
+      res.json(drivers);
+    } catch (error) {
+      console.error("Get drivers error:", error);
+      res.status(500).json({ error: "Failed to get drivers" });
+    }
+  });
+
+  app.get("/api/admin/drivers/:id", async (req, res) => {
+    try {
+      const driver = await storage.getDriver(req.params.id);
+      if (!driver) return res.status(404).json({ error: "Driver not found" });
+      res.json(driver);
+    } catch (error) {
+      console.error("Get driver error:", error);
+      res.status(500).json({ error: "Failed to get driver" });
+    }
+  });
+
+  app.post("/api/admin/drivers", async (req, res) => {
+    try {
+      const validatedData = insertDriverSchema.parse(req.body);
+      const driver = await storage.createDriver(validatedData);
+      res.status(201).json(driver);
+    } catch (error) {
+      console.error("Create driver error:", error);
+      res.status(400).json({ error: "Failed to create driver" });
+    }
+  });
+
+  app.patch("/api/admin/drivers/:id", async (req, res) => {
+    try {
+      const driver = await storage.updateDriver(req.params.id, req.body);
+      if (!driver) return res.status(404).json({ error: "Driver not found" });
+      res.json(driver);
+    } catch (error) {
+      console.error("Update driver error:", error);
+      res.status(400).json({ error: "Failed to update driver" });
+    }
+  });
+
+  app.delete("/api/admin/drivers/:id", async (req, res) => {
+    try {
+      await storage.deleteDriver(req.params.id);
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Delete driver error:", error);
+      res.status(500).json({ error: "Failed to delete driver" });
+    }
+  });
+
+  // Active Contractors CRUD
+  app.get("/api/admin/active-contractors", async (req, res) => {
+    try {
+      const contractors = await storage.getActiveContractors();
+      res.json(contractors);
+    } catch (error) {
+      console.error("Get active contractors error:", error);
+      res.status(500).json({ error: "Failed to get contractors" });
+    }
+  });
+
+  app.get("/api/admin/active-contractors/:id", async (req, res) => {
+    try {
+      const contractor = await storage.getActiveContractor(req.params.id);
+      if (!contractor) return res.status(404).json({ error: "Contractor not found" });
+      res.json(contractor);
+    } catch (error) {
+      console.error("Get active contractor error:", error);
+      res.status(500).json({ error: "Failed to get contractor" });
+    }
+  });
+
+  app.post("/api/admin/active-contractors", async (req, res) => {
+    try {
+      const validatedData = insertActiveContractorSchema.parse(req.body);
+      const contractor = await storage.createActiveContractor(validatedData);
+      res.status(201).json(contractor);
+    } catch (error) {
+      console.error("Create active contractor error:", error);
+      res.status(400).json({ error: "Failed to create contractor" });
+    }
+  });
+
+  app.patch("/api/admin/active-contractors/:id", async (req, res) => {
+    try {
+      const contractor = await storage.updateActiveContractor(req.params.id, req.body);
+      if (!contractor) return res.status(404).json({ error: "Contractor not found" });
+      res.json(contractor);
+    } catch (error) {
+      console.error("Update active contractor error:", error);
+      res.status(400).json({ error: "Failed to update contractor" });
+    }
+  });
+
+  app.delete("/api/admin/active-contractors/:id", async (req, res) => {
+    try {
+      await storage.deleteActiveContractor(req.params.id);
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Delete active contractor error:", error);
+      res.status(500).json({ error: "Failed to delete contractor" });
+    }
+  });
+
+  // Fleet Vehicles CRUD
+  app.get("/api/admin/fleet-vehicles", async (req, res) => {
+    try {
+      const vehicles = await storage.getFleetVehicles();
+      res.json(vehicles);
+    } catch (error) {
+      console.error("Get fleet vehicles error:", error);
+      res.status(500).json({ error: "Failed to get vehicles" });
+    }
+  });
+
+  app.get("/api/admin/fleet-vehicles/:id", async (req, res) => {
+    try {
+      const vehicle = await storage.getFleetVehicle(req.params.id);
+      if (!vehicle) return res.status(404).json({ error: "Vehicle not found" });
+      res.json(vehicle);
+    } catch (error) {
+      console.error("Get fleet vehicle error:", error);
+      res.status(500).json({ error: "Failed to get vehicle" });
+    }
+  });
+
+  app.post("/api/admin/fleet-vehicles", async (req, res) => {
+    try {
+      const validatedData = insertFleetVehicleSchema.parse(req.body);
+      const vehicle = await storage.createFleetVehicle(validatedData);
+      res.status(201).json(vehicle);
+    } catch (error) {
+      console.error("Create fleet vehicle error:", error);
+      res.status(400).json({ error: "Failed to create vehicle" });
+    }
+  });
+
+  app.patch("/api/admin/fleet-vehicles/:id", async (req, res) => {
+    try {
+      const vehicle = await storage.updateFleetVehicle(req.params.id, req.body);
+      if (!vehicle) return res.status(404).json({ error: "Vehicle not found" });
+      res.json(vehicle);
+    } catch (error) {
+      console.error("Update fleet vehicle error:", error);
+      res.status(400).json({ error: "Failed to update vehicle" });
+    }
+  });
+
+  app.delete("/api/admin/fleet-vehicles/:id", async (req, res) => {
+    try {
+      await storage.deleteFleetVehicle(req.params.id);
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Delete fleet vehicle error:", error);
+      res.status(500).json({ error: "Failed to delete vehicle" });
+    }
+  });
+
+  // Business Clients CRUD
+  app.get("/api/admin/business-clients", async (req, res) => {
+    try {
+      const clients = await storage.getBusinessClients();
+      res.json(clients);
+    } catch (error) {
+      console.error("Get business clients error:", error);
+      res.status(500).json({ error: "Failed to get clients" });
+    }
+  });
+
+  app.get("/api/admin/business-clients/:id", async (req, res) => {
+    try {
+      const client = await storage.getBusinessClient(req.params.id);
+      if (!client) return res.status(404).json({ error: "Client not found" });
+      res.json(client);
+    } catch (error) {
+      console.error("Get business client error:", error);
+      res.status(500).json({ error: "Failed to get client" });
+    }
+  });
+
+  app.post("/api/admin/business-clients", async (req, res) => {
+    try {
+      const validatedData = insertBusinessClientSchema.parse(req.body);
+      const client = await storage.createBusinessClient(validatedData);
+      res.status(201).json(client);
+    } catch (error) {
+      console.error("Create business client error:", error);
+      res.status(400).json({ error: "Failed to create client" });
+    }
+  });
+
+  app.patch("/api/admin/business-clients/:id", async (req, res) => {
+    try {
+      const client = await storage.updateBusinessClient(req.params.id, req.body);
+      if (!client) return res.status(404).json({ error: "Client not found" });
+      res.json(client);
+    } catch (error) {
+      console.error("Update business client error:", error);
+      res.status(400).json({ error: "Failed to update client" });
+    }
+  });
+
+  app.delete("/api/admin/business-clients/:id", async (req, res) => {
+    try {
+      await storage.deleteBusinessClient(req.params.id);
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Delete business client error:", error);
+      res.status(500).json({ error: "Failed to delete client" });
+    }
+  });
+
+  // Driver Assignments CRUD
+  app.get("/api/admin/driver-assignments", async (req, res) => {
+    try {
+      const assignments = await storage.getDriverAssignments();
+      res.json(assignments);
+    } catch (error) {
+      console.error("Get driver assignments error:", error);
+      res.status(500).json({ error: "Failed to get assignments" });
+    }
+  });
+
+  app.get("/api/admin/driver-assignments/:id", async (req, res) => {
+    try {
+      const assignment = await storage.getDriverAssignment(req.params.id);
+      if (!assignment) return res.status(404).json({ error: "Assignment not found" });
+      res.json(assignment);
+    } catch (error) {
+      console.error("Get driver assignment error:", error);
+      res.status(500).json({ error: "Failed to get assignment" });
+    }
+  });
+
+  app.post("/api/admin/driver-assignments", async (req, res) => {
+    try {
+      const validatedData = insertDriverAssignmentSchema.parse(req.body);
+      const assignment = await storage.createDriverAssignment(validatedData);
+      res.status(201).json(assignment);
+    } catch (error) {
+      console.error("Create driver assignment error:", error);
+      res.status(400).json({ error: "Failed to create assignment" });
+    }
+  });
+
+  app.patch("/api/admin/driver-assignments/:id", async (req, res) => {
+    try {
+      const assignment = await storage.updateDriverAssignment(req.params.id, req.body);
+      if (!assignment) return res.status(404).json({ error: "Assignment not found" });
+      res.json(assignment);
+    } catch (error) {
+      console.error("Update driver assignment error:", error);
+      res.status(400).json({ error: "Failed to update assignment" });
+    }
+  });
+
+  app.delete("/api/admin/driver-assignments/:id", async (req, res) => {
+    try {
+      await storage.deleteDriverAssignment(req.params.id);
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Delete driver assignment error:", error);
+      res.status(500).json({ error: "Failed to delete assignment" });
     }
   });
 
