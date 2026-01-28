@@ -58,7 +58,7 @@ export interface IStorage {
   createAdminUser(user: InsertAdminUser): Promise<AdminUser>;
   getAdminUsers(): Promise<AdminUser[]>;
   
-  getDashboardStats(): Promise<{ riders: number; contractors: number; inquiries: number; pending: number }>;
+  getDashboardStats(): Promise<{ riders: number; contractors: number; inquiries: number; pending: number; activeDrivers: number; activeContractors: number; fleetVehicles: number; businessClients: number }>;
 }
 
 export class DatabaseStorage implements IStorage {
