@@ -146,51 +146,51 @@ export default function InquiriesAdmin() {
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <label className="text-sm font-medium text-gray-500">Company Name</label>
-                              <p className="font-medium">{selectedInquiry.companyName}</p>
+                              <p className="font-medium">{selectedInquiry.companyName || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Contact Person</label>
-                              <p>{selectedInquiry.contactPerson}</p>
+                              <p>{selectedInquiry.contactPerson || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Email</label>
-                              <p>{selectedInquiry.email}</p>
+                              <p>{selectedInquiry.email || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Phone</label>
-                              <p>{selectedInquiry.phone}</p>
+                              <p>{selectedInquiry.phone || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Industry</label>
-                              <p>{selectedInquiry.industry}</p>
+                              <p>{selectedInquiry.industry || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Company Size</label>
-                              <p>{selectedInquiry.companySize}</p>
+                              <p>{selectedInquiry.companySize || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Emirate</label>
-                              <p>{selectedInquiry.emirate}</p>
+                              <p>{selectedInquiry.emirate || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Delivery Volume</label>
-                              <p>{selectedInquiry.deliveryVolume}</p>
+                              <p>{selectedInquiry.deliveryVolume || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Vehicle Types Needed</label>
-                              <p>{selectedInquiry.vehicleTypesNeeded}</p>
+                              <p>{selectedInquiry.vehicleTypesNeeded || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Riders Needed</label>
-                              <p>{selectedInquiry.ridersNeeded}</p>
+                              <p>{selectedInquiry.ridersNeeded ?? "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Start Date</label>
-                              <p>{selectedInquiry.startDate}</p>
+                              <p>{selectedInquiry.startDate || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Contract Duration</label>
-                              <p>{selectedInquiry.contractDuration}</p>
+                              <p>{selectedInquiry.contractDuration || "N/A"}</p>
                             </div>
                           </div>
 

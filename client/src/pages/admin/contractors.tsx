@@ -147,35 +147,35 @@ export default function ContractorsAdmin() {
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <label className="text-sm font-medium text-gray-500">Company Name</label>
-                              <p className="font-medium">{selectedContractor.companyName}</p>
+                              <p className="font-medium">{selectedContractor.companyName || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Contact Person</label>
-                              <p>{selectedContractor.contactPerson}</p>
+                              <p>{selectedContractor.contactPerson || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Email</label>
-                              <p>{selectedContractor.email}</p>
+                              <p>{selectedContractor.email || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Phone</label>
-                              <p>{selectedContractor.phone}</p>
+                              <p>{selectedContractor.phone || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Trade License</label>
-                              <p>{selectedContractor.tradeLicense}</p>
+                              <p>{selectedContractor.tradeLicense || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Emirate</label>
-                              <p>{selectedContractor.emirate}</p>
+                              <p>{selectedContractor.emirate || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Years in Business</label>
-                              <p>{selectedContractor.yearsInBusiness} years</p>
+                              <p>{selectedContractor.yearsInBusiness != null ? `${selectedContractor.yearsInBusiness} years` : "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Total Drivers</label>
-                              <p>{selectedContractor.totalDrivers}</p>
+                              <p>{selectedContractor.totalDrivers ?? "N/A"}</p>
                             </div>
                           </div>
 
@@ -183,19 +183,19 @@ export default function ContractorsAdmin() {
                             <label className="text-sm font-medium text-gray-500">Fleet Composition</label>
                             <div className="grid grid-cols-4 gap-2 mt-2">
                               <div className="p-3 bg-gray-50 rounded text-center">
-                                <p className="text-lg font-bold">{selectedContractor.fleetMotorcycles || 0}</p>
+                                <p className="text-lg font-bold">{selectedContractor.fleetMotorcycles ?? 0}</p>
                                 <p className="text-xs text-gray-500">Motorcycles</p>
                               </div>
                               <div className="p-3 bg-gray-50 rounded text-center">
-                                <p className="text-lg font-bold">{selectedContractor.fleetCars || 0}</p>
+                                <p className="text-lg font-bold">{selectedContractor.fleetCars ?? 0}</p>
                                 <p className="text-xs text-gray-500">Cars</p>
                               </div>
                               <div className="p-3 bg-gray-50 rounded text-center">
-                                <p className="text-lg font-bold">{selectedContractor.fleetVans || 0}</p>
+                                <p className="text-lg font-bold">{selectedContractor.fleetVans ?? 0}</p>
                                 <p className="text-xs text-gray-500">Vans</p>
                               </div>
                               <div className="p-3 bg-gray-50 rounded text-center">
-                                <p className="text-lg font-bold">{selectedContractor.fleetTrucks || 0}</p>
+                                <p className="text-lg font-bold">{selectedContractor.fleetTrucks ?? 0}</p>
                                 <p className="text-xs text-gray-500">Trucks</p>
                               </div>
                             </div>
@@ -204,7 +204,7 @@ export default function ContractorsAdmin() {
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <label className="text-sm font-medium text-gray-500">Insurance Coverage</label>
-                              <p>{selectedContractor.insuranceCoverage}</p>
+                              <p>{selectedContractor.insuranceCoverage || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Current Clients</label>

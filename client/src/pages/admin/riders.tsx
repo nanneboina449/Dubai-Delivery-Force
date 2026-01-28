@@ -139,31 +139,31 @@ export default function RidersAdmin() {
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <label className="text-sm font-medium text-gray-500">Full Name</label>
-                              <p className="font-medium">{selectedRider.fullName}</p>
+                              <p className="font-medium">{selectedRider.fullName || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Email</label>
-                              <p>{selectedRider.email}</p>
+                              <p>{selectedRider.email || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Phone</label>
-                              <p>{selectedRider.phone}</p>
+                              <p>{selectedRider.phone || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Nationality</label>
-                              <p>{selectedRider.nationality}</p>
+                              <p>{selectedRider.nationality || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Current Location</label>
-                              <p>{selectedRider.currentLocation}</p>
+                              <p>{selectedRider.currentLocation || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Visa Status</label>
-                              <p>{selectedRider.visaStatus}</p>
+                              <p>{selectedRider.visaStatus || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">UAE Driving License</label>
-                              <p>{selectedRider.hasUaeDrivingLicense}</p>
+                              <p>{selectedRider.hasUaeDrivingLicense || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">License Type</label>
@@ -171,27 +171,27 @@ export default function RidersAdmin() {
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Experience</label>
-                              <p>{selectedRider.yearsOfExperience} years</p>
+                              <p>{selectedRider.yearsOfExperience != null ? `${selectedRider.yearsOfExperience} years` : "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Vehicle Type</label>
-                              <p>{selectedRider.vehicleType}</p>
+                              <p>{selectedRider.vehicleType || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Owns Vehicle</label>
-                              <p>{selectedRider.ownsVehicle}</p>
+                              <p>{selectedRider.ownsVehicle || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Available to Start</label>
-                              <p>{selectedRider.availableToStart}</p>
+                              <p>{selectedRider.availableToStart || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">Preferred Work Area</label>
-                              <p>{selectedRider.preferredWorkArea}</p>
+                              <p>{selectedRider.preferredWorkArea || "N/A"}</p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-gray-500">English Proficiency</label>
-                              <p>{selectedRider.englishProficiency}</p>
+                              <p>{selectedRider.englishProficiency || "N/A"}</p>
                             </div>
                           </div>
 
