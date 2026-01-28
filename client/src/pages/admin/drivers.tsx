@@ -37,15 +37,32 @@ const emptyDriver = {
   notes: "",
 };
 
+const visaStatusOptions = [
+  { value: "Company Sponsored", label: "Company Sponsored Visa" },
+  { value: "Own Visa", label: "Own Visa" },
+  { value: "Visit Visa", label: "Visit Visa" },
+  { value: "UAE National", label: "UAE National" },
+  { value: "Freelance Visa", label: "Freelance Visa" },
+  { value: "Pending", label: "Pending Visa Processing" },
+];
+
 export default function DriversAdmin() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [selectedDriver, setSelectedDriver] = useState<Driver | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [formData, setFormData] = useState(emptyDriver);
+  const [visaFilter, setVisaFilter] = useState<string>("all");
+  const [statusFilter, setStatusFilter] = useState<string>("all");
 
   const { data: drivers, isLoading } = useQuery<Driver[]>({
     queryKey: ["/api/admin/drivers"],
+  });
+
+  const filteredDrivers = drivers?.filter(driver => {
+    const matchesVisa = visaFilter === "all" || driver.visaStatus === visaFilter;
+    const matchesStatus = statusFilter === "all" || driver.status === statusFilter;
+    return matchesVisa && matchesStatus;
   });
 
   const createMutation = useMutation({
@@ -183,10 +200,9 @@ export default function DriversAdmin() {
               <SelectValue placeholder="Select status" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="Employment Visa">Employment Visa</SelectItem>
-              <SelectItem value="Visit Visa">Visit Visa</SelectItem>
-              <SelectItem value="UAE National">UAE National</SelectItem>
-              <SelectItem value="Freelance Visa">Freelance Visa</SelectItem>
+              {visaStatusOptions.map(opt => (
+                <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
@@ -314,6 +330,55 @@ export default function DriversAdmin() {
         </Dialog>
       </div>
 
+      {/* Filters */}
+      <div className="flex gap-4 mb-6">
+        <div className="w-48">
+          <label className="text-sm font-medium text-gray-600 mb-1 block">Filter by Visa</label>
+          <Select value={visaFilter} onValueChange={setVisaFilter}>
+            <SelectTrigger data-testid="filter-visa-status">
+              <SelectValue placeholder="All Visa Types" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Visa Types</SelectItem>
+              {visaStatusOptions.map(opt => (
+                <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="w-48">
+          <label className="text-sm font-medium text-gray-600 mb-1 block">Filter by Status</label>
+          <Select value={statusFilter} onValueChange={setStatusFilter}>
+            <SelectTrigger data-testid="filter-driver-status">
+              <SelectValue placeholder="All Statuses" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Statuses</SelectItem>
+              <SelectItem value="active">Active</SelectItem>
+              <SelectItem value="inactive">Inactive</SelectItem>
+              <SelectItem value="suspended">Suspended</SelectItem>
+              <SelectItem value="terminated">Terminated</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        {(visaFilter !== "all" || statusFilter !== "all") && (
+          <div className="flex items-end">
+            <Button 
+              variant="outline" 
+              onClick={() => { setVisaFilter("all"); setStatusFilter("all"); }}
+              data-testid="button-clear-filters"
+            >
+              Clear Filters
+            </Button>
+          </div>
+        )}
+        <div className="flex-1 flex items-end justify-end">
+          <p className="text-sm text-gray-500">
+            Showing {filteredDrivers?.length || 0} of {drivers?.length || 0} drivers
+          </p>
+        </div>
+      </div>
+
       {isLoading ? (
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (
@@ -325,25 +390,30 @@ export default function DriversAdmin() {
             </Card>
           ))}
         </div>
-      ) : drivers?.length === 0 ? (
+      ) : filteredDrivers?.length === 0 ? (
         <Card>
           <CardContent className="p-12 text-center">
-            <p className="text-gray-500">No active drivers yet</p>
+            <p className="text-gray-500">
+              {drivers?.length === 0 ? "No active drivers yet" : "No drivers match the selected filters"}
+            </p>
           </CardContent>
         </Card>
       ) : (
         <div className="space-y-4">
-          {drivers?.map((driver) => (
+          {filteredDrivers?.map((driver) => (
             <Card key={driver.id} className="hover:shadow-md transition-shadow" data-testid={`card-driver-${driver.id}`}>
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center gap-3 mb-2 flex-wrap">
                       <h3 className="text-lg font-semibold">{driver.fullName}</h3>
                       <Badge className={statusColors[driver.status || "active"]}>
                         {driver.status}
                       </Badge>
                       <Badge variant="outline">{driver.vehicleType}</Badge>
+                      <Badge className={driver.visaStatus === "Company Sponsored" ? "bg-blue-100 text-blue-800" : "bg-gray-100 text-gray-800"}>
+                        {driver.visaStatus}
+                      </Badge>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-sm text-gray-600">
                       <div className="flex items-center gap-2">
