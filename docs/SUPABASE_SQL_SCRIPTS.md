@@ -200,6 +200,27 @@ CREATE TABLE IF NOT EXISTS admin_users (
 
 ---
 
+---
+
+## 6. Admin Users Table (Jan 28, 2026)
+
+Create admin_users table for admin authentication:
+
+```sql
+-- Create admin_users table
+CREATE TABLE IF NOT EXISTS admin_users (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    username TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW() NOT NULL
+);
+
+-- Disable RLS for admin_users
+ALTER TABLE admin_users DISABLE ROW LEVEL SECURITY;
+```
+
+---
+
 ## Script History
 
 | Date | Script | Purpose |
@@ -207,6 +228,7 @@ CREATE TABLE IF NOT EXISTS admin_users (
 | Jan 28, 2026 | Table Creation | Initial database setup |
 | Jan 28, 2026 | Disable RLS | Fix form submission errors |
 | Jan 28, 2026 | Admin Schema | Add status, admin_notes, updated_at fields |
+| Jan 28, 2026 | Admin Users | Create admin_users table for authentication |
 
 ---
 

@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import bcrypt from "bcryptjs";
 import { 
   insertRiderApplicationSchema, 
   insertContractorApplicationSchema, 
@@ -48,6 +49,73 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Business inquiry error:", error);
       res.status(400).json({ success: false, error: "Invalid inquiry data" });
+    }
+  });
+
+  // ============ ADMIN AUTH ROUTES ============
+
+  // Admin login
+  app.post("/api/admin/login", async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      
+      if (!username || !password) {
+        return res.status(400).json({ error: "Username and password required" });
+      }
+
+      const admin = await storage.getAdminUserByUsername(username);
+      if (!admin) {
+        return res.status(401).json({ error: "Invalid credentials" });
+      }
+
+      const isValid = await bcrypt.compare(password, admin.password);
+      if (!isValid) {
+        return res.status(401).json({ error: "Invalid credentials" });
+      }
+
+      res.json({ success: true, user: { id: admin.id, username: admin.username } });
+    } catch (error) {
+      console.error("Admin login error:", error);
+      res.status(500).json({ error: "Login failed" });
+    }
+  });
+
+  // Create admin user (protected - requires existing admin or first user)
+  app.post("/api/admin/users", async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      
+      if (!username || !password) {
+        return res.status(400).json({ error: "Username and password required" });
+      }
+
+      if (password.length < 6) {
+        return res.status(400).json({ error: "Password must be at least 6 characters" });
+      }
+
+      const existingUser = await storage.getAdminUserByUsername(username);
+      if (existingUser) {
+        return res.status(400).json({ error: "Username already exists" });
+      }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const admin = await storage.createAdminUser({ username, password: hashedPassword });
+
+      res.status(201).json({ success: true, user: { id: admin.id, username: admin.username } });
+    } catch (error) {
+      console.error("Create admin error:", error);
+      res.status(500).json({ error: "Failed to create admin user" });
+    }
+  });
+
+  // Check if any admin exists (for initial setup)
+  app.get("/api/admin/setup-check", async (req, res) => {
+    try {
+      const admins = await storage.getAdminUsers();
+      res.json({ needsSetup: admins.length === 0 });
+    } catch (error) {
+      console.error("Setup check error:", error);
+      res.status(500).json({ error: "Failed to check setup status" });
     }
   });
 
