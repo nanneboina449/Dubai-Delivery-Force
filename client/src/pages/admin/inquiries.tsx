@@ -122,7 +122,7 @@ export default function InquiriesAdmin() {
                       <span>Volume: {inquiry.deliveryVolume}</span>
                       <div className="flex items-center gap-1">
                         <Calendar size={12} />
-                        <span>Submitted: {new Date(inquiry.createdAt).toLocaleDateString()}</span>
+                        <span>Submitted: {inquiry.createdAt ? new Date(inquiry.createdAt).toLocaleDateString() : 'N/A'}</span>
                       </div>
                     </div>
                   </div>

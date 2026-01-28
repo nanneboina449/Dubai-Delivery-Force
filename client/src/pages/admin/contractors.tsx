@@ -123,7 +123,7 @@ export default function ContractorsAdmin() {
                       <span>Drivers: {contractor.totalDrivers}</span>
                       <div className="flex items-center gap-1">
                         <Calendar size={12} />
-                        <span>Applied: {new Date(contractor.createdAt).toLocaleDateString()}</span>
+                        <span>Applied: {contractor.createdAt ? new Date(contractor.createdAt).toLocaleDateString() : 'N/A'}</span>
                       </div>
                     </div>
                   </div>

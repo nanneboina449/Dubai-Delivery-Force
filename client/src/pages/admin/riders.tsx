@@ -116,7 +116,7 @@ export default function RidersAdmin() {
                     </div>
                     <div className="flex items-center gap-2 mt-2 text-xs text-gray-400">
                       <Calendar size={12} />
-                      <span>Applied: {new Date(rider.createdAt).toLocaleDateString()}</span>
+                      <span>Applied: {rider.createdAt ? new Date(rider.createdAt).toLocaleDateString() : 'N/A'}</span>
                     </div>
                   </div>
                   <Dialog>

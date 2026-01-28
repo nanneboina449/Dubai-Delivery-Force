@@ -165,7 +165,12 @@ export async function registerRoutes(
   // Update rider application
   app.patch("/api/admin/rider-applications/:id", async (req, res) => {
     try {
-      const validatedData = updateRiderApplicationSchema.parse(req.body);
+      // Normalize status to lowercase if provided
+      const normalizedBody = {
+        ...req.body,
+        status: req.body.status?.toLowerCase()
+      };
+      const validatedData = updateRiderApplicationSchema.parse(normalizedBody);
       
       // Get current application to check if status is being changed to approved
       const currentApp = await storage.getRiderApplication(req.params.id);
@@ -236,7 +241,12 @@ export async function registerRoutes(
   // Update contractor application
   app.patch("/api/admin/contractor-applications/:id", async (req, res) => {
     try {
-      const validatedData = updateContractorApplicationSchema.parse(req.body);
+      // Normalize status to lowercase if provided
+      const normalizedBody = {
+        ...req.body,
+        status: req.body.status?.toLowerCase()
+      };
+      const validatedData = updateContractorApplicationSchema.parse(normalizedBody);
       
       // Get current application to check if status is being changed to approved
       const currentApp = await storage.getContractorApplication(req.params.id);
