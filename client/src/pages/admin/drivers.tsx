@@ -66,7 +66,7 @@ export default function DriversAdmin() {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, ...data }: { id: string } & Partial<typeof emptyDriver>) => {
-      return apiRequest("PATCH", `/api/admin/drivers?id=${id}`, data);
+      return apiRequest("PATCH", `/api/admin/drivers/${id}`, data);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/drivers"] });
@@ -81,7 +81,7 @@ export default function DriversAdmin() {
 
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      return apiRequest("DELETE", `/api/admin/drivers?id=${id}`);
+      return apiRequest("DELETE", `/api/admin/drivers/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/drivers"] });

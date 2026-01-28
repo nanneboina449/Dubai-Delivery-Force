@@ -64,7 +64,7 @@ export default function ActiveContractorsAdmin() {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, ...data }: { id: string } & Partial<typeof emptyContractor>) => {
-      return apiRequest("PATCH", `/api/admin/active-contractors?id=${id}`, data);
+      return apiRequest("PATCH", `/api/admin/active-contractors/${id}`, data);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/active-contractors"] });
@@ -79,7 +79,7 @@ export default function ActiveContractorsAdmin() {
 
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      return apiRequest("DELETE", `/api/admin/active-contractors?id=${id}`);
+      return apiRequest("DELETE", `/api/admin/active-contractors/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/active-contractors"] });

@@ -34,7 +34,7 @@ export default function InquiriesAdmin() {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, status, adminNotes }: { id: string; status?: string; adminNotes?: string }) => {
-      return apiRequest("PATCH", `/api/admin/business-inquiries?id=${id}`, { status, adminNotes });
+      return apiRequest("PATCH", `/api/admin/business-inquiries/${id}`, { status, adminNotes });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/business-inquiries"] });

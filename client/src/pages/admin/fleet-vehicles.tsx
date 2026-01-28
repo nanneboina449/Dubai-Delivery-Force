@@ -79,7 +79,7 @@ export default function FleetVehiclesAdmin() {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, ...data }: { id: string } & Partial<typeof emptyVehicle>) => {
-      return apiRequest("PATCH", `/api/admin/fleet-vehicles?id=${id}`, {
+      return apiRequest("PATCH", `/api/admin/fleet-vehicles/${id}`, {
         ...data,
         year: data.year ? parseInt(data.year) : null,
       });
@@ -97,7 +97,7 @@ export default function FleetVehiclesAdmin() {
 
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      return apiRequest("DELETE", `/api/admin/fleet-vehicles?id=${id}`);
+      return apiRequest("DELETE", `/api/admin/fleet-vehicles/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/fleet-vehicles"] });

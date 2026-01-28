@@ -64,7 +64,7 @@ export default function BusinessClientsAdmin() {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, ...data }: { id: string } & Partial<typeof emptyClient>) => {
-      return apiRequest("PATCH", `/api/admin/business-clients?id=${id}`, data);
+      return apiRequest("PATCH", `/api/admin/business-clients/${id}`, data);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/business-clients"] });
@@ -79,7 +79,7 @@ export default function BusinessClientsAdmin() {
 
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      return apiRequest("DELETE", `/api/admin/business-clients?id=${id}`);
+      return apiRequest("DELETE", `/api/admin/business-clients/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/business-clients"] });

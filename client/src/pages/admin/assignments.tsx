@@ -71,7 +71,7 @@ export default function AssignmentsAdmin() {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, ...data }: { id: string } & Partial<typeof emptyAssignment>) => {
-      return apiRequest("PATCH", `/api/admin/driver-assignments?id=${id}`, data);
+      return apiRequest("PATCH", `/api/admin/driver-assignments/${id}`, data);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/driver-assignments"] });
@@ -85,7 +85,7 @@ export default function AssignmentsAdmin() {
 
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      return apiRequest("DELETE", `/api/admin/driver-assignments?id=${id}`);
+      return apiRequest("DELETE", `/api/admin/driver-assignments/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/driver-assignments"] });
@@ -164,7 +164,7 @@ export default function AssignmentsAdmin() {
               <SelectValue placeholder="Select vehicle" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">No Vehicle</SelectItem>
+              <SelectItem value="none">No Vehicle</SelectItem>
               {vehicles?.filter(v => v.status === "available" || v.status === "assigned").map((vehicle) => (
                 <SelectItem key={vehicle.id} value={vehicle.id}>
                   {vehicle.plateNumber} - {vehicle.vehicleType}

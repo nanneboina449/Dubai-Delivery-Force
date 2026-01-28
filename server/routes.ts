@@ -166,10 +166,41 @@ export async function registerRoutes(
   app.patch("/api/admin/rider-applications/:id", async (req, res) => {
     try {
       const validatedData = updateRiderApplicationSchema.parse(req.body);
+      
+      // Get current application to check if status is being changed to approved
+      const currentApp = await storage.getRiderApplication(req.params.id);
+      if (!currentApp) {
+        return res.status(404).json({ error: "Application not found" });
+      }
+      
       const application = await storage.updateRiderApplication(req.params.id, validatedData);
       if (!application) {
         return res.status(404).json({ error: "Application not found" });
       }
+      
+      // Auto-create driver when approved
+      if (validatedData.status === "approved" && currentApp.status !== "approved") {
+        try {
+          await storage.createDriver({
+            applicationId: application.id,
+            fullName: application.fullName,
+            email: application.email,
+            phone: application.phone,
+            emirate: application.currentLocation,
+            nationality: application.nationality,
+            vehicleType: application.vehicleType || "motorcycle",
+            licenseNumber: application.hasUaeDrivingLicense === "yes" ? (application.licenseType || "") : "",
+            licenseType: application.licenseType,
+            visaStatus: application.visaStatus,
+            joiningDate: new Date().toISOString().split('T')[0],
+            status: "active",
+            notes: `Auto-created from approved rider application ID: ${application.id}`
+          });
+        } catch (e) {
+          console.log("Driver already exists or creation failed:", e);
+        }
+      }
+      
       res.json(application);
     } catch (error) {
       console.error("Update rider error:", error);
@@ -206,10 +237,39 @@ export async function registerRoutes(
   app.patch("/api/admin/contractor-applications/:id", async (req, res) => {
     try {
       const validatedData = updateContractorApplicationSchema.parse(req.body);
+      
+      // Get current application to check if status is being changed to approved
+      const currentApp = await storage.getContractorApplication(req.params.id);
+      if (!currentApp) {
+        return res.status(404).json({ error: "Application not found" });
+      }
+      
       const application = await storage.updateContractorApplication(req.params.id, validatedData);
       if (!application) {
         return res.status(404).json({ error: "Application not found" });
       }
+      
+      // Auto-create active contractor when approved
+      if (validatedData.status === "approved" && currentApp.status !== "approved") {
+        try {
+          await storage.createActiveContractor({
+            applicationId: application.id,
+            companyName: application.companyName,
+            contactPerson: application.contactPerson,
+            email: application.email,
+            phone: application.phone,
+            tradeLicense: application.tradeLicense,
+            emirate: application.emirate,
+            contractStartDate: new Date().toISOString().split('T')[0],
+            insuranceCoverage: application.insuranceCoverage,
+            status: "active",
+            notes: `Auto-created from approved application ID: ${application.id}. Fleet: ${(application.fleetMotorcycles || 0) + (application.fleetCars || 0) + (application.fleetVans || 0) + (application.fleetTrucks || 0)} vehicles.`
+          });
+        } catch (e) {
+          console.log("Active contractor already exists or creation failed:", e);
+        }
+      }
+      
       res.json(application);
     } catch (error) {
       console.error("Update contractor error:", error);
