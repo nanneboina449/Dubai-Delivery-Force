@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { Link } from "wouter";
 import AdminLayout from "./admin-layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Mail, Phone, MapPin, Plus, Edit, Trash2, Building2, FileText } from "lucide-react";
+import { Mail, Phone, MapPin, Plus, Edit, Trash2, Building2, FileText, Eye } from "lucide-react";
 import { useState } from "react";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
@@ -332,6 +333,16 @@ export default function ActiveContractorsAdmin() {
                     </div>
                   </div>
                   <div className="flex gap-2">
+                    <Link href={`/admin/active-contractors/${contractor.id}`}>
+                      <Button 
+                        variant="default"
+                        className="bg-[#F56A07] hover:bg-[#d55a06]"
+                        data-testid={`button-profile-contractor-${contractor.id}`}
+                      >
+                        <Eye size={16} className="mr-2" />
+                        Profile
+                      </Button>
+                    </Link>
                     <Dialog>
                       <DialogTrigger asChild>
                         <Button 

@@ -19,6 +19,9 @@ import ActiveContractorsAdmin from "@/pages/admin/active-contractors";
 import FleetVehiclesAdmin from "@/pages/admin/fleet-vehicles";
 import BusinessClientsAdmin from "@/pages/admin/business-clients";
 import AssignmentsAdmin from "@/pages/admin/assignments";
+import DriverProfile from "@/pages/admin/driver-profile";
+import ContractorProfile from "@/pages/admin/contractor-profile";
+import ClientProfile from "@/pages/admin/client-profile";
 
 function Router() {
   return (
@@ -34,9 +37,12 @@ function Router() {
       <Route path="/admin/contractors" component={ContractorsAdmin} />
       <Route path="/admin/inquiries" component={InquiriesAdmin} />
       <Route path="/admin/drivers" component={DriversAdmin} />
+      <Route path="/admin/drivers/:id" component={DriverProfile} />
       <Route path="/admin/active-contractors" component={ActiveContractorsAdmin} />
+      <Route path="/admin/active-contractors/:id" component={ContractorProfile} />
       <Route path="/admin/fleet-vehicles" component={FleetVehiclesAdmin} />
       <Route path="/admin/business-clients" component={BusinessClientsAdmin} />
+      <Route path="/admin/business-clients/:id" component={ClientProfile} />
       <Route path="/admin/assignments" component={AssignmentsAdmin} />
       <Route component={NotFound} />
     </Switch>
