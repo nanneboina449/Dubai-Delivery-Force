@@ -811,7 +811,7 @@ export default function Home() {
                 ))}
               </div>
               
-              <Link href="/rider-application" className="inline-flex items-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-8 py-4 text-lg font-bold shadow-2xl shadow-primary/40 transition-all cursor-pointer">
+              <Link href="/apply/rider" className="inline-flex items-center gap-3 bg-primary hover:bg-orange-600 text-white rounded-full px-8 py-4 text-lg font-bold shadow-2xl shadow-primary/40 transition-all cursor-pointer">
                 Apply to Join <ArrowRight className="w-5 h-5" />
               </Link>
             </motion.div>
