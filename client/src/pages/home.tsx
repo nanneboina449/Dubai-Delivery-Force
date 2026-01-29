@@ -884,40 +884,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Fleet Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
-            {[
-              { icon: Bike, title: "Cyclists", desc: "Eco-friendly deliveries", stat: "200+ Cyclists", img: bicycleImage },
-              { icon: Bike, title: "Motorcycles", desc: "Fast urban deliveries", stat: "500+ Bikes", img: heroImage },
-              { icon: Car, title: "Cars", desc: "Premium deliveries", stat: "150+ Cars", img: carImage },
-              { icon: Truck, title: "Vans", desc: "Medium cargo transport", stat: "100+ Vans", img: fleetImage },
-              { icon: Truck, title: "Trucks", desc: "Large cargo logistics", stat: "50+ Trucks", img: truckImage },
-            ].map((vehicle, i) => (
-              <FloatingCard key={i} delay={i * 0.1}>
-                <div className="group relative bg-white/5 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all">
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img 
-                      src={vehicle.img} 
-                      alt={vehicle.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/50 to-transparent" />
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="flex items-center gap-3 mb-2">
-                      <vehicle.icon className="w-5 h-5 text-primary" />
-                      <span className="text-primary font-bold text-sm">{vehicle.stat}</span>
-                    </div>
-                    <h4 className="text-xl font-bold text-white mb-1">{vehicle.title}</h4>
-                    <p className="text-gray-400 text-sm">{vehicle.desc}</p>
-                  </div>
-                </div>
-              </FloatingCard>
-            ))}
-          </div>
-
-          {/* Carousel */}
+          {/* Fleet Carousel */}
           <Carousel
             opts={{ align: "center", loop: true }}
             plugins={[autoplayPlugin.current]}
