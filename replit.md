@@ -76,7 +76,7 @@ The `shared/` directory contains code used by both frontend and backend, primari
 - Open Graph tags for Facebook/LinkedIn sharing
 - Twitter Card tags for Twitter sharing
 - Geographic metadata (geo.region, geo.placename) for local SEO
-- Canonical URL pointing to https://urbanfleet.ae/
+- Canonical URL pointing to https://urbanfleetdelivery.ae/
 
 ### Structured Data (JSON-LD)
 - LocalBusiness schema for UAE with coverage of all 7 Emirates
@@ -84,6 +84,6 @@ The `shared/` directory contains code used by both frontend and backend, primari
 - WebSite schema with search action
 
 ### After Deployment
-1. Submit sitemap to Google Search Console: https://urbanfleet.ae/sitemap.xml
+1. Submit sitemap to Google Search Console: https://urbanfleetdelivery.ae/sitemap.xml
 2. Request indexing for the homepage in Google Search Console
-3. Verify robots.txt is accessible: https://urbanfleet.ae/robots.txt
+3. Verify robots.txt is accessible: https://urbanfleetdelivery.ae/robots.txt
