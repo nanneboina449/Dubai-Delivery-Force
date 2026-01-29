@@ -54,6 +54,7 @@ import fleetCarsImage from "@assets/fleet-cars.png";
 import fleetVansImage from "@assets/fleet-vans.png";
 import fleetTrucksImage from "@assets/fleet-trucks.png";
 import fleetMotorcyclesImage from "@assets/fleet-motorcycles.png";
+import fleetCyclistsImage from "@assets/fleet-cyclists.png";
 
 // Magnetic Button Component
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -896,6 +897,7 @@ export default function Home() {
           >
             <CarouselContent className="-ml-8">
               {[
+                { title: "Cyclist Fleet", desc: "Eco-friendly bicycle deliveries for urban areas.", img: fleetCyclistsImage, stat: "200+ Cyclists" },
                 { title: "Motorcycle Fleet", desc: "UrbanFleet branded bikes for fast urban deliveries.", img: fleetMotorcyclesImage, stat: "500+ Bikes" },
                 { title: "Car Fleet", desc: "Professional delivery cars for premium services.", img: fleetCarsImage, stat: "150+ Cars" },
                 { title: "Van Fleet", desc: "Branded vans for medium-sized cargo transport.", img: fleetVansImage, stat: "100+ Vans" },
