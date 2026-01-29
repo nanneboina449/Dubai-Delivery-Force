@@ -63,3 +63,27 @@ The `shared/` directory contains code used by both frontend and backend, primari
 ### Development Tools
 - **Replit Vite Plugins**: Development banner, cartographer, and runtime error overlay for Replit environment
 - **Custom Meta Images Plugin**: Handles OpenGraph image URLs for deployments
+
+## SEO Configuration
+
+### Static Files (client/public/)
+- **robots.txt** - Search engine crawling instructions, allows full site indexing
+- **sitemap.xml** - XML sitemap listing all public pages for Google indexing
+- **opengraph.jpg** - Social media preview image
+
+### Meta Tags (client/index.html)
+- Title, description, keywords for search ranking
+- Open Graph tags for Facebook/LinkedIn sharing
+- Twitter Card tags for Twitter sharing
+- Geographic metadata (geo.region, geo.placename) for local SEO
+- Canonical URL pointing to https://urbanfleet.ae/
+
+### Structured Data (JSON-LD)
+- LocalBusiness schema for UAE with coverage of all 7 Emirates
+- Organization schema with contact information
+- WebSite schema with search action
+
+### After Deployment
+1. Submit sitemap to Google Search Console: https://urbanfleet.ae/sitemap.xml
+2. Request indexing for the homepage in Google Search Console
+3. Verify robots.txt is accessible: https://urbanfleet.ae/robots.txt
