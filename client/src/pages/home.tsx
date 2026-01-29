@@ -738,6 +738,7 @@ export default function Home() {
                 <img 
                   src={heroImage} 
                   alt="UrbanFleet Delivery Rider" 
+                  loading="lazy"
                   className="rounded-2xl w-full aspect-square object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent rounded-2xl" />
@@ -827,6 +828,7 @@ export default function Home() {
                 <img 
                   src={teamImage} 
                   alt="UrbanFleet Team Members" 
+                  loading="lazy"
                   className="w-full aspect-square object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent" />
@@ -896,6 +898,7 @@ export default function Home() {
                     <img 
                       src={vehicle.img} 
                       alt={vehicle.title}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/50 to-transparent" />
@@ -937,6 +940,7 @@ export default function Home() {
                     <img 
                       src={item.img} 
                       alt={item.title} 
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/50 to-transparent" />
@@ -994,7 +998,7 @@ export default function Home() {
       {/* CTA Section */}
       <section id="contact" className="py-32 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={techBg} alt="Abstract technology background" className="w-full h-full object-cover opacity-30" />
+          <img src={techBg} alt="Abstract technology background" loading="lazy" className="w-full h-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/90 to-secondary" />
         </div>
 
