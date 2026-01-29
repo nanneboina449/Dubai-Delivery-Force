@@ -48,6 +48,7 @@ import truckImage from "@assets/hero-fleet.png";
 import bicycleImage from "@assets/hero-motorcycle.png";
 import teamImage from "@assets/hero-motorcycle.png";
 import logoImage from "@assets/logo.png";
+import workforceImage from "@assets/workforce-solutions.png";
 
 // Magnetic Button Component
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -735,8 +736,8 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="relative order-2 md:order-1">
                 <img 
-                  src={heroImage} 
-                  alt="UrbanFleet Delivery Rider" 
+                  src={workforceImage} 
+                  alt="UrbanFleet Delivery Workforce" 
                   loading="lazy"
                   className="rounded-2xl w-full aspect-square object-cover"
                 />
