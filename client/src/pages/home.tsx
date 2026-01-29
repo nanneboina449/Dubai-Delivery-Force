@@ -55,6 +55,9 @@ import fleetVansImage from "@assets/fleet-vans.png";
 import fleetTrucksImage from "@assets/fleet-trucks.png";
 import fleetMotorcyclesImage from "@assets/fleet-motorcycles.png";
 import fleetCyclistsImage from "@assets/fleet-cyclists.png";
+import hero1Image from "@assets/hero-1.png";
+import hero2Image from "@assets/hero-2.png";
+import hero3Image from "@assets/hero-3.png";
 
 // Magnetic Button Component
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -197,7 +200,7 @@ function HeroCarousel() {
 
   const slides = [
     {
-      image: heroImage,
+      image: hero1Image,
       badge: "UAE's Premier Delivery Workforce Provider",
       headline: "Lightning Fast",
       subheadline: "Delivery Network",
@@ -205,7 +208,7 @@ function HeroCarousel() {
       tagline: "Speed you can count on."
     },
     {
-      image: fleetImage,
+      image: hero2Image,
       badge: "Scalable Fleet Solutions",
       headline: "Your Fleet",
       subheadline: "Our Expertise",
@@ -213,7 +216,7 @@ function HeroCarousel() {
       tagline: "Flexibility that drives success."
     },
     {
-      image: riderPortrait,
+      image: hero3Image,
       badge: "Trained & Certified Riders",
       headline: "Trusted Riders",
       subheadline: "Reliable Service",
