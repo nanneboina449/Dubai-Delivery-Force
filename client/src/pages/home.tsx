@@ -49,6 +49,7 @@ import bicycleImage from "@assets/hero-motorcycle.png";
 import teamImage from "@assets/hero-motorcycle.png";
 import logoImage from "@assets/logo.png";
 import workforceImage from "@assets/workforce-solutions.png";
+import riderVisaImage from "@assets/rider-visa.png";
 
 // Magnetic Button Component
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -826,8 +827,8 @@ export default function Home() {
             >
               <div className="relative rounded-3xl overflow-hidden">
                 <img 
-                  src={teamImage} 
-                  alt="UrbanFleet Team Members" 
+                  src={riderVisaImage} 
+                  alt="UrbanFleet Delivery Rider" 
                   loading="lazy"
                   className="w-full aspect-square object-cover"
                 />
