@@ -50,6 +50,10 @@ import teamImage from "@assets/hero-motorcycle.png";
 import logoImage from "@assets/logo.png";
 import workforceImage from "@assets/workforce-solutions.png";
 import riderVisaImage from "@assets/rider-visa.png";
+import fleetCarsImage from "@assets/fleet-cars.png";
+import fleetVansImage from "@assets/fleet-vans.png";
+import fleetTrucksImage from "@assets/fleet-trucks.png";
+import fleetMotorcyclesImage from "@assets/fleet-motorcycles.png";
 
 // Magnetic Button Component
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -892,12 +896,11 @@ export default function Home() {
           >
             <CarouselContent className="-ml-8">
               {[
-                { title: "Cyclist Fleet", desc: "Eco-friendly bicycle deliveries for urban areas.", img: bicycleImage, stat: "200+ Cyclists" },
-                { title: "Motorcycle Fleet", desc: "UrbanFleet branded bikes for fast urban deliveries.", img: heroImage, stat: "500+ Bikes" },
-                { title: "Car Fleet", desc: "Professional delivery cars for premium services.", img: carImage, stat: "150+ Cars" },
-                { title: "Van Fleet", desc: "Branded vans for medium-sized cargo transport.", img: fleetImage, stat: "100+ Vans" },
-                { title: "Truck Fleet", desc: "Heavy-duty trucks for large logistics operations.", img: truckImage, stat: "50+ Trucks" },
-                { title: "Uniformed Riders", desc: "Professional riders representing your brand.", img: riderPortrait, stat: "1500+ Riders" },
+                { title: "Motorcycle Fleet", desc: "UrbanFleet branded bikes for fast urban deliveries.", img: fleetMotorcyclesImage, stat: "500+ Bikes" },
+                { title: "Car Fleet", desc: "Professional delivery cars for premium services.", img: fleetCarsImage, stat: "150+ Cars" },
+                { title: "Van Fleet", desc: "Branded vans for medium-sized cargo transport.", img: fleetVansImage, stat: "100+ Vans" },
+                { title: "Truck Fleet", desc: "Heavy-duty trucks for large logistics operations.", img: fleetTrucksImage, stat: "50+ Trucks" },
+                { title: "Uniformed Riders", desc: "Professional riders representing your brand.", img: riderVisaImage, stat: "1500+ Riders" },
               ].map((item, index) => (
                 <CarouselItem key={index} className="pl-8 md:basis-1/2 lg:basis-2/5">
                   <motion.div 
