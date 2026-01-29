@@ -183,8 +183,8 @@ export async function registerRoutes(
         return res.status(404).json({ error: "Application not found" });
       }
       
-      // Auto-create driver when approved
-      if (validatedData.status === "approved" && currentApp.status !== "approved") {
+      // Auto-create driver when completed
+      if (validatedData.status === "completed" && currentApp.status !== "completed") {
         try {
           await storage.createDriver({
             applicationId: application.id,
@@ -199,7 +199,7 @@ export async function registerRoutes(
             visaStatus: application.visaStatus,
             joiningDate: new Date().toISOString().split('T')[0],
             status: "active",
-            notes: `Auto-created from approved rider application ID: ${application.id}`
+            notes: `Auto-created from completed rider application ID: ${application.id}`
           });
         } catch (e) {
           console.log("Driver already exists or creation failed:", e);
@@ -259,8 +259,8 @@ export async function registerRoutes(
         return res.status(404).json({ error: "Application not found" });
       }
       
-      // Auto-create active contractor when approved
-      if (validatedData.status === "approved" && currentApp.status !== "approved") {
+      // Auto-create active contractor when completed
+      if (validatedData.status === "completed" && currentApp.status !== "completed") {
         try {
           await storage.createActiveContractor({
             applicationId: application.id,
@@ -273,7 +273,7 @@ export async function registerRoutes(
             contractStartDate: new Date().toISOString().split('T')[0],
             insuranceCoverage: application.insuranceCoverage,
             status: "active",
-            notes: `Auto-created from approved application ID: ${application.id}. Fleet: ${(application.fleetMotorcycles || 0) + (application.fleetCars || 0) + (application.fleetVans || 0) + (application.fleetTrucks || 0)} vehicles.`
+            notes: `Auto-created from completed contractor application ID: ${application.id}. Fleet: ${(application.fleetMotorcycles || 0) + (application.fleetCars || 0) + (application.fleetVans || 0) + (application.fleetTrucks || 0)} vehicles, ${application.totalDrivers} drivers.`
           });
         } catch (e) {
           console.log("Active contractor already exists or creation failed:", e);
@@ -321,10 +321,40 @@ export async function registerRoutes(
         status: req.body.status?.toLowerCase()
       };
       const validatedData = updateBusinessInquirySchema.parse(normalizedBody);
+      
+      // Get current inquiry to check if status is being changed to completed
+      const currentInquiry = await storage.getBusinessInquiry(req.params.id);
+      if (!currentInquiry) {
+        return res.status(404).json({ error: "Inquiry not found" });
+      }
+      
       const inquiry = await storage.updateBusinessInquiry(req.params.id, validatedData);
       if (!inquiry) {
         return res.status(404).json({ error: "Inquiry not found" });
       }
+      
+      // Auto-create business client when completed
+      if (validatedData.status === "completed" && currentInquiry.status !== "completed") {
+        try {
+          await storage.createBusinessClient({
+            inquiryId: inquiry.id,
+            companyName: inquiry.companyName,
+            contactPerson: inquiry.contactPerson,
+            email: inquiry.email,
+            phone: inquiry.phone,
+            industry: inquiry.industry,
+            emirate: inquiry.emirate,
+            contractStartDate: inquiry.startDate,
+            deliveryVolume: inquiry.deliveryVolume,
+            driversRequired: inquiry.ridersNeeded,
+            status: "active",
+            notes: `Auto-created from completed business inquiry ID: ${inquiry.id}. Contract duration: ${inquiry.contractDuration || 'N/A'}`
+          });
+        } catch (e) {
+          console.log("Business client already exists or creation failed:", e);
+        }
+      }
+      
       res.json(inquiry);
     } catch (error: any) {
       console.error("Update inquiry error:", error?.message || error);
