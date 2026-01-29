@@ -41,13 +41,12 @@ import { Link } from "wouter";
 
 // Assets - UrbanFleet Branded Images with UF Logo
 import heroImage from "@assets/generated_images/urbanfleet_motorcycle_with_logo.png";
-import fleetImage from "@assets/generated_images/urbanfleet_car_van_fleet.png";
-import riderPortrait from "@assets/generated_images/urbanfleet_full_fleet.png";
-import techBg from "@assets/generated_images/abstract_tech_network_background_in_orange_and_navy.png";
-import carImage from "@assets/generated_images/urbanfleet_car_van_fleet.png";
-import truckImage from "@assets/generated_images/urbanfleet_fleet_collage.png";
+import fleetImage from "@assets/generated_images/urbanfleet_van_with_logo.png";
+import riderPortrait from "@assets/generated_images/urbanfleet_rider_with_logo.png";
+import carImage from "@assets/generated_images/urbanfleet_car_with_logo.png";
+import truckImage from "@assets/generated_images/urbanfleet_truck_with_logo.png";
 import bicycleImage from "@assets/generated_images/urbanfleet_bicycle_with_logo.png";
-import teamImage from "@assets/generated_images/urbanfleet_team_members.png";
+import teamImage from "@assets/generated_images/urbanfleet_uniformed_rider_navy_orange.png";
 import logoImage from "@assets/logo.png";
 
 // Magnetic Button Component
@@ -578,9 +577,9 @@ export default function Home() {
               Our Services
             </motion.span>
             <h2 className="text-5xl md:text-7xl font-heading font-black text-white mb-6">
-              Who We{" "}
+              Delivery Workforce{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
-                Serve
+                Solutions UAE
               </span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -679,8 +678,8 @@ export default function Home() {
               UAE Regulations
             </motion.span>
             <h2 className="text-5xl md:text-6xl font-heading font-black text-white mb-6">
-              Fully Compliant{" "}
-              <span className="text-primary">Workforce</span>
+              MOHRE Compliant{" "}
+              <span className="text-primary">Delivery Riders</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               All UrbanFleet riders operate under UAE Federal Decree-Law No. 33 of 2021, ensuring complete legal compliance and protection.
@@ -778,9 +777,9 @@ export default function Home() {
             >
               <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Career Opportunities</span>
               <h2 className="text-5xl md:text-6xl font-heading font-black text-white mb-6">
-                Join the{" "}
-                <span className="text-primary">UrbanFleet</span>{" "}
-                Team
+                Rider Jobs with{" "}
+                <span className="text-primary">Visa Sponsorship</span>{" "}
+                UAE
               </h2>
               <p className="text-xl text-gray-400 mb-8 leading-relaxed">
                 Looking for a rewarding career in delivery? UrbanFleet offers visa sponsorship for eligible riders, competitive salaries, mandatory health insurance, and opportunities for growth.
@@ -874,9 +873,9 @@ export default function Home() {
               Our Fleet
             </motion.span>
             <h2 className="text-5xl md:text-7xl font-heading font-black text-white mb-6">
-              Complete{" "}
+              Delivery{" "}
               <span className="text-primary">Fleet</span>{" "}
-              Solutions
+              Management
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
               Cyclists, motorcycles, cars, vans, and trucks - our branded fleet scales to meet any business requirement.
@@ -997,10 +996,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section id="contact" className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={techBg} alt="Abstract technology background" loading="lazy" className="w-full h-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/90 to-secondary" />
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0A1628] via-[#1a2744] to-[#FF6B35]/20" />
 
         <div className="relative z-10 container mx-auto px-4">
           <motion.div
