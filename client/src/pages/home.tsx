@@ -39,14 +39,14 @@ import { motion, useScroll, useTransform, useInView, useSpring, useMotionValue, 
 import Autoplay from "embla-carousel-autoplay";
 import { Link } from "wouter";
 
-// Assets - UrbanFleet Branded Images with UF Logo
-import heroImage from "@assets/generated_images/urbanfleet_motorcycle_with_logo.png";
-import fleetImage from "@assets/generated_images/urbanfleet_van_with_logo.png";
-import riderPortrait from "@assets/generated_images/urbanfleet_rider_with_logo.png";
-import carImage from "@assets/generated_images/urbanfleet_car_with_logo.png";
-import truckImage from "@assets/generated_images/urbanfleet_truck_with_logo.png";
-import bicycleImage from "@assets/generated_images/urbanfleet_bicycle_with_logo.png";
-import teamImage from "@assets/generated_images/urbanfleet_uniformed_rider_navy_orange.png";
+// Assets - UrbanFleet Branded Images
+import heroImage from "@assets/hero-motorcycle.png";
+import fleetImage from "@assets/hero-fleet.png";
+import riderPortrait from "@assets/hero-motorcycle.png";
+import carImage from "@assets/hero-car.png";
+import truckImage from "@assets/hero-fleet.png";
+import bicycleImage from "@assets/hero-motorcycle.png";
+import teamImage from "@assets/hero-motorcycle.png";
 import logoImage from "@assets/logo.png";
 
 // Magnetic Button Component
