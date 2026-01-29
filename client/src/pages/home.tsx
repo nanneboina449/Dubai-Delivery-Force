@@ -994,7 +994,7 @@ export default function Home() {
       {/* CTA Section */}
       <section id="contact" className="py-32 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={techBg} alt="" className="w-full h-full object-cover opacity-30" />
+          <img src={techBg} alt="Abstract technology background" className="w-full h-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/90 to-secondary" />
         </div>
 

@@ -1,0 +1,417 @@
+HIGH
+To improve the website experience for your visitors, it is recommended to eliminate any render-blocking resources on this webpage.
+HIGH
+Using images in a modern format can significantly reduce the file size and improve the loading speed of a webpage, providing a better user experience and potentially increasing engagement.
+MEDIUM
+By creating a custom 404 error page with helpful links and information, users are more likely to stay on the site and continue to explore.
+MEDIUM
+Avoid using distorted images, as they can have a negative impact on the user experience.
+MEDIUM
+Serve properly sized images to reduce page loading times and to improve user's experience.
+MEDIUM
+To provide a good user experience, Google recommends that sites should aim for a First Contentful Paint value of 1.8 seconds or less.
+MEDIUM
+Add a Google Analytics script to this website to help in diagnosing potential SEO issues by monitoring site visitors and traffic sources.
+Common SEO issues
+Score: 73
+Failed: 3
+Warnings: 3
+Passed: 16
+Meta Title Test100% of top 100 sites passed
+•	This webpage is using a title tag with a length of 68 characters. While there's no target number of characters, titles should be descriptive and concise. We recommend using a title with a length between 20 - 60 characters in order to fit Google Search results that have a 600-pixel limit.
+Text: UrbanFleet Delivery Services UAE | Licensed Riders & Fleet Solutions
+Length: 68 characters
+Meta Description Test92% of top 100 sites passed
+•	This webpage is using a meta description tag with a length of 250 characters. We recommend using well-written and inviting meta descriptions with a length between 150 and 220 characters (spaces included).
+Text: UrbanFleet is UAE's trusted delivery workforce provider. We offer licensed delivery riders, fleet contractor partnerships, and complete workforce solutions across Dubai, Abu Dhabi, Sharjah and all Emirates. Apply for rider jobs with visa sponsorship.
+Length: 250 characters
+Google Search Results Preview Test
+Desktop version
+https://urbanfleetdelivery.ae/UrbanFleet Delivery Services UAE | Licensed Riders & Fleet SolutionsUrbanFleet is UAE's trusted delivery workforce provider. We offer licensed delivery riders, fleet contractor partnerships, and complete workforce solutions across Dubai, Abu Dhabi, Sharjah and all Emirates. Apply for rider jobs with visa sponsorship.
+Mobile version
+https://urbanfleetdelivery.ae/UrbanFleet Delivery Services UAE | Licensed Riders & Fleet SolutionsUrbanFleet is UAE's trusted delivery workforce provider. We offer licensed delivery riders, fleet contractor partnerships, and complete workforce solutions across Dubai, Abu Dhabi, Sharjah and all Emirates. Apply for rider jobs with visa sponsorship.
+Social Media Meta Tags Test89% of top 100 sites passed
+•	This webpage is using social media meta tags.
+Open Graph Meta Tags
+og:title
+UrbanFleet - UAE's Premier Delivery Workforce Solutions
+og:description
+Join UAE's leading delivery platform. Licensed riders, visa sponsorship, fleet partnerships. Serving Dubai, Abu Dhabi, Sharjah & all Emirates.
+og:type
+website
+og:url
+https://urbanfleetdelivery.ae/
+og:image
+https://urbanfleetdelivery.ae/opengraph.jpg
+og:image:width
+1200
+og:image:height
+630
+og:site_name
+UrbanFleet Delivery Services
+og:locale
+en_AE
+Twitter Card Meta Tags
+twitter:card
+summary_large_image
+twitter:site
+@replit
+twitter:title
+UrbanFleet - UAE's Premier Delivery Workforce Solutions
+twitter:description
+Join UAE's leading delivery platform. Licensed riders, visa sponsorship, fleet partnerships.
+twitter:image
+https://urbanfleetdelivery.ae/opengraph.jpg
+Most Common Keywords Test
+•	There is likely no optimal keyword density (search engine algorithms have evolved beyond keyword density metrics as a significant ranking factor). It can be useful, however, to note which keywords appear most often on your page and if they reflect the intended topic of your page. More importantly, the keywords on your page should appear within natural sounding and grammatically correct copy.
+20riders13delivery10fleet10visa10urbanfleet
+Keywords Usage Test48% of top 100 sites passed
+•	The most common keywords of this webpage are distributed well across the important HTML tags. This helps search engines to properly identify the topic of this webpage.
+Keyword
+Title tag
+Meta description
+Headings
+riders
+delivery
+fleet
+visa
+urbanfleet
+Keywords Cloud Test
+applyarriveavailablebasedbikesbrandedbusinessbusinessescareercargocarscompetitivecompletecompliancecompliantcomprehensiveconnectcontactcontractorcontractorscountcoveragecoveredcyclistsdecreedeliveriesdeliveringdeliverydemandsdriverseligibleemiratesfastfederalfleetfriendlyfullygrowthhealthhomeinsuranceinsuredjoinlargelicensedlightninglogisticslookingmandatorymediummohremotorcyclesneedneedingnetworkoperationsopportunitiesovertimepackagespartnerpartnershipsprecisionpremierpremiumprofessionalprotectionprovidedproviderrealregulationsriderridersscalablescaleserveservicesslidesolutionsspeedsponsorshipstartstartedsupplysupportteamtimetrackingtrainedtrainingtransporttrucksurbanurbanfleetvansvehiclevehiclesverifiedvisaworkworkforce
+Related Keywords Test
+Find the keywords where this URL is listed in the top 20 results of Google's organic listings.
+Get useful insights and detailed metrics for your most important keywords: average position, search volume, CPC, and more.
+Register for free and start using today the Top Keywords tool from Seositecheckup Toolbox
+Competitor Domains Test
+Understand your competitors' SEO and backlink profile
+Get related competitors and their domain authority score in relation to your domain.
+Heading Tags Test62% of top 100 sites passed
+•	This webpage contains headings tags.
+H1 tags
+Lightning FastDelivery Network
+H2 tags
+Who We Serve
+Fully Compliant Workforce
+Join the UrbanFleet Team
+Complete Fleet Solutions
+Ready to Get Started?
+Robots.txt Test99% of top 100 sites passed
+•	This website is using a robots.txt file.
+https://urbanfleetdelivery.ae/robots.txt
+Sitemap Test83% of top 100 sites passed
+•	This website has a sitemap file.
+https://urbanfleetdelivery.ae/sitemap.xml
+Image Alt Test78% of top 100 sites passed
+•	This webpage is using "img" tags with empty or missing "alt" attribute!
+See full list
+Responsive Image Test29% of top 100 sites passed
+•	Not all images in this webpage are properly sized! This webpage is serving images that are larger than needed for the size of the user's viewport.
+See results list
+Image Aspect Ratio Test75% of top 100 sites passed
+•	Not all image display dimensions match the natural aspect ratio! Fix aspect ratio issues to avoid distorted images on this website!
+See results list
+Deprecated HTML Tags Test94% of top 100 sites passed
+•	This webpage does not use HTML deprecated tags.
+Google Analytics Test72% of top 100 sites passed
+•	A Google Analytics script is not detected on this page. While there are several tools available to monitor your site's visitors and traffic sources, Google Analytics is a free, commonly recommended program to help diagnose potential SEO issues.
+Favicon Test100% of top 100 sites passed
+•	 
+This website appears to have a favicon.
+Backlinks Test
+Get a full and detailed list of your backlinks!
+To view your total number of backlinks and referring domains, please sign-up for a free trial!
+JS Error Test83% of top 100 sites passed
+•	There are no severe JavaScript errors on this webpage.
+Console Errors Test27% of top 100 sites passed
+•	This webpage doesn't have any warnings or errors caught by the Chrome DevTools Console.
+Charset Declaration Test96% of top 100 sites passed
+•	This webpage has a character encoding declaration.
+Content-Type: text/html; charset=utf-8
+Speed optimizations
+Score: 72
+Failed: 3
+Warnings: 2
+Passed: 15
+HTML Page Size Test23% of top 100 sites passed
+•	The size of this webpage's HTML is 10.2 Kb and is under the average webpage's HTML size of 33 Kb. Faster loading websites result in a better user experience, higher conversion rates, and generally better search engine rankings.
+DOM Size Test56% of top 100 sites passed
+•	The Document Object Model (DOM) of this webpage has 727 nodes which is less than the recommended value of 1,500 nodes.
+HTML Compression/GZIP Test99% of top 100 sites passed
+•	This webpage is successfully compressed using br compression on your code. The HTML code is compressed from 78.15 Kb to 10.2 Kb (87% size savings). This helps ensure a faster loading webpage and improved user experience.
+Site Loading Speed Test71% of top 100 sites passed
+•	The loading time of this webpage (measured from N. Virginia, US) is around 0.42 seconds and this is under the average loading speed which is 5 seconds.
+Accurate loading speed and website loading speed monitor
+Get detailed and accurate loading speed reports for your websites and see how your pages are being loaded over time.
+Register for free and use the Loading Speed Monitor from SEO Site Checkup Toolbox today and get valuable insights on how much time your customers need to wait until they see your page.
+JS Execution Time Test53% of top 100 sites passed
+•	The JavaScript code used by this webpage is executed in less than 2 seconds.
+Page Objects Test
+•	This webpage has less than 20 http requests. A higher number of http requests results in a user's browser needing to request a large number of objects from the server, which will ultimately slow down the loading of your webpage.
+Content size by content type
+Content type
+Percent
+Size
+image
+97.7 %
+13.60 Mb
+javascript
+1.6 %
+233.12 Kb
+font
+0.6 %
+79.43 Kb
+css
+0.1 %
+20.41 Kb
+html
+0.0 %
+1.94 Kb
+other
+0.0 %
+0 B
+TOTAL
+100%
+13.93 Mb
+Requests by content type
+Content type
+Percent
+Requests
+image
+57.1 %
+8
+css
+14.3 %
+2
+font
+14.3 %
+2
+html
+7.1 %
+1
+javascript
+7.1 %
+1
+other
+0.0 %
+0
+TOTAL
+100%
+14
+Content size by domain
+Domain
+Percent
+Size
+urbanfleetdelivery.ae
+99.4 %
+13.85 Mb
+fonts.gstatic.com
+0.6 %
+79.43 Kb
+fonts.googleapis.com
+0.0 %
+1.28 Kb
+TOTAL
+100%
+13.93 Mb
+Requests by domain
+Domain
+Percent
+Requests
+urbanfleetdelivery.ae
+78.6 %
+11
+fonts.gstatic.com
+14.3 %
+2
+fonts.googleapis.com
+7.1 %
+1
+TOTAL
+100%
+14
+CDN Usage Test95% of top 100 sites passed
+•	This webpage is not serving all resources (images, javascript and css) from CDNs!
+See results list
+Modern Image Format Test43% of top 100 sites passed
+•	This webpage is not serving images in a modern format! Image formats like JPEG 2000, JPEG XR, and WebP often provide better compression than PNG or JPEG, which means faster downloads and less data consumption.
+See results list
+Image Metadata Test72% of top 100 sites passed
+•	This webpage is not using images with large metadata.
+Image Caching Test95% of top 100 sites passed
+•	This website is using cache headers for images and the browsers will display these images from the cache.
+JavaScript Caching Test96% of top 100 sites passed
+•	This webpage is using cache headers for all JavaScript resources.
+CSS Caching Test98% of top 100 sites passed
+•	This webpage is using cache headers for all CSS resources.
+JavaScript Minification Test98% of top 100 sites passed
+•	All JavaScript files used by this webpage are minified.
+See results list
+CSS Minification Test100% of top 100 sites passed
+•	All CSS resources used by this webpage are minified.
+See results list
+Render Blocking Resources Test15% of top 100 sites passed
+•	This webpage is using render blocking resources! Eliminating render-blocking resources can help this webpage to load significantly faster and will improve the website experience for your visitors.
+See results list
+URL Redirects Test97% of top 100 sites passed
+•	This URL doesn't have any redirects (which could potentially cause site indexation issues and site loading delays).
+Time To First Byte Test99% of top 100 sites passed
+•	The Time To First Byte value of this webpage is 0.007 seconds. To provide a good user experience, Google recommends that sites should strive to have a TTFB of 0.8 seconds or less.
+0.007 s
+0.8 s
+1.8 s
+First Contentful Paint Test90% of top 100 sites passed
+•	The First Contentful Paint value of this webpage is 3.584 seconds. To provide a good user experience, Google recommends that sites should strive to have a First Contentful Paint value of 1.8 seconds or less.
+3.584 s
+1.8 s
+3 s
+Largest Contentful Paint Test77% of top 100 sites passed
+•	The Largest Contentful Paint duration of this webpage is 3.58 seconds. To provide a good user experience, Google recommends that sites should strive to have Largest Contentful Paint of 2.5 seconds or less.
+3.58 s
+2.5 s
+4 s
+Largest Contentful Paint element within the viewport:
+Text: Lightning Fast
+Html:
+Lightning Fast
+Cumulative Layout Shift Test91% of top 100 sites passed
+•	The CLS score of this webpage is 0.0005. To provide a good user experience, Google recommends that sites should strive to have a CLS score of 0.1 or less.
+0.0005
+0.1
+0.25
+DOM element which contributes the most to CLS score:
+Text: Home Services Compliance Fleet Our Team Contact
+Html: <nav class="hidden lg:flex items-center">
+Score: 0.0004
+Server and security
+Score: 100
+Failed: 1
+Warnings: 0
+Passed: 6
+URL Canonicalization Test93% of top 100 sites passed
+•	https://urbanfleetdelivery.ae/ and https://www.urbanfleetdelivery.ae/ resolve to the same URL.
+SSL Checker and HTTPS Test100% of top 100 sites passed
+•	This website is successfully using HTTPS, a secure communication protocol over the Internet.
+The certificate is not used before the activation date.
+The certificate has not expired.
+The hostname "urbanfleetdelivery.ae" is correctly listed in the certificate.
+The certificate should be trusted by all major web browsers.
+The certificate was not revoked.
+The certificate was signed with a secure hash.
+Certificate Chain:
+Server certificate
+Common name
+urbanfleetdelivery.ae
+Subject Alternative Names (SANs)
+urbanfleetdelivery.ae
+Not valid before
+Thu, January 29o 2026, 8:51:43 am (z)
+Not valid after
+Wed, April 29o 2026, 8:51:42 am (z)
+Signature algorithm
+sha256WithRsaEncryption
+Issuer
+R12
+Intermediate certificate
+Common name
+R12
+Organization
+Let's Encrypt
+Location
+US
+Not valid before
+Wed, March 13o 2024, 12:00:00 am (z)
+Not valid after
+Fri, March 12o 2027, 11:59:59 pm (z)
+Signature algorithm
+sha256WithRsaEncryption
+Issuer
+ISRG Root X1
+Root certificate
+Common name
+ISRG Root X1
+Organization
+Internet Security Research Group
+Location
+US
+Not valid before
+Thu, June 4o 2015, 11:04:38 am (z)
+Not valid after
+Mon, June 4o 2035, 11:04:38 am (z)
+Signature algorithm
+sha256WithRsaEncryption
+Issuer
+ISRG Root X1
+Mixed Content Test (HTTP over HTTPS)100% of top 100 sites passed
+•	This webpage does not use mixed content - both the initial HTML and all other resources are loaded over HTTPS.
+HTTP2 Test99% of top 100 sites passed
+•	This webpage is using the HTTP/2 protocol.
+HSTS Test84% of top 100 sites passed
+•	This webpage is using the Strict-Transport-Security header.
+strict-transport-security: max-age=63072000
+Plaintext Emails Test97% of top 100 sites passed
+•	We've found 1 email addresses in your page code! We advise you to protect email links in a way that hides them from the spam harvesters.
+Unsafe Cross-Origin Links Test45% of top 100 sites passed
+•	This webpage is not using target="_blank" links without rel="noopener" or rel="noreferrer" attribute.
+Mobile usability
+Score: 100
+Failed: 0
+Warnings: 0
+Passed: 3
+Meta Viewport Test92% of top 100 sites passed
+•	This webpage is using a viewport meta tag.
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+Media Query Responsive Test98% of top 100 sites passed
+•	This webpage is using CSS media queries, which is the base for responsive design functionalities.
+Mobile Snapshot Test
+ 
+Advanced SEO
+Score: 67
+Failed: 2
+Warnings: 0
+Passed: 7
+Structured Data Test66% of top 100 sites passed
+•	This webpage is using structured data.
+See results list
+Custom 404 Error Page Test80% of top 100 sites passed
+•	This website is not using a custom 404 error page! Default 404 error pages result in a poor experience - it can mislead users into thinking an entire site is down or broken, greatly increases the chance they leave the website entirely, and looks unprofessional. We recommend to have a custom 404 error page in order to improve the website's user experience by letting users know that only a specific page is missing/broken (and not the entire site), providing them helpful links, the opportunity to report bugs, and potentially track the source of broken links.
+Noindex Tag Test99% of top 100 sites passed
+•	This webpage does not use the noindex meta tag. This means that it can be indexed by search engines.
+Canonical Tag Test93% of top 100 sites passed
+•	This webpage is using the canonical link tag. This tag specifies that the URL: https://urbanfleetdelivery.ae/ is preferred to be used in search results. Please ensure that this specification is correct, as canonical tags are often hard-coded and may not always reflect the latest changes in a site's URL structure.
+<link href="https://urbanfleetdelivery.ae/" rel="canonical"/>
+Nofollow Tag Test
+•	This webpage does not use the nofollow meta tag. This means that search engines will crawl all links from this webpage.
+Disallow Directive Test
+•	The robots.txt file does not use the disallow directive. This means that the whole website can be crawled by search engines.
+Meta Refresh Test98% of top 100 sites passed
+•	This webpage is not using a meta refresh tag.
+SPF Records Test94% of top 100 sites passed
+•	This DNS server is using an SPF record.
+v=spf1 include:_spf.mail.hostinger.com ~all
+Ads.txt Validation Test67% of top 100 sites passed
+•	The request of ads.txt file has an unexpected Content-Type header: text/html; charset=utf-8. In order for this resource to be easily accessed by the DSPs and advertisers, its Content-Type header should be text/plain or text/plain; charset=utf-8.
+https://urbanfleetdelivery.ae
+Your general SEO Checkup Score
+77/100
+SEO Score
+Average SEO score of top 100 sites: 75%
+This webpage received an SEO score of 77 out of 100, which is higher than the average score of 75. Our analysis has identified 9 SEO issues that can be addressed to further enhance your website's performance and improve its search engine visibility.
+9 Failed
+5 Warnings
+47 Passed
+Issues to fix
+HIGH
+To improve the website experience for your visitors, it is recommended to eliminate any render-blocking resources on this webpage.
+HIGH
+Using images in a modern format can significantly reduce the file size and improve the loading speed of a webpage, providing a better user experience and potentially increasing engagement.
+MEDIUM
+By creating a custom 404 error page with helpful links and information, users are more likely to stay on the site and continue to explore.
+MEDIUM
+Avoid using distorted images, as they can have a negative impact on the user experience.
+MEDIUM
+Serve properly sized images to reduce page loading times and to improve user's experience.
+MEDIUM
+To provide a good user experience, Google recommends that sites should aim for a First Contentful Paint value of 1.8 seconds or less.
+MEDIUM
+Add a Google Analytics script to this website to help in diagnosing potential SEO issues by monitoring site visitors and traffic sources.
+
