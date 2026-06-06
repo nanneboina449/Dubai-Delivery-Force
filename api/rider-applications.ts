@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createClient } from '@supabase/supabase-js';
+import { sendApplicationEmail, formatRiderApplication } from './_lib/mail';
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
@@ -53,6 +54,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .single();
 
     if (error) throw error;
+
+    try {
+      await sendApplicationEmail({
+        subject: `New Rider Application — ${fullName}`,
+        body: formatRiderApplication(req.body),
+        replyToName: fullName,
+        replyToEmail: email,
+      });
+    } catch (mailError) {
+      console.error('Rider application email failed (saved to DB):', mailError);
+    }
 
     return res.status(201).json({ success: true, data });
   } catch (error) {

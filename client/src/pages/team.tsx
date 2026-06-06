@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Linkedin, Mail, Phone, Menu, X } from "lucide-react";
+import { ArrowLeft, Linkedin, Mail, Phone, Menu, X, User } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
-import logoImage from "@assets/logo.png";
+import logoImage from "@assets/optimized/logo.webp";
 
 const Logo = () => (
   <a href="/" className="flex items-center">
@@ -37,10 +37,10 @@ const teamMembers = [
     color: "from-[#1a2744] to-[#2d3f5f]"
   },
   {
-    name: "Mr. Faisal Iqbal",
+    name: "Ms. Madiha Sajid",
     role: "Operations Manager",
-    bio: "Faisal manages UrbanFleet's fleet operations and rider coordination. With deep knowledge of UAE delivery logistics, he ensures efficient deployment of our workforce and maintains our reputation for reliable, on-time deliveries. His focus on rider welfare has helped build a loyal and motivated team.",
-    initials: "FI",
+    bio: "Madiha manages UrbanFleet's fleet operations and rider coordination. With deep knowledge of UAE delivery logistics, she ensures efficient deployment of our workforce and maintains our reputation for reliable, on-time deliveries. Her focus on rider welfare has helped build a loyal and motivated team.",
+    initials: "MS",
     color: "from-[#F56A07] to-[#ff8533]"
   }
 ];
@@ -135,7 +135,7 @@ export default function Team() {
               >
                 <div className="flex items-start gap-6">
                   <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${member.color} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-105 transition-transform`}>
-                    <span className="text-2xl font-bold text-white">{member.initials}</span>
+                    <User className="w-10 h-10 text-white" strokeWidth={1.5} aria-hidden="true" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-white mb-1" data-testid={`text-member-name-${index}`}>
