@@ -6,7 +6,7 @@ export default function TermsOfUse() {
       <section>
         <p>
           These Terms of Use ("Terms") govern your access to and use of the
-          UrbanFleet Delivery Services ("UrbanFleet", "we", "us", or "our")
+          UrbanFleet Delivery Service LLC ("UrbanFleet", "we", "us", or "our")
           website and the forms made available on it. By using this website or
           submitting a form, you agree to these Terms. If you do not agree, please
           do not use the website.

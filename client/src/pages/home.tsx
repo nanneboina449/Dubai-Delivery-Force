@@ -861,7 +861,7 @@ export default function Home() {
           <div className="border-t border-white/10 pt-8">
             <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
               <div className="text-sm text-gray-500">
-                © {new Date().getFullYear()} UrbanFleet Delivery Services. All rights reserved.
+                © {new Date().getFullYear()} UrbanFleet Delivery Service LLC. All rights reserved.
               </div>
               <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-gray-500">
                 <a href="/privacy" className="transition-colors hover:text-white">

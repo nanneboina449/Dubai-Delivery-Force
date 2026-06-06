@@ -187,7 +187,7 @@ export default function Team() {
       <footer className="bg-[#0a0f18] border-t border-white/5 py-8">
         <div className="container mx-auto px-6 text-center">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} UrbanFleet Delivery Services. All rights reserved.
+            © {new Date().getFullYear()} UrbanFleet Delivery Service LLC. All rights reserved.
           </p>
         </div>
       </footer>
