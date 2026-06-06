@@ -29,6 +29,7 @@ import {
   Package
 } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
+import { LegalConsent } from "@/components/legal-consent";
 
 const businessFormSchema = z.object({
   companyName: z.string().min(2, "Company name is required"),
@@ -45,6 +46,9 @@ const businessFormSchema = z.object({
   contractDuration: z.string().min(1, "Contract duration is required"),
   specialRequirements: z.string().optional(),
   additionalNotes: z.string().optional(),
+  consent: z.boolean().refine((val) => val === true, {
+    message: "You must agree to the Privacy Policy and Terms of Use to submit.",
+  }),
 });
 
 type BusinessFormData = z.infer<typeof businessFormSchema>;
@@ -83,6 +87,7 @@ export default function BusinessInquiry() {
       contractDuration: "",
       specialRequirements: "",
       additionalNotes: "",
+      consent: false,
     },
   });
 
@@ -415,6 +420,11 @@ export default function BusinessInquiry() {
                 </div>
               </div>
             </div>
+
+            <LegalConsent
+              registration={form.register("consent")}
+              error={form.formState.errors.consent?.message}
+            />
 
             <Button
               type="submit"

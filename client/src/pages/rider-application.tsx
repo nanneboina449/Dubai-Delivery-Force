@@ -30,6 +30,7 @@ import {
   Globe
 } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
+import { LegalConsent } from "@/components/legal-consent";
 
 const riderFormSchema = z.object({
   fullName: z.string().min(2, "Full name is required"),
@@ -47,6 +48,9 @@ const riderFormSchema = z.object({
   preferredWorkArea: z.string().min(1, "Preferred work area is required"),
   englishProficiency: z.string().min(1, "English proficiency is required"),
   additionalNotes: z.string().optional(),
+  consent: z.boolean().refine((val) => val === true, {
+    message: "You must agree to the Privacy Policy and Terms of Use to submit.",
+  }),
 });
 
 type RiderFormData = z.infer<typeof riderFormSchema>;
@@ -86,6 +90,7 @@ export default function RiderApplication() {
       preferredWorkArea: "",
       englishProficiency: "",
       additionalNotes: "",
+      consent: false,
     },
   });
 
@@ -435,6 +440,11 @@ export default function RiderApplication() {
                 data-testid="textarea-additionalNotes"
               />
             </div>
+
+            <LegalConsent
+              registration={form.register("consent")}
+              error={form.formState.errors.consent?.message}
+            />
 
             <Button
               type="submit"

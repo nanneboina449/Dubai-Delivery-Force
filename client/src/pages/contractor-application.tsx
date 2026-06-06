@@ -30,6 +30,7 @@ import {
   Shield
 } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
+import { LegalConsent } from "@/components/legal-consent";
 
 const contractorFormSchema = z.object({
   companyName: z.string().min(2, "Company name is required"),
@@ -49,6 +50,9 @@ const contractorFormSchema = z.object({
   insuranceCoverage: z.string().min(1, "Insurance coverage is required"),
   additionalServices: z.string().optional(),
   additionalNotes: z.string().optional(),
+  consent: z.boolean().refine((val) => val === true, {
+    message: "You must agree to the Privacy Policy and Terms of Use to submit.",
+  }),
 });
 
 type ContractorFormData = z.infer<typeof contractorFormSchema>;
@@ -90,6 +94,7 @@ export default function ContractorApplication() {
       insuranceCoverage: "",
       additionalServices: "",
       additionalNotes: "",
+      consent: false,
     },
   });
 
@@ -434,6 +439,11 @@ export default function ContractorApplication() {
                 data-testid="textarea-additionalNotes"
               />
             </div>
+
+            <LegalConsent
+              registration={form.register("consent")}
+              error={form.formState.errors.consent?.message}
+            />
 
             <Button
               type="submit"
