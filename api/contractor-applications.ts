@@ -120,6 +120,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(201).json({ success: true, data });
   } catch (error) {
     console.error('Contractor application error:', error);
-    return res.status(400).json({ success: false, error: 'Invalid application data' });
+    const message = error instanceof Error ? error.message : String(error);
+    return res.status(400).json({ success: false, error: 'Invalid application data', details: message });
   }
 }
