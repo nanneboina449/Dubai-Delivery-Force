@@ -1,11 +1,56 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createClient } from '@supabase/supabase-js';
-import { sendApplicationEmail, formatRiderApplication } from './_lib/mail';
+import nodemailer from 'nodemailer';
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
   process.env.SUPABASE_ANON_KEY!
 );
+
+async function sendNotification(subject: string, body: string, replyToName: string, replyToEmail: string) {
+  const host = process.env.SMTP_HOST;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  if (!host || !user || !pass) throw new Error('SMTP is not configured (SMTP_HOST/SMTP_USER/SMTP_PASS).');
+  const port = Number(process.env.SMTP_PORT) || 465;
+  const transport = nodemailer.createTransport({ host, port, secure: port === 465, auth: { user, pass } });
+  await transport.sendMail({
+    from: `"UrbanFleet Website" <${user}>`,
+    to: process.env.MAIL_TO || user,
+    replyTo: replyToEmail ? `"${replyToName}" <${replyToEmail}>` : undefined,
+    subject,
+    text: body,
+  });
+}
+
+function formatRiderApplication(d: Record<string, unknown>): string {
+  return `
+RIDER APPLICATION DETAILS
+========================
+Full Name: ${d.fullName}
+Email: ${d.email}
+Phone: ${d.phone}
+Nationality: ${d.nationality}
+Current Location: ${d.currentLocation}
+Visa Status: ${d.visaStatus}
+
+DRIVING & EXPERIENCE
+-------------------
+UAE Driving License: ${d.hasUaeDrivingLicense}
+License Type: ${d.licenseType || 'N/A'}
+Years of Experience: ${d.yearsOfExperience}
+Preferred Vehicle: ${d.vehicleType}
+Owns Vehicle: ${d.ownsVehicle}
+English Proficiency: ${d.englishProficiency}
+
+AVAILABILITY
+------------
+Available to Start: ${d.availableToStart}
+Preferred Work Area: ${d.preferredWorkArea}
+
+Additional Notes: ${d.additionalNotes || 'None'}
+  `.trim();
+}
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
@@ -56,12 +101,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (error) throw error;
 
     try {
-      await sendApplicationEmail({
-        subject: `New Rider Application — ${fullName}`,
-        body: formatRiderApplication(req.body),
-        replyToName: fullName,
-        replyToEmail: email,
-      });
+      await sendNotification(
+        `New Rider Application — ${fullName}`,
+        formatRiderApplication(req.body),
+        fullName,
+        email,
+      );
     } catch (mailError) {
       console.error('Rider application email failed (saved to DB):', mailError);
     }

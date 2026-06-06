@@ -1,11 +1,58 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createClient } from '@supabase/supabase-js';
-import { sendApplicationEmail, formatContractorApplication } from './_lib/mail';
+import nodemailer from 'nodemailer';
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
   process.env.SUPABASE_ANON_KEY!
 );
+
+async function sendNotification(subject: string, body: string, replyToName: string, replyToEmail: string) {
+  const host = process.env.SMTP_HOST;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  if (!host || !user || !pass) throw new Error('SMTP is not configured (SMTP_HOST/SMTP_USER/SMTP_PASS).');
+  const port = Number(process.env.SMTP_PORT) || 465;
+  const transport = nodemailer.createTransport({ host, port, secure: port === 465, auth: { user, pass } });
+  await transport.sendMail({
+    from: `"UrbanFleet Website" <${user}>`,
+    to: process.env.MAIL_TO || user,
+    replyTo: replyToEmail ? `"${replyToName}" <${replyToEmail}>` : undefined,
+    subject,
+    text: body,
+  });
+}
+
+function formatContractorApplication(d: Record<string, unknown>): string {
+  return `
+CONTRACTOR APPLICATION DETAILS
+==============================
+Company Name: ${d.companyName}
+Contact Person: ${d.contactPerson}
+Email: ${d.email}
+Phone: ${d.phone}
+Trade License: ${d.tradeLicense}
+Emirate: ${d.emirate}
+Years in Business: ${d.yearsInBusiness}
+Total Drivers: ${d.totalDrivers}
+
+FLEET DETAILS
+-------------
+Bicycles: ${d.fleetBicycles}
+Motorcycles: ${d.fleetMotorcycles}
+Cars: ${d.fleetCars}
+Vans: ${d.fleetVans}
+Trucks: ${d.fleetTrucks}
+
+INSURANCE & OPERATIONS
+----------------------
+Insurance Coverage: ${d.insuranceCoverage}
+Current Clients: ${d.currentClients || 'N/A'}
+Additional Services: ${d.additionalServices || 'N/A'}
+
+Additional Notes: ${d.additionalNotes || 'None'}
+  `.trim();
+}
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
@@ -60,12 +107,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (error) throw error;
 
     try {
-      await sendApplicationEmail({
-        subject: `New Contractor Partnership Application — ${companyName}`,
-        body: formatContractorApplication(req.body),
-        replyToName: contactPerson,
-        replyToEmail: email,
-      });
+      await sendNotification(
+        `New Contractor Partnership Application — ${companyName}`,
+        formatContractorApplication(req.body),
+        contactPerson,
+        email,
+      );
     } catch (mailError) {
       console.error('Contractor application email failed (saved to DB):', mailError);
     }
