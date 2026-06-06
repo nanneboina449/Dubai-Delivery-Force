@@ -23,6 +23,8 @@ import {
   Heart,
   TrendingUp,
   Award,
+  Linkedin,
+  Instagram,
 } from "lucide-react";
 import { useState, useEffect, useRef, type ReactNode } from "react";
 import { Link } from "wouter";
@@ -762,6 +764,26 @@ export default function Home() {
               <p className="mt-4 text-xl font-semibold italic text-primary">
                 "Delivery you can trust."
               </p>
+              <div className="mt-6 flex items-center gap-3">
+                <a
+                  href="https://ae.linkedin.com/company/urbanfleet-delivery-service-llc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="UrbanFleet on LinkedIn"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition-colors hover:bg-primary hover:text-white"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://www.instagram.com/urbanfleetdelivery/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="UrbanFleet on Instagram"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition-colors hover:bg-primary hover:text-white"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+              </div>
             </div>
 
             <div>
