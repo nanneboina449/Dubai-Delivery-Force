@@ -1,0 +1,13 @@
+{
+  "name": "UrbanFleet Delivery Services",
+  "short_name": "UrbanFleet",
+  "description": "UAE's trusted delivery workforce provider — licensed riders, visa sponsorship, and fleet partnerships.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c122a",
+  "theme_color": "#0c122a",
+  "icons": [
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}
