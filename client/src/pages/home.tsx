@@ -767,19 +767,23 @@ export default function Home() {
             <div>
               <h4 className="mb-5 text-lg font-bold text-primary">Work With Us</h4>
               <ul className="space-y-3 text-gray-400">
-                {["For Businesses", "For Contractors", "Join as Rider", "Visa Sponsorship", "Careers"].map(
-                  (link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
-                        className="inline-flex min-h-11 items-center gap-2 transition-colors hover:text-white"
-                      >
-                        <ArrowRight className="h-3 w-3 text-primary" />
-                        {link}
-                      </a>
-                    </li>
-                  ),
-                )}
+                {[
+                  { label: "For Businesses", href: "/contact/business" },
+                  { label: "For Contractors", href: "/apply/contractor" },
+                  { label: "Join as Rider", href: "/apply/rider" },
+                  { label: "Visa Sponsorship", href: "/apply/rider" },
+                  { label: "Our Team", href: "/team" },
+                ].map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="inline-flex min-h-11 items-center gap-2 transition-colors hover:text-white"
+                    >
+                      <ArrowRight className="h-3 w-3 text-primary" />
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -823,9 +827,17 @@ export default function Home() {
               <div className="text-sm text-gray-500">
                 © {new Date().getFullYear()} UrbanFleet Delivery Services. All rights reserved.
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <Award className="h-4 w-4 text-primary" />
-                <span>Compliant with UAE Federal Decree-Law No. 33 of 2021</span>
+              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-gray-500">
+                <a href="/privacy" className="transition-colors hover:text-white">
+                  Privacy Policy
+                </a>
+                <a href="/terms" className="transition-colors hover:text-white">
+                  Terms of Use
+                </a>
+                <span className="flex items-center gap-2">
+                  <Award className="h-4 w-4 text-primary" />
+                  Compliant with UAE Federal Decree-Law No. 45 of 2021 (PDPL)
+                </span>
               </div>
             </div>
           </div>

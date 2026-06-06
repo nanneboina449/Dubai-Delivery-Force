@@ -9,6 +9,8 @@ import RiderApplication from "@/pages/rider-application";
 import ContractorApplication from "@/pages/contractor-application";
 import BusinessInquiry from "@/pages/business-inquiry";
 import Team from "@/pages/team";
+import PrivacyPolicy from "@/pages/privacy-policy";
+import TermsOfUse from "@/pages/terms-of-use";
 import AdminDashboard from "@/pages/admin/dashboard";
 import RidersAdmin from "@/pages/admin/riders";
 import ContractorsAdmin from "@/pages/admin/contractors";
@@ -31,6 +33,8 @@ function Router() {
       <Route path="/apply/rider" component={RiderApplication} />
       <Route path="/apply/contractor" component={ContractorApplication} />
       <Route path="/contact/business" component={BusinessInquiry} />
+      <Route path="/privacy" component={PrivacyPolicy} />
+      <Route path="/terms" component={TermsOfUse} />
       <Route path="/admin/login" component={AdminLogin} />
       <Route path="/admin" component={AdminDashboard} />
       <Route path="/admin/riders" component={RidersAdmin} />
