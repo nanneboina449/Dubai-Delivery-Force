@@ -85,15 +85,15 @@ function Reveal({
   );
 }
 
-// Brand logo — optimized WebP (14KB, down from the 2.1MB PNG).
-function Logo({ className = "h-12 md:h-14" }: { className?: string }) {
+// Brand logo — optimized WebP, padding trimmed so the mark fills its box.
+function Logo({ className = "h-14 md:h-16" }: { className?: string }) {
   return (
     <Link href="/" className="flex items-center" aria-label="UrbanFleet Delivery Service home">
       <img
         src={logoImage}
         alt="UrbanFleet Delivery Service"
-        width={480}
-        height={320}
+        width={260}
+        height={165}
         className={`${className} w-auto object-contain`}
       />
     </Link>
