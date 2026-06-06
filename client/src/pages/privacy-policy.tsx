@@ -5,7 +5,7 @@ export default function PrivacyPolicy() {
     <LegalLayout title="Privacy Policy" lastUpdated="6 June 2026">
       <section>
         <p>
-          This Privacy Policy explains how UrbanFleet Delivery Services
+          This Privacy Policy explains how UrbanFleet Delivery Service LLC
           ("UrbanFleet", "we", "us", or "our") collects, uses, stores, and
           protects your personal data when you visit our website or submit an
           application or inquiry through our forms. We are committed to handling
@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
       <section>
         <h2>1. Who We Are</h2>
         <p>
-          UrbanFleet Delivery Services is a delivery workforce provider based in
+          UrbanFleet Delivery Service LLC is a delivery workforce provider based in
           Dubai, United Arab Emirates. For any questions about this policy or
           your personal data, contact us at:
         </p>

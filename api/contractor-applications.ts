@@ -43,7 +43,7 @@ function shell(heading: string, intro: string, content: string): string {
 ${content}
 </td></tr>
 <tr><td style="background:#f7f9fc;padding:20px 32px;border-top:1px solid #e2e7ef;">
-<p style="margin:0;font-size:12px;color:#8893a6;line-height:1.6;">UrbanFleet Delivery Services &middot; Coastal Building, Office 301, Al Qusais Metro Station, Exit 2, Dubai, UAE<br/>info@urbanfleetdelivery.ae</p>
+<p style="margin:0;font-size:12px;color:#8893a6;line-height:1.6;">UrbanFleet Delivery Service LLC &middot; Coastal Building, Office 301, Al Qusais Metro Station, Exit 2, Dubai, UAE<br/>info@urbanfleetdelivery.ae</p>
 </td></tr>
 </table></td></tr></table></body></html>`;
 }

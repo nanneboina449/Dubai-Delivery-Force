@@ -21,7 +21,7 @@ export function LegalConsent({ registration, error }: LegalConsentProps) {
           data-testid="checkbox-consent"
         />
         <span className="text-sm text-gray-300 leading-relaxed">
-          I consent to UrbanFleet Delivery Services collecting and processing the
+          I consent to UrbanFleet Delivery Service LLC collecting and processing the
           personal data I provide for the purpose of handling this submission, in
           accordance with the{" "}
           <a

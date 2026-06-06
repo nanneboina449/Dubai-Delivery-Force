@@ -184,11 +184,18 @@ export default function Home() {
             })}
           </nav>
 
-          <a href="#services" className="hidden md:inline-flex">
-            <span className="inline-flex min-h-12 items-center gap-2 rounded-full bg-primary px-6 font-bold text-white shadow-sm transition-colors hover:bg-orange-600">
-              Get Started <ArrowRight className="h-4 w-4" />
-            </span>
-          </a>
+          <div className="hidden items-center gap-2 md:flex">
+            <a href="tel:+971507653393" aria-label="Call UrbanFleet">
+              <span className="inline-flex min-h-12 items-center gap-2 rounded-full border border-primary px-5 font-bold text-primary transition-colors hover:bg-primary hover:text-white">
+                <Phone className="h-4 w-4" /> Call Us
+              </span>
+            </a>
+            <a href="#services">
+              <span className="inline-flex min-h-12 items-center gap-2 rounded-full bg-primary px-6 font-bold text-white shadow-sm transition-colors hover:bg-orange-600">
+                Get Started <ArrowRight className="h-4 w-4" />
+              </span>
+            </a>
+          </div>
 
           <button
             type="button"
@@ -228,6 +235,13 @@ export default function Home() {
                   </a>
                 ),
               )}
+              <a
+                href="tel:+971507653393"
+                className="mt-3 flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary py-3 text-lg font-bold text-white"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Phone className="h-5 w-5" /> Call Us
+              </a>
             </nav>
           </div>
         )}
@@ -742,10 +756,10 @@ export default function Home() {
                 <Mail className="h-5 w-5" /> Contact Us
               </a>
               <a
-                href="tel:+971501234567"
+                href="tel:+971507653393"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 text-base font-medium text-white transition-colors hover:bg-white/10"
               >
-                <Phone className="h-5 w-5" /> +971 50 123 4567
+                <Phone className="h-5 w-5" /> +971 50 765 3393
               </a>
             </div>
           </Reveal>
@@ -824,11 +838,11 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="tel:+971501234567"
+                    href="tel:+971507653393"
                     className="flex min-h-11 items-center gap-3 transition-colors hover:text-white"
                   >
                     <Phone className="h-5 w-5 text-primary" />
-                    +971 50 123 4567
+                    +971 50 765 3393
                   </a>
                 </li>
                 <li>
@@ -847,7 +861,7 @@ export default function Home() {
           <div className="border-t border-white/10 pt-8">
             <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
               <div className="text-sm text-gray-500">
-                © {new Date().getFullYear()} UrbanFleet Delivery Services. All rights reserved.
+                © {new Date().getFullYear()} UrbanFleet Delivery Service LLC. All rights reserved.
               </div>
               <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-gray-500">
                 <a href="/privacy" className="transition-colors hover:text-white">
