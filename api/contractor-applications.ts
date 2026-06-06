@@ -59,28 +59,46 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  const body = req.body || {};
+  const {
+    companyName,
+    contactPerson,
+    email,
+    phone,
+    tradeLicense,
+    emirate,
+    fleetMotorcycles,
+    fleetCars,
+    fleetVans,
+    fleetTrucks,
+    fleetBicycles,
+    totalDrivers,
+    yearsInBusiness,
+    currentClients,
+    insuranceCoverage,
+    additionalServices,
+    additionalNotes
+  } = body;
+
+  // Email is the primary notification — send it independently of the database.
+  let emailSent = false;
   try {
-    const {
-      companyName,
+    await sendNotification(
+      `New Contractor Partnership Application — ${companyName}`,
+      formatContractorApplication(body),
       contactPerson,
       email,
-      phone,
-      tradeLicense,
-      emirate,
-      fleetMotorcycles,
-      fleetCars,
-      fleetVans,
-      fleetTrucks,
-      fleetBicycles,
-      totalDrivers,
-      yearsInBusiness,
-      currentClients,
-      insuranceCoverage,
-      additionalServices,
-      additionalNotes
-    } = req.body;
+    );
+    emailSent = true;
+  } catch (mailError) {
+    console.error('Contractor application email failed:', mailError);
+  }
 
-    const { data, error } = await supabase
+  // Best-effort save to the database (e.g. paused Supabase must not lose the lead).
+  let saved = false;
+  let data = null;
+  try {
+    const result = await supabase
       .from('contractor_applications')
       .insert({
         company_name: companyName,
@@ -103,24 +121,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       })
       .select()
       .single();
-
-    if (error) throw error;
-
-    try {
-      await sendNotification(
-        `New Contractor Partnership Application — ${companyName}`,
-        formatContractorApplication(req.body),
-        contactPerson,
-        email,
-      );
-    } catch (mailError) {
-      console.error('Contractor application email failed (saved to DB):', mailError);
-    }
-
-    return res.status(201).json({ success: true, data });
-  } catch (error) {
-    console.error('Contractor application error:', error);
-    const message = error instanceof Error ? error.message : String(error);
-    return res.status(400).json({ success: false, error: 'Invalid application data', details: message });
+    if (result.error) throw result.error;
+    data = result.data;
+    saved = true;
+  } catch (dbError) {
+    console.error('Contractor application DB save failed:', dbError);
   }
+
+  if (!emailSent && !saved) {
+    return res.status(502).json({ success: false, error: 'Submission could not be processed. Please try again.' });
+  }
+
+  return res.status(201).json({ success: true, emailSent, saved, data });
 }
